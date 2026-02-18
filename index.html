@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<title>Fokus Eyecare - Premium Ophthalmology</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,200,0,0" rel="stylesheet"/>
+
+<style>
+:root {
+  --primary: #2E8B57;
+  --primary-light: rgba(46,139,87,0.1);
+  --text: #1A1A1A;
+  --muted: #6B7280;
+  --bg: #FAFAFA;
+  --white: #ffffff;
+  --border: rgba(0,0,0,0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── CUSTOM CURSOR (desktop only) ── */
+#cursor, #cursor-ring {
+  position: fixed; top: 0; left: 0;
+  border-radius: 50%; pointer-events: none; z-index: 9999;
+  transform: translate(-50%,-50%);
+}
+#cursor { width:12px; height:12px; background:var(--primary); mix-blend-mode:multiply; }
+#cursor-ring { width:44px; height:44px; border:1.5px solid var(--primary); opacity:0.5; }
+
+/* ── SCROLL PROGRESS ── */
+#progress {
+  position: fixed; top:0; left:0; height:2.5px;
+  background: var(--primary); width:0%; z-index:200;
+  box-shadow: 0 0 10px rgba(46,139,87,0.5);
+}
+
+/* ── PARTICLES ── */
+#particles-canvas {
+  position: fixed; inset:0;
+  pointer-events:none; z-index:0; opacity:0.35;
+}
+
+/* ── LOADER ── */
+#loader {
+  position:fixed; inset:0; background:#0a0a0a;
+  z-index:10000; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; gap:20px;
+}
+#loader-text {
+  font-family:'Playfair Display',serif;
+  color:#fff; font-size:clamp(2.2rem,8vw,4rem);
+  letter-spacing:0.05em;
+}
+#loader-line { width:0; height:1.5px; background:var(--primary); max-width:200px; }
+#loader-counter { font-size:0.72rem; letter-spacing:0.3em; color:#555; }
+
+/* ── NAV ── */
+nav {
+  position:fixed; width:100%; z-index:100;
+  background:rgba(250,250,250,0.92);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  transition:background 0.3s;
+}
+.nav-inner {
+  max-width:1280px; margin:0 auto;
+  padding:0 1.25rem;
+  display:flex; justify-content:space-between;
+  align-items:center; height:68px;
+}
+.nav-logo {
+  font-family:'Playfair Display',serif;
+  font-size:1.5rem; font-weight:600;
+  color:var(--text); text-decoration:none; opacity:0;
+  position:relative; z-index:110;
+}
+
+/* Desktop nav links */
+.nav-links {
+  display:flex; align-items:center; gap:2.5rem; list-style:none;
+}
+.nav-links a {
+  font-size:0.82rem; font-weight:500; color:var(--muted);
+  text-decoration:none; position:relative; transition:color 0.3s; opacity:0;
+}
+.nav-links a::after {
+  content:''; position:absolute; bottom:-3px; left:0;
+  width:0; height:1.5px; background:var(--primary);
+  transition:width 0.35s ease;
+}
+.nav-links a:hover { color:var(--primary); }
+.nav-links a:hover::after { width:100%; }
+.nav-btn {
+  padding:0.55rem 1.4rem !important;
+  background:var(--primary) !important;
+  color:#fff !important; border-radius:100px;
+  box-shadow:0 4px 20px rgba(46,139,87,0.25);
+  transition:all 0.3s !important;
+}
+.nav-btn::after { display:none !important; }
+.nav-btn:hover { transform:translateY(-2px) !important; box-shadow:0 8px 30px rgba(46,139,87,0.35) !important; }
+
+/* Hamburger button */
+.hamburger {
+  display:none; flex-direction:column; justify-content:center;
+  align-items:center; gap:5px;
+  width:40px; height:40px;
+  background:none; border:none; cursor:pointer;
+  position:relative; z-index:110; padding:0;
+}
+.hamburger span {
+  display:block; width:24px; height:1.5px;
+  background:var(--text); border-radius:2px;
+  transition:all 0.35s cubic-bezier(0.76,0,0.24,1);
+  transform-origin:center;
+}
+.hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
+.hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+
+/* Mobile menu overlay */
+.mobile-menu {
+  position:fixed; inset:0;
+  background:rgba(250,250,250,0.98);
+  backdrop-filter:blur(20px);
+  z-index:99;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center; gap:2rem;
+  opacity:0; pointer-events:none;
+  transition:opacity 0.4s ease;
+}
+.mobile-menu.open { opacity:1; pointer-events:all; }
+.mobile-menu a {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,7vw,2.8rem);
+  color:var(--text); text-decoration:none;
+  font-weight:400; letter-spacing:0.02em;
+  transition:color 0.3s;
+  transform:translateY(20px); opacity:0;
+  transition:transform 0.4s ease, opacity 0.4s ease, color 0.3s;
+}
+.mobile-menu.open a { transform:translateY(0); opacity:1; }
+.mobile-menu.open a:nth-child(1) { transition-delay:0.05s; }
+.mobile-menu.open a:nth-child(2) { transition-delay:0.1s; }
+.mobile-menu.open a:nth-child(3) { transition-delay:0.15s; }
+.mobile-menu.open a:nth-child(4) { transition-delay:0.2s; }
+.mobile-menu a:hover { color:var(--primary); }
+.mobile-menu .mobile-cta {
+  margin-top:1rem;
+  padding:0.9rem 2.5rem;
+  background:var(--primary);
+  color:#fff !important;
+  border-radius:100px;
+  font-family:'Inter',sans-serif !important;
+  font-size:0.9rem !important;
+  font-weight:500 !important;
+  box-shadow:0 8px 30px rgba(46,139,87,0.3);
+}
+.mobile-menu-footer {
+  position:absolute; bottom:2.5rem;
+  font-size:0.75rem; color:var(--muted); letter-spacing:0.1em;
+}
+
+/* ── COMMON ── */
+.section-label {
+  font-size:0.7rem; letter-spacing:0.32em;
+  text-transform:uppercase; color:var(--primary);
+  font-weight:600; margin-bottom:0.75rem;
+  display:flex; align-items:center; gap:0.6rem;
+}
+.section-label::before {
+  content:''; display:block;
+  width:22px; height:1.5px; background:var(--primary);
+  flex-shrink:0;
+}
+.section-title {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.7rem,4vw,2.8rem);
+  line-height:1.2; color:var(--text);
+}
+
+/* ── HERO ── */
+.hero-section {
+  min-height:100svh;
+  padding:88px 1.25rem 3rem;
+  max-width:1280px; margin:0 auto;
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:3rem; align-items:center;
+}
+.hero-eyebrow {
+  font-size:0.7rem; letter-spacing:0.32em;
+  text-transform:uppercase; color:var(--primary);
+  font-weight:600; margin-bottom:1.1rem;
+  display:flex; align-items:center; gap:0.6rem;
+  opacity:0; transform:translateY(16px);
+}
+.hero-eyebrow::before { content:''; display:block; width:24px; height:1.5px; background:var(--primary); }
+.hero-title {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.6rem,5.5vw,5rem);
+  line-height:1.06; color:var(--text);
+  margin-bottom:1.25rem; overflow:hidden;
+}
+.hero-title .word { display:inline-block; transform:translateY(110%); margin-right:0.25em; }
+.hero-title em { color:var(--primary); font-style:italic; }
+.hero-sub {
+  font-size:clamp(0.9rem,2vw,1.05rem);
+  color:var(--muted); font-weight:300;
+  line-height:1.75; margin-bottom:2rem;
+  opacity:0; transform:translateY(16px);
+}
+.hero-actions {
+  display:flex; gap:0.875rem; flex-wrap:wrap;
+  opacity:0; transform:translateY(16px);
+}
+.btn-primary {
+  display:inline-flex; align-items:center; gap:0.4rem;
+  padding:0.875rem 1.75rem;
+  background:var(--primary); color:#fff;
+  border-radius:100px; font-size:0.875rem; font-weight:500;
+  text-decoration:none;
+  box-shadow:0 8px 28px rgba(46,139,87,0.28);
+  transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  position:relative; overflow:hidden;
+}
+.btn-primary::before {
+  content:''; position:absolute; inset:0;
+  background:rgba(255,255,255,0.15);
+  transform:translateX(-110%) skewX(-12deg);
+  transition:transform 0.5s ease;
+}
+.btn-primary:hover::before { transform:translateX(120%) skewX(-12deg); }
+.btn-primary:hover { transform:translateY(-2px); box-shadow:0 14px 40px rgba(46,139,87,0.35); }
+.btn-ghost {
+  display:inline-flex; align-items:center; gap:0.4rem;
+  padding:0.875rem 1.75rem;
+  border:1.5px solid var(--border);
+  border-radius:100px; font-size:0.875rem; font-weight:500;
+  text-decoration:none; color:var(--text);
+  transition:all 0.3s;
+}
+.btn-ghost:hover { border-color:var(--primary); color:var(--primary); }
+
+.hero-visual {
+  position:relative; opacity:0; transform:translateX(30px);
+}
+.orbit-ring {
+  position:absolute; border-radius:50%;
+  border:1px solid rgba(46,139,87,0.1); pointer-events:none;
+}
+.hero-img-wrap {
+  border-radius:18px; overflow:hidden;
+  aspect-ratio:4/3; position:relative;
+  box-shadow:0 30px 70px rgba(0,0,0,0.1);
+}
+.hero-img-wrap img { width:100%; height:100%; object-fit:fit; transition:transform 0.7s; }
+.hero-img-wrap:hover img { transform:scale(1.04); }
+.hero-img-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(135deg,rgba(46,139,87,0.07) 0%,transparent 60%);
+}
+.stat-card {
+  position:absolute; background:#fff;
+  border-radius:12px; padding:0.85rem 1.2rem;
+  box-shadow:0 16px 48px rgba(0,0,0,0.1);
+  display:flex; align-items:center; gap:0.65rem;
+  opacity:0; transform:translateY(16px) scale(0.92);
+}
+.stat-card-1 { bottom:-20px; left:-24px; }
+.stat-card-2 { top:-16px; right:-16px; }
+.stat-num { font-family:'Playfair Display',serif; font-size:1.35rem; font-weight:600; line-height:1; }
+.stat-label { font-size:0.65rem; color:var(--muted); }
+.stat-icon { width:32px; height:32px; border-radius:8px; background:var(--primary-light); display:flex; align-items:center; justify-content:center; color:var(--primary); }
+
+/* Mobile inline stats (shown on mobile instead of floating cards) */
+.mobile-stats {
+  display:none;
+  gap:1rem; margin-top:1.5rem;
+}
+.mobile-stat {
+  flex:1; background:#fff;
+  border-radius:14px; padding:1rem;
+  border:1.5px solid var(--border);
+  text-align:center;
+}
+.mobile-stat .stat-num { font-size:1.4rem; }
+.mobile-stat .stat-label { font-size:0.65rem; }
+
+/* ── SERVICES ── */
+.services-section { padding:5rem 1.25rem; background:#fff; }
+.services-inner { max-width:1280px; margin:0 auto; }
+.services-header { text-align:center; margin-bottom:3.5rem; }
+.services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+.service-card {
+  padding:2rem; border-radius:18px;
+  border:1.5px solid var(--border);
+  background:var(--bg);
+  transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  position:relative; overflow:hidden; cursor:pointer;
+  opacity:0; transform:translateY(40px);
+}
+.service-card::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg,var(--primary-light),transparent);
+  opacity:0; transition:opacity 0.4s;
+}
+.service-card:hover { transform:translateY(-6px); border-color:rgba(46,139,87,0.22); box-shadow:0 20px 50px rgba(46,139,87,0.1); }
+.service-card:hover::before { opacity:1; }
+.service-icon {
+  width:48px; height:48px; border-radius:12px;
+  background:var(--primary-light); display:flex;
+  align-items:center; justify-content:center;
+  color:var(--primary); margin-bottom:1.25rem;
+  transition:all 0.4s;
+}
+.service-card:hover .service-icon { background:var(--primary); color:#fff; transform:scale(1.1) rotate(-5deg); }
+.service-card h3 { font-family:'Playfair Display',serif; font-size:1.2rem; margin-bottom:0.6rem; color:var(--text); }
+.service-card p { font-size:0.85rem; color:var(--muted); line-height:1.7; font-weight:300; }
+
+/* ── FOUNDER / ABOUT US ── */
+.founder-section { padding:5rem 1.25rem; background:var(--bg); }
+.founder-inner { max-width:1280px; margin:0 auto; }
+.founder-header { margin-bottom:3.5rem; text-align:center; }
+.founder-card {
+  display:grid; grid-template-columns:1fr 1.2fr;
+  gap:4rem; align-items:center;
+  opacity:0; transform:translateY(40px);
+}
+.founder-img-side { position:relative; }
+.founder-img-wrap {
+  border-radius:20px; overflow:hidden;
+  position:relative;
+  box-shadow:0 30px 70px rgba(0,0,0,0.1);
+  aspect-ratio:4/4;
+}
+.founder-img-wrap img { width:100%; height:100%; object-fit:cover; transition:transform 0.7s; }
+.founder-img-wrap:hover img { transform:scale(1.04); }
+.founder-badge {
+  position:absolute; bottom:18px; left:50%;
+  transform:translateX(-50%);
+  background:rgba(255,255,255,0.95);
+  backdrop-filter:blur(12px);
+  border-radius:100px; padding:0.45rem 1rem;
+  display:flex; align-items:center; gap:0.4rem;
+  font-size:0.72rem; font-weight:600; white-space:nowrap;
+  box-shadow:0 8px 24px rgba(0,0,0,0.1);
+  color:var(--text);
+}
+.founder-blob {
+  position:absolute; top:8%; right:-30px;
+  width:160px; height:160px;
+  background:radial-gradient(circle,rgba(46,139,87,0.08) 0%,transparent 70%);
+  border-radius:50%;
+  animation:blobFloat 5s ease-in-out infinite;
+}
+@keyframes blobFloat {
+  0%,100% { transform:translateY(0) scale(1); }
+  50% { transform:translateY(-14px) scale(1.04); }
+}
+.founder-quote {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1rem,1.8vw,1.3rem);
+  font-style:italic; color:var(--text);
+  line-height:1.65; margin-bottom:1.75rem;
+  padding-left:1.25rem;
+  border-left:3px solid var(--primary);
+}
+.founder-divider { width:44px; height:2px; background:var(--primary); margin-bottom:1.1rem; box-shadow:0 0 10px rgba(46,139,87,0.3); }
+.founder-name { font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--text); margin-bottom:0.2rem; }
+.founder-role { font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--primary); font-weight:600; margin-bottom:1.1rem; }
+.founder-bio { font-size:0.875rem; color:var(--muted); line-height:1.8; font-weight:300; margin-bottom:2rem; }
+.founder-stats { display:flex; gap:2rem; padding-top:1.75rem; border-top:1px solid var(--border); }
+.fstat { display:flex; flex-direction:column; gap:0.25rem; }
+.fstat-num { font-family:'Playfair Display',serif; font-size:1.7rem; color:var(--text); line-height:1; }
+.fstat-label { font-size:0.65rem; letter-spacing:0.08em; text-transform:uppercase; color:#9CA3AF; }
+
+/* ── WHY FOKUS ── */
+.about-section { padding:5rem 1.25rem; background:#fff; }
+.about-inner { max-width:1280px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+.about-img-wrap { border-radius:18px; overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,0.08); opacity:0; transform:translateX(-40px); }
+.about-img-wrap img { width:100%; display:block; filter:grayscale(0.35); transition:filter 0.7s,transform 0.7s; }
+.about-img-wrap:hover img { filter:grayscale(0); transform:scale(1.03); }
+.about-content { opacity:0; transform:translateX(40px); }
+.feature-row { display:flex; gap:1rem; margin-top:1.75rem; padding-top:1.75rem; border-top:1px solid var(--border); }
+.feature-row:first-of-type { border-top:none; margin-top:1.75rem; padding-top:0; }
+.feature-icon { color:var(--primary); flex-shrink:0; margin-top:2px; }
+.feature-row h4 { font-size:0.95rem; font-weight:600; margin-bottom:0.3rem; }
+.feature-row p { font-size:0.85rem; color:var(--muted); line-height:1.7; font-weight:300; }
+
+/* ── NUMBERS ── */
+.numbers-section { padding:4rem 1.25rem; background:#1A1A1A; }
+.numbers-inner { max-width:1280px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; text-align:center; }
+.num-item { opacity:0; transform:translateY(24px); }
+.num-value { font-family:'Playfair Display',serif; font-size:clamp(2rem,4.5vw,3.5rem); color:#fff; line-height:1; margin-bottom:0.4rem; }
+.num-value span { color:var(--primary); }
+.num-label { font-size:0.72rem; color:#6B7280; letter-spacing:0.1em; text-transform:uppercase; }
+
+/* ── GALLERY ── */
+.gallery-section { padding:5rem 1.25rem; background:#fff; }
+.gallery-inner { max-width:1280px; margin:0 auto; }
+.gallery-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:2.5rem; }
+.gallery-header a { font-size:0.8rem; color:var(--primary); text-decoration:none; border-bottom:1px solid var(--primary); padding-bottom:1px; }
+.gallery-grid { display:grid; grid-template-columns:repeat(4,1fr); grid-template-rows:repeat(2,240px); gap:12px; }
+.gallery-item { border-radius:12px; overflow:hidden; position:relative; opacity:0; transform:scale(0.93); cursor:pointer; }
+.gallery-item:first-child { grid-column:span 2; grid-row:span 2; }
+.gallery-item:last-child { grid-column:span 2; }
+.gallery-item img { width:100%; height:100%; object-fit:cover; transition:transform 0.7s ease; }
+.gallery-item:hover img { transform:scale(1.07); }
+.gallery-overlay { position:absolute; inset:0; background:rgba(46,139,87,0); transition:background 0.4s; }
+.gallery-item:hover .gallery-overlay { background:rgba(46,139,87,0.14); }
+
+/* ── TESTIMONIALS ── */
+.testimonials-section { padding:5rem 1.25rem; background:var(--bg); }
+.testimonials-inner { max-width:1280px; margin:0 auto; }
+.testimonials-header { text-align:center; margin-bottom:3rem; }
+.testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+.testimonial-card {
+  background:#fff; border-radius:18px; padding:2rem;
+  border:1.5px solid var(--border);
+  box-shadow:0 4px 16px rgba(0,0,0,0.03);
+  opacity:0; transform:translateY(32px);
+  transition:transform 0.4s,box-shadow 0.4s;
+}
+.testimonial-card:hover { transform:translateY(-4px); box-shadow:0 16px 50px rgba(0,0,0,0.07); }
+.quote-mark { color:var(--primary); font-size:2.2rem; font-family:serif; line-height:1; margin-bottom:0.75rem; opacity:0.5; }
+.testimonial-card p { font-size:0.875rem; color:var(--muted); line-height:1.8; font-style:italic; margin-bottom:1.25rem; }
+.testimonial-author { display:flex; align-items:center; gap:0.65rem; }
+.author-avatar { width:38px; height:38px; border-radius:50%; overflow:hidden; flex-shrink:0; }
+.author-avatar img { width:100%; height:100%; object-fit:cover; }
+.author-name { font-size:0.82rem; font-weight:600; }
+.author-role { font-size:0.7rem; color:#9CA3AF; }
+
+/* ── CONTACT ── */
+.contact-section { padding:5rem 1.25rem; background:#fff; position:relative; overflow:hidden; }
+.contact-section::before {
+  content:''; position:absolute; top:-150px; right:-150px;
+  width:500px; height:500px;
+  background:radial-gradient(circle,rgba(46,139,87,0.05) 0%,transparent 70%);
+  border-radius:50%;
+}
+.contact-inner { max-width:680px; margin:0 auto; position:relative; }
+.contact-box {
+  background:#fff; border-radius:22px;
+  border:1.5px solid var(--border);
+  box-shadow:0 32px 70px rgba(0,0,0,0.06);
+  padding:2.5rem;
+  opacity:0; transform:translateY(32px);
+}
+.contact-header { text-align:center; margin-bottom:2rem; }
+.glow-line { display:block; width:44px; height:2px; background:var(--primary); border-radius:2px; margin:0 auto 1rem; box-shadow:0 0 10px rgba(46,139,87,0.35); }
+.form-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem; }
+.form-group { margin-bottom:1rem; }
+.form-group label { display:block; font-size:0.78rem; font-weight:500; margin-bottom:0.35rem; letter-spacing:0.02em; }
+.form-group input, .form-group select {
+  width:100%; padding:0.8rem 0.9rem;
+  border:1.5px solid rgba(0,0,0,0.1); border-radius:9px;
+  background:var(--bg); font-size:0.875rem;
+  color:var(--text); outline:none;
+  transition:border-color 0.3s,box-shadow 0.3s;
+  font-family:'Inter',sans-serif; -webkit-appearance:none;
+}
+.form-group input:focus, .form-group select:focus {
+  border-color:var(--primary);
+  box-shadow:0 0 0 3px rgba(46,139,87,0.1);
+}
+.form-submit {
+  width:100%; padding:0.95rem;
+  background:var(--primary); color:#fff; border:none;
+  border-radius:100px; font-size:0.875rem; font-weight:500;
+  cursor:pointer; font-family:'Inter',sans-serif;
+  transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  box-shadow:0 8px 28px rgba(46,139,87,0.25);
+  margin-top:0.5rem;
+}
+.form-submit:hover { transform:translateY(-2px); box-shadow:0 14px 40px rgba(46,139,87,0.35); }
+.form-submit:active { transform:scale(0.98); }
+
+/* ── FOOTER ── */
+footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid rgba(255,255,255,0.05); }
+.footer-inner { max-width:1280px; margin:0 auto; }
+.footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:2.5rem; margin-bottom:3rem; }
+.footer-logo { font-family:'Playfair Display',serif; font-size:1.7rem; color:#fff; margin-bottom:0.75rem; }
+.footer-desc { font-size:0.8rem; color:#555; line-height:1.7; max-width:240px; }
+.footer-col h4 { font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:#fff; margin-bottom:1rem; font-weight:600; }
+.footer-col ul { list-style:none; }
+.footer-col li { margin-bottom:0.65rem; }
+.footer-col a { font-size:0.8rem; color:#555; text-decoration:none; transition:color 0.3s; }
+.footer-col a:hover { color:var(--primary); }
+.footer-col p { font-size:0.8rem; color:#555; line-height:2; }
+.footer-bottom { border-top:1px solid rgba(255,255,255,0.06); padding-top:1.75rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+.footer-bottom p { font-size:0.72rem; color:#555; }
+.footer-social { display:flex; gap:0.75rem; }
+.social-link { width:34px; height:34px; border:1px solid rgba(255,255,255,0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#555; transition:all 0.3s; text-decoration:none; }
+.social-link:hover { border-color:var(--primary); color:var(--primary); transform:translateY(-2px); }
+.social-link svg { width:14px; height:14px; }
+
+/* ════════════════════════════════════════════════
+   RESPONSIVE — TABLET (≤ 1024px)
+════════════════════════════════════════════════ */
+@media (max-width:1024px) {
+  .services-grid { grid-template-columns:repeat(2,1fr); }
+  .numbers-inner { grid-template-columns:repeat(2,1fr); gap:2rem; }
+  .gallery-grid { grid-template-columns:repeat(2,1fr); grid-template-rows:auto; gap:10px; }
+  .gallery-item:first-child { grid-column:span 2; height:280px; }
+  .gallery-item:last-child { grid-column:span 1; }
+  .gallery-item { height:200px; }
+  .footer-grid { grid-template-columns:1fr 1fr; gap:2rem; }
+  .founder-card { gap:2.5rem; }
+}
+
+/* ════════════════════════════════════════════════
+   RESPONSIVE — MOBILE (≤ 768px)
+════════════════════════════════════════════════ */
+@media (max-width:768px) {
+
+  /* Hide desktop cursor */
+  #cursor, #cursor-ring { display:none; }
+
+  /* Nav */
+  .nav-links { display:none; }
+  .hamburger { display:flex; }
+  .nav-inner { height:62px; }
+
+  /* Hero */
+  .hero-section {
+    grid-template-columns:1fr;
+    padding-top:80px; padding-bottom:2.5rem;
+    gap:2rem; min-height:auto;
+  }
+  .hero-visual { order:-1; transform:none; }
+  .orbit-ring { display:none; }
+  .stat-card { display:none; }
+  .mobile-stats { display:flex; }
+  .hero-title { font-size:clamp(2.2rem,9vw,3rem); }
+  .hero-sub { font-size:0.9rem; }
+  .hero-actions { flex-direction:column; }
+  .btn-primary, .btn-ghost { justify-content:center; text-align:center; }
+
+  /* Services */
+  .services-section { padding:3.5rem 1.25rem; }
+  .services-grid { grid-template-columns:1fr; gap:1rem; }
+  .service-card { padding:1.5rem; opacity:1; transform:none; }
+
+  /* Founder */
+  .founder-section { padding:3.5rem 1.25rem; }
+  .founder-card {
+    grid-template-columns:1fr; gap:2rem;
+    opacity:1; transform:none;
+  }
+  .founder-img-wrap { aspect-ratio:4/3; max-height:320px; }
+  .founder-blob { display:none; }
+  .founder-stats { gap:1.25rem; flex-wrap:wrap; }
+  .fstat-num { font-size:1.4rem; }
+  .founder-quote { font-size:1rem; }
+
+  /* Why Fokus */
+  .about-section { padding:3.5rem 1.25rem; }
+  .about-inner { grid-template-columns:1fr; gap:2rem; }
+  .about-img-wrap { opacity:1; transform:none; }
+  .about-content { opacity:1; transform:none; }
+
+  /* Numbers */
+  .numbers-section { padding:3rem 1.25rem; }
+  .numbers-inner { grid-template-columns:repeat(2,1fr); gap:1.5rem; }
+  .num-value { font-size:2.2rem; }
+
+  /* Gallery */
+  .gallery-section { padding:3.5rem 1.25rem; }
+  .gallery-grid {
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:auto;
+    gap:8px;
+  }
+  .gallery-item { height:140px; opacity:1; transform:none; }
+  .gallery-item:first-child { grid-column:span 2; height:200px; }
+  .gallery-item:last-child { grid-column:span 2; }
+
+  /* Testimonials */
+  .testimonials-section { padding:3.5rem 1.25rem; }
+  .testimonials-grid { grid-template-columns:1fr; gap:1rem; }
+  .testimonial-card { opacity:1; transform:none; }
+
+  /* Contact */
+  .contact-section { padding:3.5rem 1.25rem; }
+  .contact-box { padding:1.75rem 1.25rem; opacity:1; transform:none; }
+  .form-grid { grid-template-columns:1fr; gap:0; }
+
+  /* Footer */
+  .footer-grid { grid-template-columns:1fr; gap:2rem; }
+  .footer-desc { max-width:100%; }
+  .footer-bottom { flex-direction:column; align-items:flex-start; gap:1rem; }
+}
+
+/* ════════════════════════════════════════════════
+   RESPONSIVE — SMALL MOBILE (≤ 380px)
+════════════════════════════════════════════════ */
+@media (max-width:380px) {
+  .hero-title { font-size:2rem; }
+  .numbers-inner { grid-template-columns:1fr 1fr; }
+  .founder-stats { flex-direction:column; gap:1rem; }
+}
+
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<div id="progress"></div>
+<canvas id="particles-canvas"></canvas>
+
+<!-- ── LOADER ── -->
+<div id="loader">
+  <div id="loader-text">Fokus.</div>
+  <div id="loader-line"></div>
+  <div id="loader-counter">000</div>
+</div>
+
+<!-- ── MOBILE MENU ── -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" class="mobile-nav-link">Expertise</a>
+  <a href="#founder" class="mobile-nav-link">Our Story</a>
+  <a href="#about" class="mobile-nav-link">Fokus</a>
+  <a href="#testimonials" class="mobile-nav-link">Stories</a>
+  <a href="#contact" class="mobile-nav-link mobile-cta">Book Appointment</a>
+  <div class="mobile-menu-footer">FOKUS EYECARE · NEW YORK</div>
+</div>
+
+<!-- ── NAV ── -->
+<nav id="mainNav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">Fokus.</a>
+    <ul class="nav-links">
+      <li><a href="#services">Expertise</a></li>
+      <li><a href="#founder">Our Story</a></li>
+      <li><a href="#about">Fokus</a></li>
+      <li><a href="#testimonials">Stories</a></li>
+      <li><a class="nav-btn" href="#contact">Book Appointment</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section>
+  <div class="hero-section">
+    <div class="hero-copy">
+      <div class="hero-eyebrow">Premier Ophthalmology</div>
+      <h1 class="hero-title">
+        <span class="word">Precision</span>
+        <span class="word">Vision</span><br>
+        <span class="word"><em>Redefined.</em></span>
+      </h1>
+      <p class="hero-sub">Experience the future of ophthalmology with state-of-the-art diagnostic technology and world-class care designed for your clarity.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#contact">Schedule Consultation →</a>
+        <a class="btn-ghost" href="#services">Explore Treatments</a>
+      </div>
+      <!-- Mobile only inline stats -->
+      <div class="mobile-stats">
+        <div class="mobile-stat">
+          <div class="stat-num">98%</div>
+          <div class="stat-label">Success Rate</div>
+        </div>
+        <div class="mobile-stat">
+          <div class="stat-num">4.9★</div>
+          <div class="stat-label">Patient Rating</div>
+        </div>
+        <div class="mobile-stat">
+          <div class="stat-num">25yr</div>
+          <div class="stat-label">Experience</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="orbit-ring" style="width:460px;height:460px;top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+      <div class="orbit-ring" style="width:340px;height:340px;top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+      <div class="hero-img-wrap">
+        <img alt="Close up of a human eye" src="/fokus.jpg"/>
+        <div class="hero-img-overlay"></div>
+      </div>
+      <div class="stat-card stat-card-1">
+        <div class="stat-icon"><span class="material-symbols-outlined" style="font-size:16px">visibility</span></div>
+        <div><div class="stat-num">98%</div><div class="stat-label">Success Rate</div></div>
+      </div>
+      <div class="stat-card stat-card-2">
+        <div class="stat-icon"><span class="material-symbols-outlined" style="font-size:16px">star</span></div>
+        <div><div class="stat-num">4.9<span style="color:var(--primary)">★</span></div><div class="stat-label">Patient Rating</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section class="services-section" id="services">
+  <div class="services-inner">
+    <div class="services-header">
+      <div class="section-label" style="justify-content:center">Our Expertise</div>
+      <h2 class="section-title">Advanced Eye Care Solutions</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><span class="material-symbols-outlined">visibility</span></div>
+        <h3>Laser Vision Correction</h3>
+        <p>State-of-the-art LASIK and PRK procedures customized to your unique corneal topography for impeccable results.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><span class="material-symbols-outlined">health_and_safety</span></div>
+        <h3>Cataract Surgery</h3>
+        <p>Premium lens implants and minimally invasive techniques to restore clarity and vibrance to your vision.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><span class="material-symbols-outlined">ophthalmology</span></div>
+        <h3>Comprehensive Exams</h3>
+        <p>Deep diagnostic scans utilizing OCT technology to detect and manage conditions before they impact your sight.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOUNDER / ABOUT US ── -->
+<section class="founder-section" id="founder">
+  <div class="founder-inner">
+    <div class="founder-header">
+      <div class="section-label" style="justify-content:center">Our Story</div>
+      <h2 class="section-title">Built on a Belief That Everyone Deserves Perfect Sight</h2>
+    </div>
+    <div class="founder-card">
+      <div class="founder-img-side">
+        <div class="founder-img-wrap">
+          <img src="/doc.jpg" alt="Dr. James Harlow, Founder"/>
+          <div class="founder-badge">
+            <span class="material-symbols-outlined" style="font-size:15px;color:var(--primary)">verified</span>
+            Board Certified
+          </div>
+        </div>
+        <div class="founder-blob"></div>
+      </div>
+      <div class="founder-content">
+        <p class="founder-quote">"I founded Fokus because I saw a gap — not in technology, but in trust. Patients deserved more than correct prescriptions; they deserve a correct treatment"</p>
+        <div class="founder-divider"></div>
+        <h3 class="founder-name">Dr. UmaShankar</h3>
+        <p class="founder-role">Founder & Chief Ophthalmologist</p>
+        <p class="founder-bio">With over 25 years of surgical experience, Dr. UmaShankar trained at Johns Hopkins and completed his fellowship at Moorfields Eye Hospital, London. He with his Wife Dr Surekha together made the fokus ey hospital under surekha hospital</p>
+       
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHY FOKUS ── -->
+<section class="about-section" id="about">
+  <div class="about-inner">
+    <div class="about-img-wrap">
+      <img alt="Modern ophthalmology equipment" src="/whychosse.jpg"/>
+    </div>
+    <div class="about-content">
+      <div class="section-label">Why Fokus</div>
+      <h2 class="section-title">Clinical Excellence Meets<br>Human Compassion</h2>
+      <div class="feature-row" style="border-top:none;margin-top:1.75rem;padding-top:0">
+        <div class="feature-icon"><span class="material-symbols-outlined" style="font-size:26px">biotech</span></div>
+        <div><h4>Cutting-Edge Technology</h4><p>We invest in the latest diagnostic and surgical equipment to ensure the highest precision in every procedure.</p></div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-icon"><span class="material-symbols-outlined" style="font-size:26px">verified_user</span></div>
+        <div><h4>Board-Certified Specialists</h4><p>Our team consists of globally recognized ophthalmologists dedicated to continuous research and learning.</p></div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-icon"><span class="material-symbols-outlined" style="font-size:26px">spa</span></div>
+        <div><h4>Patient-Centric Environment</h4><p>From our serene waiting areas to our post-op care, your comfort and peace of mind are paramount.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── NUMBERS ── -->
+<section class="numbers-section">
+  <div class="numbers-inner">
+    <div class="num-item"><div class="num-value" data-target="12000">0<span>+</span></div><div class="num-label">Procedures</div></div>
+    <div class="num-item"><div class="num-value" data-target="98">0<span>%</span></div><div class="num-label">Success Rate</div></div>
+    <div class="num-item"><div class="num-value" data-target="25">0<span>+</span></div><div class="num-label">Years</div></div>
+    <div class="num-item"><div class="num-value" data-target="4">0<span>.9★</span></div><div class="num-label">Patient Rating</div></div>
+  </div>
+</section>
+
+<!-- ── GALLERY ── -->
+<section class="gallery-section">
+  <div class="gallery-inner">
+    <div class="gallery-header">
+      <h2 class="section-title">The Facility</h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img alt="Corridor" src="/gal1.jpg"/><div class=""></div></div>
+      <div class="gallery-item"><img alt="Tools" src="/gal2.jpg"/><div class=""></div></div>
+      <div class="gallery-item"><img alt="Consultation" src="/gal3.jpg"/><div class=""></div></div>
+      <div class="gallery-item"><img alt="Waiting area" src="/gal4.jpg"/><div class=""></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="testimonials-section" id="testimonials">
+  <div class="testimonials-inner">
+    <div class="testimonials-header">
+      <div class="section-label" style="justify-content:center">Patient Stories</div>
+      <h2 class="section-title">Transforming Lives Through Vision</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="quote-mark">"</div>
+        <p>The level of detail and care at Fokus is unmatched. My vision has never been clearer, and the entire process was seamless and comforting.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar"><img alt="Sarah Jenkins" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsgsvtLesG-xNAG6R4gw6_iVG_fx4JYa5_LfU7ZUDN2Bl_95Z0VpN2zI81xa8g--YxN8Xlf_5EtCKmyrVLDB96KqZlzQWL30Gov19HmIx3lv95D14q66H2LtoaXnWxDyadxj7VIqD4Qm6H9ouxs_OCrDcX1CAbu5NMGsh6vkhf-QhFxFOrZnAiX8GZ5LMkMaL-nbLkDp5RjGZqzeiDT2lv4cZnV5708jWygtyu_Z6LFNsBwTG4Zx2EW_xYdd19l6jOg9xFZAQEXQ_n"/></div>
+          <div><div class="author-name">Sarah Jenkins</div><div class="author-role">LASIK Patient</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="quote-mark">"</div>
+        <p>I was nervous about cataract surgery, but the team at Fokus put me at ease. The results are nothing short of miraculous.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar"><img alt="Robert Chen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVoP6AqjOvIVXJ4oM9skLY50ZsaGR27ap--NKHFxCcOCPm-IS2AeKB0zfwTEua-fYNn6jOOo5mgLoV6_TDqZ7YCLjwGS0siyUaBWpJU79Kc19ci7rJFdrgoahgMvpPDWaGt1Myn16gpHRM2aovq6fl_mvEsfX_5yKjlZHiiBBSeZ7iTVfY6h9hYCYWLMckuA2H6CPDHIQcvZt-LPS_CAQCemmTXaMsO7RXayrtiQMSyXEDzK1xljNPLCHI5syP955Rb81ujVpI_bIC"/></div>
+          <div><div class="author-name">Robert Chen</div><div class="author-role">Cataract Surgery</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="quote-mark">"</div>
+        <p>Professionalism at its finest. The facility is beautiful, clean, and modern. I highly recommend Fokus for anyone seeking serious eye care.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar"><img alt="Emily Doe" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUu6u3ZCJ5anOEKGviGSqRbEsosyk_Tce7YoZSmdImFa6S_6CSDLm8BlCc0RxZwrT3HZdpdg2y2oP497FTcS5OQcnTyTL7dURl8cRs9lGXMs7-Ks9aIUpZyZRNXzfrlZFBE4rnwFwAQvzxgE6wjxiOZItqh93q-bU7Fd2RbNhnQL_zHnQ5n7xfRzesEHoNDPpAs3tQfJdAsMsD3xbOTrP07b-GN6v7bx7tlMXwKp0b8kgsvmSebr7P4t1Em4w2wGKafn5BDWphVG3c"/></div>
+          <div><div class="author-name">Emily Doe</div><div class="author-role">Routine Care</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="contact-box">
+      <div class="contact-header">
+        <span class="glow-line"></span>
+        <h2 class="section-title">Book Your Visit</h2>
+        <p style="font-size:0.85rem;color:var(--muted);margin-top:0.4rem">Begin your journey to better vision today.</p>
+      </div>
+      <div class="form-grid">
+        <div class="form-group"><label>First Name</label><input type="text" placeholder="John"/></div>
+        <div class="form-group"><label>Last Name</label><input type="text" placeholder="Doe"/></div>
+      </div>
+      <div class="form-group"><label>Email Address</label><input type="email" placeholder="john@example.com"/></div>
+      <div class="form-group">
+        <label>Reason for Visit</label>
+        <select>
+          <option>General Consultation</option>
+          <option>Laser Vision Correction</option>
+          <option>Cataract Evaluation</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <button class="form-submit" type="button">Request Appointment</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Fokus.</div>
+        <p class="footer-desc">Premium eye care services combining advanced technology with compassionate treatment.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">LASIK</a></li>
+          <li><a href="#">Cataracts</a></li>
+          <li><a href="#">Glaucoma</a></li>
+          <li><a href="#">Diagnostics</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Our Doctors</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>123 Visionary Way<br>New York, NY 10012<br><br>+1 (555) 123-4567<br>hello@fokuseyecare.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Fokus Eyecare. All rights reserved.</p>
+      <div class="footer-social">
+        <a class="social-link" href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path clip-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 018.84 2.525c.636-.247 1.363-.416 2.427-.465C12.197 2.013 12.552 2 12.315 2z" fill-rule="evenodd"/></svg>
+        </a>
+        <a class="social-link" href="#" aria-label="Twitter">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// ── DETECT MOBILE ──
+const isMobile = () => window.innerWidth <= 768;
+
+
+
+// ── SCROLL PROGRESS ──
+const progress = document.getElementById('progress');
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+  progress.style.width = pct + '%';
+}, { passive: true });
+
+// ── PARTICLES ──
+const canvas = document.getElementById('particles-canvas');
+const ctx = canvas.getContext('2d');
+function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas, { passive: true });
+class Particle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 1.2 + 0.2;
+    this.speedY = -(Math.random() * 0.35 + 0.08);
+    this.speedX = (Math.random() - 0.5) * 0.12;
+    this.opacity = Math.random() * 0.35 + 0.05;
+    this.life = 0; this.maxLife = Math.random() * 200 + 100;
+  }
+  update() { this.x += this.speedX; this.y += this.speedY; this.life++; if (this.life > this.maxLife || this.y < 0) this.reset(); }
+  draw() { ctx.save(); ctx.globalAlpha = this.opacity * (1 - this.life/this.maxLife); ctx.fillStyle='#2E8B57'; ctx.beginPath(); ctx.arc(this.x,this.y,this.size,0,Math.PI*2); ctx.fill(); ctx.restore(); }
+}
+const particleCount = isMobile() ? 40 : 80;
+const particles = Array.from({length: particleCount}, () => new Particle());
+function animateP() { ctx.clearRect(0,0,canvas.width,canvas.height); particles.forEach(p=>{p.update();p.draw();}); requestAnimationFrame(animateP); }
+animateP();
+
+// ── HAMBURGER MENU ──
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+let menuOpen = false;
+
+hamburger.addEventListener('click', () => {
+  menuOpen = !menuOpen;
+  hamburger.classList.toggle('open', menuOpen);
+  mobileMenu.classList.toggle('open', menuOpen);
+  document.body.style.overflow = menuOpen ? 'hidden' : '';
+});
+
+mobileMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    menuOpen = false;
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+// ── LOADER ──
+const loaderEl = document.getElementById('loader');
+const loaderLine = document.getElementById('loader-line');
+const loaderCounter = document.getElementById('loader-counter');
+let count = 0;
+const interval = setInterval(() => {
+  count += Math.floor(Math.random() * 12) + 3;
+  if (count >= 100) { count = 100; clearInterval(interval); }
+  loaderCounter.textContent = String(count).padStart(3,'0');
+  loaderLine.style.width = (count * 2) + 'px';
+}, 40);
+gsap.fromTo('#loader-text', {y:30,opacity:0},{y:0,opacity:1,duration:0.8,ease:'power3.out'});
+setTimeout(() => {
+  gsap.to(loaderEl, { yPercent:-100, duration:1.1, ease:'power4.inOut', onComplete:() => { loaderEl.style.display='none'; introAnim(); }});
+}, 2400);
+
+// ── INTRO ANIMATION ──
+function introAnim() {
+  const tl = gsap.timeline();
+  tl.to('.nav-logo', {opacity:1, duration:0.7, ease:'power3.out'}, 0);
+  if (!isMobile()) {
+    tl.to('.nav-links a', {opacity:1, stagger:0.08, duration:0.6, ease:'power3.out'}, 0.15);
+  }
+  tl.to('.hero-eyebrow', {opacity:1, y:0, duration:0.7, ease:'power3.out'}, 0.3);
+  tl.to('.hero-title .word', {y:'0%', stagger:0.12, duration:0.8, ease:'power4.out'}, 0.5);
+  tl.to('.hero-sub', {opacity:1, y:0, duration:0.7, ease:'power3.out'}, 0.9);
+  tl.to('.hero-actions', {opacity:1, y:0, duration:0.7, ease:'power3.out'}, 1.05);
+  tl.to('.hero-visual', {opacity:1, x:0, duration:1, ease:'power3.out'}, 0.4);
+  if (!isMobile()) {
+    tl.to('.stat-card', {opacity:1, y:0, scale:1, stagger:0.2, duration:0.8, ease:'back.out(1.7)'}, 1.0);
+  }
+  // Orbit rings pulse
+  gsap.to('.orbit-ring', {scale:1.04, repeat:-1, yoyo:true, duration:3, stagger:1.5, ease:'sine.inOut'});
+}
+
+// ── SCROLL ANIMATIONS (desktop only for performance) ──
+if (!isMobile()) {
+  ScrollTrigger.create({
+    trigger:'.services-section', start:'top 78%',
+    onEnter:() => gsap.to('.service-card', {opacity:1,y:0,stagger:0.15,duration:0.8,ease:'power3.out'})
+  });
+  ScrollTrigger.create({
+    trigger:'.founder-section', start:'top 72%',
+    onEnter:() => gsap.to('.founder-card', {opacity:1,y:0,duration:1,ease:'power3.out'})
+  });
+  ScrollTrigger.create({
+    trigger:'.about-section', start:'top 72%',
+    onEnter:() => {
+      gsap.to('.about-img-wrap', {opacity:1,x:0,duration:1,ease:'power3.out'});
+      gsap.to('.about-content', {opacity:1,x:0,duration:1,ease:'power3.out',delay:0.2});
+    }
+  });
+  ScrollTrigger.create({
+    trigger:'.gallery-section', start:'top 72%',
+    onEnter:() => gsap.to('.gallery-item', {opacity:1,scale:1,stagger:0.08,duration:0.7,ease:'power3.out'})
+  });
+  ScrollTrigger.create({
+    trigger:'.testimonials-section', start:'top 72%',
+    onEnter:() => gsap.to('.testimonial-card', {opacity:1,y:0,stagger:0.15,duration:0.8,ease:'power3.out'})
+  });
+  ScrollTrigger.create({
+    trigger:'.contact-section', start:'top 78%',
+    onEnter:() => gsap.to('.contact-box', {opacity:1,y:0,duration:0.9,ease:'power3.out'})
+  });
+
+  // Parallax hero image
+  gsap.to('.hero-img-wrap img', {
+    yPercent:7, ease:'none',
+    scrollTrigger:{ trigger:'.hero-section', start:'top top', end:'bottom top', scrub:true }
+  });
+
+  // Magnetic nav button
+  const navBtn = document.querySelector('.nav-btn');
+  if (navBtn) {
+    navBtn.addEventListener('mousemove', e => {
+      const r = navBtn.getBoundingClientRect();
+      gsap.to(navBtn, { x:(e.clientX-r.left-r.width/2)*0.3, y:(e.clientY-r.top-r.height/2)*0.3, duration:0.4, ease:'power2.out'});
+    });
+    navBtn.addEventListener('mouseleave', () => gsap.to(navBtn, {x:0,y:0,duration:0.5,ease:'elastic.out(1,0.5)'}));
+  }
+}
+
+// ── NUMBER COUNT UP ── (works on all devices)
+ScrollTrigger.create({
+  trigger:'.numbers-section', start:'top 78%',
+  onEnter:() => {
+    gsap.to('.num-item', {opacity:1,y:0,stagger:0.1,duration:0.7,ease:'power3.out'});
+    document.querySelectorAll('.num-value').forEach(el => {
+      const target = parseInt(el.dataset.target);
+      if (!target) return;
+      const suffix = el.innerHTML.replace(/[0-9]/g,'');
+      let current = 0;
+      const step = target / 60;
+      const t = setInterval(() => {
+        current = Math.min(current + step, target);
+        el.innerHTML = Math.floor(current) + suffix;
+        if (current >= target) clearInterval(t);
+      }, 25);
+    });
+  }
+});
+
+// ── NAV SCROLL STYLE ──
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').style.background =
+    window.scrollY > 80 ? 'rgba(250,250,250,0.97)' : 'rgba(250,250,250,0.92)';
+}, { passive: true });
+
+// ── FORM SUBMIT ──
+document.querySelector('.form-submit').addEventListener('click', function() {
+  gsap.to(this, {scale:0.97,duration:0.1,yoyo:true,repeat:1});
+  this.textContent = '✓ Appointment Requested';
+  this.style.background = '#1a6b3a';
+  setTimeout(() => { this.textContent = 'Request Appointment'; this.style.background = ''; }, 3000);
+});
+
+// ── TOUCH CARD ACTIVE STATE ──
+document.querySelectorAll('.service-card,.testimonial-card').forEach(card => {
+  card.addEventListener('touchstart', () => card.style.opacity='0.88', { passive: true });
+  card.addEventListener('touchend', () => card.style.opacity='', { passive: true });
+});
+</script>
+</body>
+</html>
