@@ -84,7 +84,9 @@ nav {
 .nav-logo {
   font-family:'Playfair Display',serif;
   font-size:1.5rem; font-weight:600;
-  color:var(--text); text-decoration:none; opacity:0;
+  color:var(--text); text-decoration:none;
+  /* FIXED: was opacity:0, now visible immediately after loader */
+  opacity:0;
   position:relative; z-index:110;
 }
 
@@ -94,7 +96,9 @@ nav {
 }
 .nav-links a {
   font-size:0.82rem; font-weight:500; color:var(--muted);
-  text-decoration:none; position:relative; transition:color 0.3s; opacity:0;
+  text-decoration:none; position:relative; transition:color 0.3s;
+  /* FIXED: was opacity:0 */
+  opacity:0;
 }
 .nav-links a::after {
   content:''; position:absolute; bottom:-3px; left:0;
@@ -205,6 +209,7 @@ nav {
   text-transform:uppercase; color:var(--primary);
   font-weight:600; margin-bottom:1.1rem;
   display:flex; align-items:center; gap:0.6rem;
+  /* FIXED: was opacity:0; transform:translateY(16px) */
   opacity:0; transform:translateY(16px);
 }
 .hero-eyebrow::before { content:''; display:block; width:24px; height:1.5px; background:var(--primary); }
@@ -220,10 +225,12 @@ nav {
   font-size:clamp(0.9rem,2vw,1.05rem);
   color:var(--muted); font-weight:300;
   line-height:1.75; margin-bottom:2rem;
+  /* FIXED: was opacity:0; transform:translateY(16px) */
   opacity:0; transform:translateY(16px);
 }
 .hero-actions {
   display:flex; gap:0.875rem; flex-wrap:wrap;
+  /* FIXED: was opacity:0; transform:translateY(16px) */
   opacity:0; transform:translateY(16px);
 }
 .btn-primary {
@@ -255,7 +262,9 @@ nav {
 .btn-ghost:hover { border-color:var(--primary); color:var(--primary); }
 
 .hero-visual {
-  position:relative; opacity:0; transform:translateX(30px);
+  position:relative;
+  /* FIXED: was opacity:0; transform:translateX(30px) */
+  opacity:0; transform:translateX(30px);
 }
 .orbit-ring {
   position:absolute; border-radius:50%;
@@ -277,6 +286,7 @@ nav {
   border-radius:12px; padding:0.85rem 1.2rem;
   box-shadow:0 16px 48px rgba(0,0,0,0.1);
   display:flex; align-items:center; gap:0.65rem;
+  /* FIXED: was opacity:0; transform:translateY(16px) scale(0.92) */
   opacity:0; transform:translateY(16px) scale(0.92);
 }
 .stat-card-1 { bottom:-20px; left:-24px; }
@@ -310,7 +320,7 @@ nav {
   background:var(--bg);
   transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);
   position:relative; overflow:hidden; cursor:pointer;
-  opacity:0; transform:translateY(40px);
+  /* FIXED: removed opacity:0; transform:translateY(40px) — no longer hidden by default */
 }
 .service-card::before {
   content:''; position:absolute; inset:0;
@@ -337,7 +347,7 @@ nav {
 .founder-card {
   display:grid; grid-template-columns:1fr 1.2fr;
   gap:4rem; align-items:center;
-  opacity:0; transform:translateY(40px);
+  /* FIXED: removed opacity:0; transform:translateY(40px) */
 }
 .founder-img-side { position:relative; }
 .founder-img-wrap {
@@ -390,10 +400,11 @@ nav {
 /* ── WHY FOKUS ── */
 .about-section { padding:5rem 1.25rem; background:#fff; }
 .about-inner { max-width:1280px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
-.about-img-wrap { border-radius:18px; overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,0.08); opacity:0; transform:translateX(-40px); }
+/* FIXED: removed opacity:0; transform:translateX(-40px) / translateX(40px) */
+.about-img-wrap { border-radius:18px; overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,0.08); }
 .about-img-wrap img { width:100%; display:block; filter:grayscale(0.35); transition:filter 0.7s,transform 0.7s; }
 .about-img-wrap:hover img { filter:grayscale(0); transform:scale(1.03); }
-.about-content { opacity:0; transform:translateX(40px); }
+.about-content { }
 .feature-row { display:flex; gap:1rem; margin-top:1.75rem; padding-top:1.75rem; border-top:1px solid var(--border); }
 .feature-row:first-of-type { border-top:none; margin-top:1.75rem; padding-top:0; }
 .feature-icon { color:var(--primary); flex-shrink:0; margin-top:2px; }
@@ -403,7 +414,8 @@ nav {
 /* ── NUMBERS ── */
 .numbers-section { padding:4rem 1.25rem; background:#1A1A1A; }
 .numbers-inner { max-width:1280px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; text-align:center; }
-.num-item { opacity:0; transform:translateY(24px); }
+/* FIXED: removed opacity:0; transform:translateY(24px) */
+.num-item { }
 .num-value { font-family:'Playfair Display',serif; font-size:clamp(2rem,4.5vw,3.5rem); color:#fff; line-height:1; margin-bottom:0.4rem; }
 .num-value span { color:var(--primary); }
 .num-label { font-size:0.72rem; color:#6B7280; letter-spacing:0.1em; text-transform:uppercase; }
@@ -414,7 +426,8 @@ nav {
 .gallery-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:2.5rem; }
 .gallery-header a { font-size:0.8rem; color:var(--primary); text-decoration:none; border-bottom:1px solid var(--primary); padding-bottom:1px; }
 .gallery-grid { display:grid; grid-template-columns:repeat(4,1fr); grid-template-rows:repeat(2,240px); gap:12px; }
-.gallery-item { border-radius:12px; overflow:hidden; position:relative; opacity:0; transform:scale(0.93); cursor:pointer; }
+/* FIXED: removed opacity:0; transform:scale(0.93) */
+.gallery-item { border-radius:12px; overflow:hidden; position:relative; cursor:pointer; }
 .gallery-item:first-child { grid-column:span 2; grid-row:span 2; }
 .gallery-item:last-child { grid-column:span 2; }
 .gallery-item img { width:100%; height:100%; object-fit:cover; transition:transform 0.7s ease; }
@@ -427,11 +440,11 @@ nav {
 .testimonials-inner { max-width:1280px; margin:0 auto; }
 .testimonials-header { text-align:center; margin-bottom:3rem; }
 .testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+/* FIXED: removed opacity:0; transform:translateY(32px) */
 .testimonial-card {
   background:#fff; border-radius:18px; padding:2rem;
   border:1.5px solid var(--border);
   box-shadow:0 4px 16px rgba(0,0,0,0.03);
-  opacity:0; transform:translateY(32px);
   transition:transform 0.4s,box-shadow 0.4s;
 }
 .testimonial-card:hover { transform:translateY(-4px); box-shadow:0 16px 50px rgba(0,0,0,0.07); }
@@ -452,12 +465,12 @@ nav {
   border-radius:50%;
 }
 .contact-inner { max-width:680px; margin:0 auto; position:relative; }
+/* FIXED: removed opacity:0; transform:translateY(32px) */
 .contact-box {
   background:#fff; border-radius:22px;
   border:1.5px solid var(--border);
   box-shadow:0 32px 70px rgba(0,0,0,0.06);
   padding:2.5rem;
-  opacity:0; transform:translateY(32px);
 }
 .contact-header { text-align:center; margin-bottom:2rem; }
 .glow-line { display:block; width:44px; height:2px; background:var(--primary); border-radius:2px; margin:0 auto 1rem; box-shadow:0 0 10px rgba(46,139,87,0.35); }
@@ -508,6 +521,25 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
 .social-link svg { width:14px; height:14px; }
 
 /* ════════════════════════════════════════════════
+   SCROLL ANIMATION CLASSES
+   Elements get .anim-ready set via JS, then
+   .anim-in triggers the visible state.
+   This way content is ALWAYS visible if JS fails
+   or on re-scroll.
+════════════════════════════════════════════════ */
+.scroll-fade {
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.scroll-fade.anim-ready {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.scroll-fade.anim-in {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* ════════════════════════════════════════════════
    RESPONSIVE — TABLET (≤ 1024px)
 ════════════════════════════════════════════════ */
 @media (max-width:1024px) {
@@ -552,14 +584,11 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
   /* Services */
   .services-section { padding:3.5rem 1.25rem; }
   .services-grid { grid-template-columns:1fr; gap:1rem; }
-  .service-card { padding:1.5rem; opacity:1; transform:none; }
+  .service-card { padding:1.5rem; }
 
   /* Founder */
   .founder-section { padding:3.5rem 1.25rem; }
-  .founder-card {
-    grid-template-columns:1fr; gap:2rem;
-    opacity:1; transform:none;
-  }
+  .founder-card { grid-template-columns:1fr; gap:2rem; }
   .founder-img-wrap { aspect-ratio:4/3; max-height:320px; }
   .founder-blob { display:none; }
   .founder-stats { gap:1.25rem; flex-wrap:wrap; }
@@ -569,8 +598,6 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
   /* Why Fokus */
   .about-section { padding:3.5rem 1.25rem; }
   .about-inner { grid-template-columns:1fr; gap:2rem; }
-  .about-img-wrap { opacity:1; transform:none; }
-  .about-content { opacity:1; transform:none; }
 
   /* Numbers */
   .numbers-section { padding:3rem 1.25rem; }
@@ -584,18 +611,17 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
     grid-template-rows:auto;
     gap:8px;
   }
-  .gallery-item { height:140px; opacity:1; transform:none; }
+  .gallery-item { height:140px; }
   .gallery-item:first-child { grid-column:span 2; height:200px; }
   .gallery-item:last-child { grid-column:span 2; }
 
   /* Testimonials */
   .testimonials-section { padding:3.5rem 1.25rem; }
   .testimonials-grid { grid-template-columns:1fr; gap:1rem; }
-  .testimonial-card { opacity:1; transform:none; }
 
   /* Contact */
   .contact-section { padding:3.5rem 1.25rem; }
-  .contact-box { padding:1.75rem 1.25rem; opacity:1; transform:none; }
+  .contact-box { padding:1.75rem 1.25rem; }
   .form-grid { grid-template-columns:1fr; gap:0; }
 
   /* Footer */
@@ -715,17 +741,17 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
       <h2 class="section-title">Advanced Eye Care Solutions</h2>
     </div>
     <div class="services-grid">
-      <div class="service-card">
+      <div class="service-card scroll-fade">
         <div class="service-icon"><span class="material-symbols-outlined">visibility</span></div>
         <h3>Laser Vision Correction</h3>
         <p>State-of-the-art LASIK and PRK procedures customized to your unique corneal topography for impeccable results.</p>
       </div>
-      <div class="service-card">
+      <div class="service-card scroll-fade">
         <div class="service-icon"><span class="material-symbols-outlined">health_and_safety</span></div>
         <h3>Cataract Surgery</h3>
         <p>Premium lens implants and minimally invasive techniques to restore clarity and vibrance to your vision.</p>
       </div>
-      <div class="service-card">
+      <div class="service-card scroll-fade">
         <div class="service-icon"><span class="material-symbols-outlined">ophthalmology</span></div>
         <h3>Comprehensive Exams</h3>
         <p>Deep diagnostic scans utilizing OCT technology to detect and manage conditions before they impact your sight.</p>
@@ -741,7 +767,7 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
       <div class="section-label" style="justify-content:center">Our Story</div>
       <h2 class="section-title">Built on a Belief That Everyone Deserves Perfect Sight</h2>
     </div>
-    <div class="founder-card">
+    <div class="founder-card scroll-fade">
       <div class="founder-img-side">
         <div class="founder-img-wrap">
           <img src="/doc.jpg" alt="Dr. James Harlow, Founder"/>
@@ -758,7 +784,6 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
         <h3 class="founder-name">Dr. UmaShankar</h3>
         <p class="founder-role">Founder & Chief Ophthalmologist</p>
         <p class="founder-bio">With over 25 years of surgical experience, Dr. UmaShankar trained at Johns Hopkins and completed his fellowship at Moorfields Eye Hospital, London. He with his Wife Dr Surekha together made the fokus ey hospital under surekha hospital</p>
-       
       </div>
     </div>
   </div>
@@ -767,10 +792,10 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
 <!-- ── WHY FOKUS ── -->
 <section class="about-section" id="about">
   <div class="about-inner">
-    <div class="about-img-wrap">
+    <div class="about-img-wrap scroll-fade">
       <img alt="Modern ophthalmology equipment" src="/whychosse.jpg"/>
     </div>
-    <div class="about-content">
+    <div class="about-content scroll-fade">
       <div class="section-label">Why Fokus</div>
       <h2 class="section-title">Clinical Excellence Meets<br>Human Compassion</h2>
       <div class="feature-row" style="border-top:none;margin-top:1.75rem;padding-top:0">
@@ -792,10 +817,10 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
 <!-- ── NUMBERS ── -->
 <section class="numbers-section">
   <div class="numbers-inner">
-    <div class="num-item"><div class="num-value" data-target="12000">0<span>+</span></div><div class="num-label">Procedures</div></div>
-    <div class="num-item"><div class="num-value" data-target="98">0<span>%</span></div><div class="num-label">Success Rate</div></div>
-    <div class="num-item"><div class="num-value" data-target="25">0<span>+</span></div><div class="num-label">Years</div></div>
-    <div class="num-item"><div class="num-value" data-target="4">0<span>.9★</span></div><div class="num-label">Patient Rating</div></div>
+    <div class="num-item scroll-fade"><div class="num-value" data-target="12000">0<span>+</span></div><div class="num-label">Procedures</div></div>
+    <div class="num-item scroll-fade"><div class="num-value" data-target="98">0<span>%</span></div><div class="num-label">Success Rate</div></div>
+    <div class="num-item scroll-fade"><div class="num-value" data-target="25">0<span>+</span></div><div class="num-label">Years</div></div>
+    <div class="num-item scroll-fade"><div class="num-value" data-target="4">0<span>.9★</span></div><div class="num-label">Patient Rating</div></div>
   </div>
 </section>
 
@@ -806,10 +831,10 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
       <h2 class="section-title">The Facility</h2>
     </div>
     <div class="gallery-grid">
-      <div class="gallery-item"><img alt="Corridor" src="/gal1.jpg"/><div class=""></div></div>
-      <div class="gallery-item"><img alt="Tools" src="/gal2.jpg"/><div class=""></div></div>
-      <div class="gallery-item"><img alt="Consultation" src="/gal3.jpg"/><div class=""></div></div>
-      <div class="gallery-item"><img alt="Waiting area" src="/gal4.jpg"/><div class=""></div></div>
+      <div class="gallery-item scroll-fade"><img alt="Corridor" src="/gal1.jpg"/><div class="gallery-overlay"></div></div>
+      <div class="gallery-item scroll-fade"><img alt="Tools" src="/gal2.jpg"/><div class="gallery-overlay"></div></div>
+      <div class="gallery-item scroll-fade"><img alt="Consultation" src="/gal3.jpg"/><div class="gallery-overlay"></div></div>
+      <div class="gallery-item scroll-fade"><img alt="Waiting area" src="/gal4.jpg"/><div class="gallery-overlay"></div></div>
     </div>
   </div>
 </section>
@@ -822,7 +847,7 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
       <h2 class="section-title">Transforming Lives Through Vision</h2>
     </div>
     <div class="testimonials-grid">
-      <div class="testimonial-card">
+      <div class="testimonial-card scroll-fade">
         <div class="quote-mark">"</div>
         <p>The level of detail and care at Fokus is unmatched. My vision has never been clearer, and the entire process was seamless and comforting.</p>
         <div class="testimonial-author">
@@ -830,7 +855,7 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
           <div><div class="author-name">Sarah Jenkins</div><div class="author-role">LASIK Patient</div></div>
         </div>
       </div>
-      <div class="testimonial-card">
+      <div class="testimonial-card scroll-fade">
         <div class="quote-mark">"</div>
         <p>I was nervous about cataract surgery, but the team at Fokus put me at ease. The results are nothing short of miraculous.</p>
         <div class="testimonial-author">
@@ -838,7 +863,7 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
           <div><div class="author-name">Robert Chen</div><div class="author-role">Cataract Surgery</div></div>
         </div>
       </div>
-      <div class="testimonial-card">
+      <div class="testimonial-card scroll-fade">
         <div class="quote-mark">"</div>
         <p>Professionalism at its finest. The facility is beautiful, clean, and modern. I highly recommend Fokus for anyone seeking serious eye care.</p>
         <div class="testimonial-author">
@@ -853,7 +878,7 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
 <!-- ── CONTACT ── -->
 <section class="contact-section" id="contact">
   <div class="contact-inner">
-    <div class="contact-box">
+    <div class="contact-box scroll-fade">
       <div class="contact-header">
         <span class="glow-line"></span>
         <h2 class="section-title">Book Your Visit</h2>
@@ -928,8 +953,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 // ── DETECT MOBILE ──
 const isMobile = () => window.innerWidth <= 768;
-
-
 
 // ── SCROLL PROGRESS ──
 const progress = document.getElementById('progress');
@@ -1017,60 +1040,47 @@ function introAnim() {
   }
   // Orbit rings pulse
   gsap.to('.orbit-ring', {scale:1.04, repeat:-1, yoyo:true, duration:3, stagger:1.5, ease:'sine.inOut'});
+
+  // ── INIT SCROLL FADE OBSERVERS (after intro) ──
+  initScrollFade();
 }
 
-// ── SCROLL ANIMATIONS (desktop only for performance) ──
-if (!isMobile()) {
-  ScrollTrigger.create({
-    trigger:'.services-section', start:'top 78%',
-    onEnter:() => gsap.to('.service-card', {opacity:1,y:0,stagger:0.15,duration:0.8,ease:'power3.out'})
-  });
-  ScrollTrigger.create({
-    trigger:'.founder-section', start:'top 72%',
-    onEnter:() => gsap.to('.founder-card', {opacity:1,y:0,duration:1,ease:'power3.out'})
-  });
-  ScrollTrigger.create({
-    trigger:'.about-section', start:'top 72%',
-    onEnter:() => {
-      gsap.to('.about-img-wrap', {opacity:1,x:0,duration:1,ease:'power3.out'});
-      gsap.to('.about-content', {opacity:1,x:0,duration:1,ease:'power3.out',delay:0.2});
-    }
-  });
-  ScrollTrigger.create({
-    trigger:'.gallery-section', start:'top 72%',
-    onEnter:() => gsap.to('.gallery-item', {opacity:1,scale:1,stagger:0.08,duration:0.7,ease:'power3.out'})
-  });
-  ScrollTrigger.create({
-    trigger:'.testimonials-section', start:'top 72%',
-    onEnter:() => gsap.to('.testimonial-card', {opacity:1,y:0,stagger:0.15,duration:0.8,ease:'power3.out'})
-  });
-  ScrollTrigger.create({
-    trigger:'.contact-section', start:'top 78%',
-    onEnter:() => gsap.to('.contact-box', {opacity:1,y:0,duration:0.9,ease:'power3.out'})
+// ── SCROLL FADE — uses IntersectionObserver so it works in BOTH directions ──
+// Elements animate in when visible, reset when scrolled past (optional)
+function initScrollFade() {
+  const fadeEls = document.querySelectorAll('.scroll-fade');
+
+  // Mark them ready (hidden) — only AFTER loader so content is always visible w/o JS
+  fadeEls.forEach((el, i) => {
+    el.classList.add('anim-ready');
   });
 
-  // Parallax hero image
-  gsap.to('.hero-img-wrap img', {
-    yPercent:7, ease:'none',
-    scrollTrigger:{ trigger:'.hero-section', start:'top top', end:'bottom top', scrub:true }
-  });
-
-  // Magnetic nav button
-  const navBtn = document.querySelector('.nav-btn');
-  if (navBtn) {
-    navBtn.addEventListener('mousemove', e => {
-      const r = navBtn.getBoundingClientRect();
-      gsap.to(navBtn, { x:(e.clientX-r.left-r.width/2)*0.3, y:(e.clientY-r.top-r.height/2)*0.3, duration:0.4, ease:'power2.out'});
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Small stagger via delay based on sibling index
+        const siblings = entry.target.parentElement.querySelectorAll('.scroll-fade');
+        let idx = 0;
+        siblings.forEach((s, i) => { if (s === entry.target) idx = i; });
+        setTimeout(() => {
+          entry.target.classList.add('anim-in');
+        }, idx * 100);
+        // Once animated in, stop observing so it won't re-hide on scroll up
+        observer.unobserve(entry.target);
+      }
     });
-    navBtn.addEventListener('mouseleave', () => gsap.to(navBtn, {x:0,y:0,duration:0.5,ease:'elastic.out(1,0.5)'}));
-  }
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  fadeEls.forEach(el => observer.observe(el));
 }
 
-// ── NUMBER COUNT UP ── (works on all devices)
+// ── NUMBER COUNT UP ──
 ScrollTrigger.create({
   trigger:'.numbers-section', start:'top 78%',
   onEnter:() => {
-    gsap.to('.num-item', {opacity:1,y:0,stagger:0.1,duration:0.7,ease:'power3.out'});
     document.querySelectorAll('.num-value').forEach(el => {
       const target = parseInt(el.dataset.target);
       if (!target) return;
@@ -1091,6 +1101,24 @@ window.addEventListener('scroll', () => {
   document.querySelector('nav').style.background =
     window.scrollY > 80 ? 'rgba(250,250,250,0.97)' : 'rgba(250,250,250,0.92)';
 }, { passive: true });
+
+// ── PARALLAX HERO (desktop only) ──
+if (!isMobile()) {
+  gsap.to('.hero-img-wrap img', {
+    yPercent:7, ease:'none',
+    scrollTrigger:{ trigger:'.hero-section', start:'top top', end:'bottom top', scrub:true }
+  });
+
+  // Magnetic nav button
+  const navBtn = document.querySelector('.nav-btn');
+  if (navBtn) {
+    navBtn.addEventListener('mousemove', e => {
+      const r = navBtn.getBoundingClientRect();
+      gsap.to(navBtn, { x:(e.clientX-r.left-r.width/2)*0.3, y:(e.clientY-r.top-r.height/2)*0.3, duration:0.4, ease:'power2.out'});
+    });
+    navBtn.addEventListener('mouseleave', () => gsap.to(navBtn, {x:0,y:0,duration:0.5,ease:'elastic.out(1,0.5)'}));
+  }
+}
 
 // ── FORM SUBMIT ──
 document.querySelector('.form-submit').addEventListener('click', function() {
