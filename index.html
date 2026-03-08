@@ -85,7 +85,6 @@ nav {
   font-family:'Playfair Display',serif;
   font-size:1.5rem; font-weight:600;
   color:var(--text); text-decoration:none;
-  /* FIXED: was opacity:0, now visible immediately after loader */
   opacity:0;
   position:relative; z-index:110;
 }
@@ -97,7 +96,6 @@ nav {
 .nav-links a {
   font-size:0.82rem; font-weight:500; color:var(--muted);
   text-decoration:none; position:relative; transition:color 0.3s;
-  /* FIXED: was opacity:0 */
   opacity:0;
 }
 .nav-links a::after {
@@ -209,7 +207,6 @@ nav {
   text-transform:uppercase; color:var(--primary);
   font-weight:600; margin-bottom:1.1rem;
   display:flex; align-items:center; gap:0.6rem;
-  /* FIXED: was opacity:0; transform:translateY(16px) */
   opacity:0; transform:translateY(16px);
 }
 .hero-eyebrow::before { content:''; display:block; width:24px; height:1.5px; background:var(--primary); }
@@ -225,12 +222,10 @@ nav {
   font-size:clamp(0.9rem,2vw,1.05rem);
   color:var(--muted); font-weight:300;
   line-height:1.75; margin-bottom:2rem;
-  /* FIXED: was opacity:0; transform:translateY(16px) */
   opacity:0; transform:translateY(16px);
 }
 .hero-actions {
   display:flex; gap:0.875rem; flex-wrap:wrap;
-  /* FIXED: was opacity:0; transform:translateY(16px) */
   opacity:0; transform:translateY(16px);
 }
 .btn-primary {
@@ -263,7 +258,6 @@ nav {
 
 .hero-visual {
   position:relative;
-  /* FIXED: was opacity:0; transform:translateX(30px) */
   opacity:0; transform:translateX(30px);
 }
 .orbit-ring {
@@ -286,7 +280,6 @@ nav {
   border-radius:12px; padding:0.85rem 1.2rem;
   box-shadow:0 16px 48px rgba(0,0,0,0.1);
   display:flex; align-items:center; gap:0.65rem;
-  /* FIXED: was opacity:0; transform:translateY(16px) scale(0.92) */
   opacity:0; transform:translateY(16px) scale(0.92);
 }
 .stat-card-1 { bottom:-20px; left:-24px; }
@@ -320,7 +313,6 @@ nav {
   background:var(--bg);
   transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);
   position:relative; overflow:hidden; cursor:pointer;
-  /* FIXED: removed opacity:0; transform:translateY(40px) — no longer hidden by default */
 }
 .service-card::before {
   content:''; position:absolute; inset:0;
@@ -347,7 +339,6 @@ nav {
 .founder-card {
   display:grid; grid-template-columns:1fr 1.2fr;
   gap:4rem; align-items:center;
-  /* FIXED: removed opacity:0; transform:translateY(40px) */
 }
 .founder-img-side { position:relative; }
 .founder-img-wrap {
@@ -400,7 +391,6 @@ nav {
 /* ── WHY FOKUS ── */
 .about-section { padding:5rem 1.25rem; background:#fff; }
 .about-inner { max-width:1280px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
-/* FIXED: removed opacity:0; transform:translateX(-40px) / translateX(40px) */
 .about-img-wrap { border-radius:18px; overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,0.08); }
 .about-img-wrap img { width:100%; display:block; filter:grayscale(0.35); transition:filter 0.7s,transform 0.7s; }
 .about-img-wrap:hover img { filter:grayscale(0); transform:scale(1.03); }
@@ -414,7 +404,6 @@ nav {
 /* ── NUMBERS ── */
 .numbers-section { padding:4rem 1.25rem; background:#1A1A1A; }
 .numbers-inner { max-width:1280px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; text-align:center; }
-/* FIXED: removed opacity:0; transform:translateY(24px) */
 .num-item { }
 .num-value { font-family:'Playfair Display',serif; font-size:clamp(2rem,4.5vw,3.5rem); color:#fff; line-height:1; margin-bottom:0.4rem; }
 .num-value span { color:var(--primary); }
@@ -426,7 +415,6 @@ nav {
 .gallery-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:2.5rem; }
 .gallery-header a { font-size:0.8rem; color:var(--primary); text-decoration:none; border-bottom:1px solid var(--primary); padding-bottom:1px; }
 .gallery-grid { display:grid; grid-template-columns:repeat(4,1fr); grid-template-rows:repeat(2,240px); gap:12px; }
-/* FIXED: removed opacity:0; transform:scale(0.93) */
 .gallery-item { border-radius:12px; overflow:hidden; position:relative; cursor:pointer; }
 .gallery-item:first-child { grid-column:span 2; grid-row:span 2; }
 .gallery-item:last-child { grid-column:span 2; }
@@ -440,7 +428,6 @@ nav {
 .testimonials-inner { max-width:1280px; margin:0 auto; }
 .testimonials-header { text-align:center; margin-bottom:3rem; }
 .testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
-/* FIXED: removed opacity:0; transform:translateY(32px) */
 .testimonial-card {
   background:#fff; border-radius:18px; padding:2rem;
   border:1.5px solid var(--border);
@@ -455,51 +442,6 @@ nav {
 .author-avatar img { width:100%; height:100%; object-fit:cover; }
 .author-name { font-size:0.82rem; font-weight:600; }
 .author-role { font-size:0.7rem; color:#9CA3AF; }
-
-/* ── CONTACT ── */
-.contact-section { padding:5rem 1.25rem; background:#fff; position:relative; overflow:hidden; }
-.contact-section::before {
-  content:''; position:absolute; top:-150px; right:-150px;
-  width:500px; height:500px;
-  background:radial-gradient(circle,rgba(46,139,87,0.05) 0%,transparent 70%);
-  border-radius:50%;
-}
-.contact-inner { max-width:680px; margin:0 auto; position:relative; }
-/* FIXED: removed opacity:0; transform:translateY(32px) */
-.contact-box {
-  background:#fff; border-radius:22px;
-  border:1.5px solid var(--border);
-  box-shadow:0 32px 70px rgba(0,0,0,0.06);
-  padding:2.5rem;
-}
-.contact-header { text-align:center; margin-bottom:2rem; }
-.glow-line { display:block; width:44px; height:2px; background:var(--primary); border-radius:2px; margin:0 auto 1rem; box-shadow:0 0 10px rgba(46,139,87,0.35); }
-.form-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem; }
-.form-group { margin-bottom:1rem; }
-.form-group label { display:block; font-size:0.78rem; font-weight:500; margin-bottom:0.35rem; letter-spacing:0.02em; }
-.form-group input, .form-group select {
-  width:100%; padding:0.8rem 0.9rem;
-  border:1.5px solid rgba(0,0,0,0.1); border-radius:9px;
-  background:var(--bg); font-size:0.875rem;
-  color:var(--text); outline:none;
-  transition:border-color 0.3s,box-shadow 0.3s;
-  font-family:'Inter',sans-serif; -webkit-appearance:none;
-}
-.form-group input:focus, .form-group select:focus {
-  border-color:var(--primary);
-  box-shadow:0 0 0 3px rgba(46,139,87,0.1);
-}
-.form-submit {
-  width:100%; padding:0.95rem;
-  background:var(--primary); color:#fff; border:none;
-  border-radius:100px; font-size:0.875rem; font-weight:500;
-  cursor:pointer; font-family:'Inter',sans-serif;
-  transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);
-  box-shadow:0 8px 28px rgba(46,139,87,0.25);
-  margin-top:0.5rem;
-}
-.form-submit:hover { transform:translateY(-2px); box-shadow:0 14px 40px rgba(46,139,87,0.35); }
-.form-submit:active { transform:scale(0.98); }
 
 /* ── FOOTER ── */
 footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid rgba(255,255,255,0.05); }
@@ -522,10 +464,6 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
 
 /* ════════════════════════════════════════════════
    SCROLL ANIMATION CLASSES
-   Elements get .anim-ready set via JS, then
-   .anim-in triggers the visible state.
-   This way content is ALWAYS visible if JS fails
-   or on re-scroll.
 ════════════════════════════════════════════════ */
 .scroll-fade {
   transition: opacity 0.7s ease, transform 0.7s ease;
@@ -557,16 +495,10 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
    RESPONSIVE — MOBILE (≤ 768px)
 ════════════════════════════════════════════════ */
 @media (max-width:768px) {
-
-  /* Hide desktop cursor */
   #cursor, #cursor-ring { display:none; }
-
-  /* Nav */
   .nav-links { display:none; }
   .hamburger { display:flex; }
   .nav-inner { height:62px; }
-
-  /* Hero */
   .hero-section {
     grid-template-columns:1fr;
     padding-top:80px; padding-bottom:2.5rem;
@@ -580,13 +512,9 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
   .hero-sub { font-size:0.9rem; }
   .hero-actions { flex-direction:column; }
   .btn-primary, .btn-ghost { justify-content:center; text-align:center; }
-
-  /* Services */
   .services-section { padding:3.5rem 1.25rem; }
   .services-grid { grid-template-columns:1fr; gap:1rem; }
   .service-card { padding:1.5rem; }
-
-  /* Founder */
   .founder-section { padding:3.5rem 1.25rem; }
   .founder-card { grid-template-columns:1fr; gap:2rem; }
   .founder-img-wrap { aspect-ratio:4/3; max-height:320px; }
@@ -594,17 +522,11 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
   .founder-stats { gap:1.25rem; flex-wrap:wrap; }
   .fstat-num { font-size:1.4rem; }
   .founder-quote { font-size:1rem; }
-
-  /* Why Fokus */
   .about-section { padding:3.5rem 1.25rem; }
   .about-inner { grid-template-columns:1fr; gap:2rem; }
-
-  /* Numbers */
   .numbers-section { padding:3rem 1.25rem; }
   .numbers-inner { grid-template-columns:repeat(2,1fr); gap:1.5rem; }
   .num-value { font-size:2.2rem; }
-
-  /* Gallery */
   .gallery-section { padding:3.5rem 1.25rem; }
   .gallery-grid {
     grid-template-columns:1fr 1fr;
@@ -614,31 +536,18 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
   .gallery-item { height:140px; }
   .gallery-item:first-child { grid-column:span 2; height:200px; }
   .gallery-item:last-child { grid-column:span 2; }
-
-  /* Testimonials */
   .testimonials-section { padding:3.5rem 1.25rem; }
   .testimonials-grid { grid-template-columns:1fr; gap:1rem; }
-
-  /* Contact */
-  .contact-section { padding:3.5rem 1.25rem; }
-  .contact-box { padding:1.75rem 1.25rem; }
-  .form-grid { grid-template-columns:1fr; gap:0; }
-
-  /* Footer */
   .footer-grid { grid-template-columns:1fr; gap:2rem; }
   .footer-desc { max-width:100%; }
   .footer-bottom { flex-direction:column; align-items:flex-start; gap:1rem; }
 }
 
-/* ════════════════════════════════════════════════
-   RESPONSIVE — SMALL MOBILE (≤ 380px)
-════════════════════════════════════════════════ */
 @media (max-width:380px) {
   .hero-title { font-size:2rem; }
   .numbers-inner { grid-template-columns:1fr 1fr; }
   .founder-stats { flex-direction:column; gap:1rem; }
 }
-
 </style>
 </head>
 <body>
@@ -661,7 +570,7 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
   <a href="#founder" class="mobile-nav-link">Our Story</a>
   <a href="#about" class="mobile-nav-link">Fokus</a>
   <a href="#testimonials" class="mobile-nav-link">Stories</a>
-  <a href="#contact" class="mobile-nav-link mobile-cta">Book Appointment</a>
+  <a href="https://surekhahospitals.in/appointment" class="mobile-nav-link mobile-cta" target="_blank" rel="noopener">Book Appointment</a>
   <div class="mobile-menu-footer">FOKUS EYECARE · NEW YORK</div>
 </div>
 
@@ -674,7 +583,7 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
       <li><a href="#founder">Our Story</a></li>
       <li><a href="#about">Fokus</a></li>
       <li><a href="#testimonials">Stories</a></li>
-      <li><a class="nav-btn" href="#contact">Book Appointment</a></li>
+      <li><a class="nav-btn" href="https://surekhahospitals.in/appointment" target="_blank" rel="noopener">Book Appointment</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
       <span></span><span></span><span></span>
@@ -694,7 +603,7 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
       </h1>
       <p class="hero-sub">Experience the future of ophthalmology with state-of-the-art diagnostic technology and world-class care designed for your clarity.</p>
       <div class="hero-actions">
-        <a class="btn-primary" href="#contact">Schedule Consultation →</a>
+        <a class="btn-primary" href="https://surekhahospitals.in/appointment" target="_blank" rel="noopener">Schedule Consultation →</a>
         <a class="btn-ghost" href="#services">Explore Treatments</a>
       </div>
       <!-- Mobile only inline stats -->
@@ -875,34 +784,6 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
   </div>
 </section>
 
-<!-- ── CONTACT ── -->
-<section class="contact-section" id="contact">
-  <div class="contact-inner">
-    <div class="contact-box scroll-fade">
-      <div class="contact-header">
-        <span class="glow-line"></span>
-        <h2 class="section-title">Book Your Visit</h2>
-        <p style="font-size:0.85rem;color:var(--muted);margin-top:0.4rem">Begin your journey to better vision today.</p>
-      </div>
-      <div class="form-grid">
-        <div class="form-group"><label>First Name</label><input type="text" placeholder="John"/></div>
-        <div class="form-group"><label>Last Name</label><input type="text" placeholder="Doe"/></div>
-      </div>
-      <div class="form-group"><label>Email Address</label><input type="email" placeholder="john@example.com"/></div>
-      <div class="form-group">
-        <label>Reason for Visit</label>
-        <select>
-          <option>General Consultation</option>
-          <option>Laser Vision Correction</option>
-          <option>Cataract Evaluation</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <button class="form-submit" type="button">Request Appointment</button>
-    </div>
-  </div>
-</section>
-
 <!-- ── FOOTER ── -->
 <footer>
   <div class="footer-inner">
@@ -926,7 +807,7 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
           <li><a href="#">About Us</a></li>
           <li><a href="#">Our Doctors</a></li>
           <li><a href="#">Careers</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="https://surekhahospitals.in/appointment" target="_blank" rel="noopener">Book Appointment</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -951,7 +832,6 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-// ── DETECT MOBILE ──
 const isMobile = () => window.innerWidth <= 768;
 
 // ── SCROLL PROGRESS ──
@@ -1038,42 +918,25 @@ function introAnim() {
   if (!isMobile()) {
     tl.to('.stat-card', {opacity:1, y:0, scale:1, stagger:0.2, duration:0.8, ease:'back.out(1.7)'}, 1.0);
   }
-  // Orbit rings pulse
   gsap.to('.orbit-ring', {scale:1.04, repeat:-1, yoyo:true, duration:3, stagger:1.5, ease:'sine.inOut'});
-
-  // ── INIT SCROLL FADE OBSERVERS (after intro) ──
   initScrollFade();
 }
 
-// ── SCROLL FADE — uses IntersectionObserver so it works in BOTH directions ──
-// Elements animate in when visible, reset when scrolled past (optional)
+// ── SCROLL FADE ──
 function initScrollFade() {
   const fadeEls = document.querySelectorAll('.scroll-fade');
-
-  // Mark them ready (hidden) — only AFTER loader so content is always visible w/o JS
-  fadeEls.forEach((el, i) => {
-    el.classList.add('anim-ready');
-  });
-
+  fadeEls.forEach((el) => { el.classList.add('anim-ready'); });
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // Small stagger via delay based on sibling index
         const siblings = entry.target.parentElement.querySelectorAll('.scroll-fade');
         let idx = 0;
         siblings.forEach((s, i) => { if (s === entry.target) idx = i; });
-        setTimeout(() => {
-          entry.target.classList.add('anim-in');
-        }, idx * 100);
-        // Once animated in, stop observing so it won't re-hide on scroll up
+        setTimeout(() => { entry.target.classList.add('anim-in'); }, idx * 100);
         observer.unobserve(entry.target);
       }
     });
-  }, {
-    threshold: 0.12,
-    rootMargin: '0px 0px -40px 0px'
-  });
-
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   fadeEls.forEach(el => observer.observe(el));
 }
 
@@ -1108,8 +971,6 @@ if (!isMobile()) {
     yPercent:7, ease:'none',
     scrollTrigger:{ trigger:'.hero-section', start:'top top', end:'bottom top', scrub:true }
   });
-
-  // Magnetic nav button
   const navBtn = document.querySelector('.nav-btn');
   if (navBtn) {
     navBtn.addEventListener('mousemove', e => {
@@ -1119,14 +980,6 @@ if (!isMobile()) {
     navBtn.addEventListener('mouseleave', () => gsap.to(navBtn, {x:0,y:0,duration:0.5,ease:'elastic.out(1,0.5)'}));
   }
 }
-
-// ── FORM SUBMIT ──
-document.querySelector('.form-submit').addEventListener('click', function() {
-  gsap.to(this, {scale:0.97,duration:0.1,yoyo:true,repeat:1});
-  this.textContent = '✓ Appointment Requested';
-  this.style.background = '#1a6b3a';
-  setTimeout(() => { this.textContent = 'Request Appointment'; this.style.background = ''; }, 3000);
-});
 
 // ── TOUCH CARD ACTIVE STATE ──
 document.querySelectorAll('.service-card,.testimonial-card').forEach(card => {
