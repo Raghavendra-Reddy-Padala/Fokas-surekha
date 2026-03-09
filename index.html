@@ -30,7 +30,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── CUSTOM CURSOR (desktop only) ── */
 #cursor, #cursor-ring {
   position: fixed; top: 0; left: 0;
   border-radius: 50%; pointer-events: none; z-index: 9999;
@@ -39,20 +38,17 @@ body {
 #cursor { width:12px; height:12px; background:var(--primary); mix-blend-mode:multiply; }
 #cursor-ring { width:44px; height:44px; border:1.5px solid var(--primary); opacity:0.5; }
 
-/* ── SCROLL PROGRESS ── */
 #progress {
   position: fixed; top:0; left:0; height:2.5px;
   background: var(--primary); width:0%; z-index:200;
   box-shadow: 0 0 10px rgba(46,139,87,0.5);
 }
 
-/* ── PARTICLES ── */
 #particles-canvas {
   position: fixed; inset:0;
   pointer-events:none; z-index:0; opacity:0.35;
 }
 
-/* ── LOADER ── */
 #loader {
   position:fixed; inset:0; background:#0a0a0a;
   z-index:10000; display:flex; flex-direction:column;
@@ -66,7 +62,6 @@ body {
 #loader-line { width:0; height:1.5px; background:var(--primary); max-width:200px; }
 #loader-counter { font-size:0.72rem; letter-spacing:0.3em; color:#555; }
 
-/* ── NAV ── */
 nav {
   position:fixed; width:100%; z-index:100;
   background:rgba(250,250,250,0.92);
@@ -89,7 +84,6 @@ nav {
   position:relative; z-index:110;
 }
 
-/* Desktop nav links */
 .nav-links {
   display:flex; align-items:center; gap:2.5rem; list-style:none;
 }
@@ -115,7 +109,6 @@ nav {
 .nav-btn::after { display:none !important; }
 .nav-btn:hover { transform:translateY(-2px) !important; box-shadow:0 8px 30px rgba(46,139,87,0.35) !important; }
 
-/* Hamburger button */
 .hamburger {
   display:none; flex-direction:column; justify-content:center;
   align-items:center; gap:5px;
@@ -133,7 +126,6 @@ nav {
 .hamburger.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
 .hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
 
-/* Mobile menu overlay */
 .mobile-menu {
   position:fixed; inset:0;
   background:rgba(250,250,250,0.98);
@@ -176,7 +168,6 @@ nav {
   font-size:0.75rem; color:var(--muted); letter-spacing:0.1em;
 }
 
-/* ── COMMON ── */
 .section-label {
   font-size:0.7rem; letter-spacing:0.32em;
   text-transform:uppercase; color:var(--primary);
@@ -194,7 +185,6 @@ nav {
   line-height:1.2; color:var(--text);
 }
 
-/* ── HERO ── */
 .hero-section {
   min-height:100svh;
   padding:88px 1.25rem 3rem;
@@ -288,7 +278,6 @@ nav {
 .stat-label { font-size:0.65rem; color:var(--muted); }
 .stat-icon { width:32px; height:32px; border-radius:8px; background:var(--primary-light); display:flex; align-items:center; justify-content:center; color:var(--primary); }
 
-/* Mobile inline stats (shown on mobile instead of floating cards) */
 .mobile-stats {
   display:none;
   gap:1rem; margin-top:1.5rem;
@@ -302,7 +291,6 @@ nav {
 .mobile-stat .stat-num { font-size:1.4rem; }
 .mobile-stat .stat-label { font-size:0.65rem; }
 
-/* ── SERVICES ── */
 .services-section { padding:5rem 1.25rem; background:#fff; }
 .services-inner { max-width:1280px; margin:0 auto; }
 .services-header { text-align:center; margin-bottom:3.5rem; }
@@ -332,7 +320,6 @@ nav {
 .service-card h3 { font-family:'Playfair Display',serif; font-size:1.2rem; margin-bottom:0.6rem; color:var(--text); }
 .service-card p { font-size:0.85rem; color:var(--muted); line-height:1.7; font-weight:300; }
 
-/* ── FOUNDER / ABOUT US ── */
 .founder-section { padding:5rem 1.25rem; background:var(--bg); }
 .founder-inner { max-width:1280px; margin:0 auto; }
 .founder-header { margin-bottom:3.5rem; text-align:center; }
@@ -388,28 +375,23 @@ nav {
 .fstat-num { font-family:'Playfair Display',serif; font-size:1.7rem; color:var(--text); line-height:1; }
 .fstat-label { font-size:0.65rem; letter-spacing:0.08em; text-transform:uppercase; color:#9CA3AF; }
 
-/* ── WHY FOKUS ── */
 .about-section { padding:5rem 1.25rem; background:#fff; }
 .about-inner { max-width:1280px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
 .about-img-wrap { border-radius:18px; overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,0.08); }
 .about-img-wrap img { width:100%; display:block; filter:grayscale(0.35); transition:filter 0.7s,transform 0.7s; }
 .about-img-wrap:hover img { filter:grayscale(0); transform:scale(1.03); }
-.about-content { }
 .feature-row { display:flex; gap:1rem; margin-top:1.75rem; padding-top:1.75rem; border-top:1px solid var(--border); }
 .feature-row:first-of-type { border-top:none; margin-top:1.75rem; padding-top:0; }
 .feature-icon { color:var(--primary); flex-shrink:0; margin-top:2px; }
 .feature-row h4 { font-size:0.95rem; font-weight:600; margin-bottom:0.3rem; }
 .feature-row p { font-size:0.85rem; color:var(--muted); line-height:1.7; font-weight:300; }
 
-/* ── NUMBERS ── */
 .numbers-section { padding:4rem 1.25rem; background:#1A1A1A; }
 .numbers-inner { max-width:1280px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; text-align:center; }
-.num-item { }
 .num-value { font-family:'Playfair Display',serif; font-size:clamp(2rem,4.5vw,3.5rem); color:#fff; line-height:1; margin-bottom:0.4rem; }
 .num-value span { color:var(--primary); }
 .num-label { font-size:0.72rem; color:#6B7280; letter-spacing:0.1em; text-transform:uppercase; }
 
-/* ── GALLERY ── */
 .gallery-section { padding:5rem 1.25rem; background:#fff; }
 .gallery-inner { max-width:1280px; margin:0 auto; }
 .gallery-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:2.5rem; }
@@ -423,7 +405,6 @@ nav {
 .gallery-overlay { position:absolute; inset:0; background:rgba(46,139,87,0); transition:background 0.4s; }
 .gallery-item:hover .gallery-overlay { background:rgba(46,139,87,0.14); }
 
-/* ── TESTIMONIALS ── */
 .testimonials-section { padding:5rem 1.25rem; background:var(--bg); }
 .testimonials-inner { max-width:1280px; margin:0 auto; }
 .testimonials-header { text-align:center; margin-bottom:3rem; }
@@ -443,7 +424,6 @@ nav {
 .author-name { font-size:0.82rem; font-weight:600; }
 .author-role { font-size:0.7rem; color:#9CA3AF; }
 
-/* ── FOOTER ── */
 footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid rgba(255,255,255,0.05); }
 .footer-inner { max-width:1280px; margin:0 auto; }
 .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:2.5rem; margin-bottom:3rem; }
@@ -462,24 +442,10 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
 .social-link:hover { border-color:var(--primary); color:var(--primary); transform:translateY(-2px); }
 .social-link svg { width:14px; height:14px; }
 
-/* ════════════════════════════════════════════════
-   SCROLL ANIMATION CLASSES
-════════════════════════════════════════════════ */
-.scroll-fade {
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-.scroll-fade.anim-ready {
-  opacity: 0;
-  transform: translateY(30px);
-}
-.scroll-fade.anim-in {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-}
+.scroll-fade { transition: opacity 0.7s ease, transform 0.7s ease; }
+.scroll-fade.anim-ready { opacity: 0; transform: translateY(30px); }
+.scroll-fade.anim-in { opacity: 1 !important; transform: translateY(0) !important; }
 
-/* ════════════════════════════════════════════════
-   RESPONSIVE — TABLET (≤ 1024px)
-════════════════════════════════════════════════ */
 @media (max-width:1024px) {
   .services-grid { grid-template-columns:repeat(2,1fr); }
   .numbers-inner { grid-template-columns:repeat(2,1fr); gap:2rem; }
@@ -491,19 +457,12 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
   .founder-card { gap:2.5rem; }
 }
 
-/* ════════════════════════════════════════════════
-   RESPONSIVE — MOBILE (≤ 768px)
-════════════════════════════════════════════════ */
 @media (max-width:768px) {
   #cursor, #cursor-ring { display:none; }
   .nav-links { display:none; }
   .hamburger { display:flex; }
   .nav-inner { height:62px; }
-  .hero-section {
-    grid-template-columns:1fr;
-    padding-top:80px; padding-bottom:2.5rem;
-    gap:2rem; min-height:auto;
-  }
+  .hero-section { grid-template-columns:1fr; padding-top:80px; padding-bottom:2.5rem; gap:2rem; min-height:auto; }
   .hero-visual { order:-1; transform:none; }
   .orbit-ring { display:none; }
   .stat-card { display:none; }
@@ -528,11 +487,7 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
   .numbers-inner { grid-template-columns:repeat(2,1fr); gap:1.5rem; }
   .num-value { font-size:2.2rem; }
   .gallery-section { padding:3.5rem 1.25rem; }
-  .gallery-grid {
-    grid-template-columns:1fr 1fr;
-    grid-template-rows:auto;
-    gap:8px;
-  }
+  .gallery-grid { grid-template-columns:1fr 1fr; grid-template-rows:auto; gap:8px; }
   .gallery-item { height:140px; }
   .gallery-item:first-child { grid-column:span 2; height:200px; }
   .gallery-item:last-child { grid-column:span 2; }
@@ -557,14 +512,12 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
 <div id="progress"></div>
 <canvas id="particles-canvas"></canvas>
 
-<!-- ── LOADER ── -->
 <div id="loader">
   <div id="loader-text">Fokus.</div>
   <div id="loader-line"></div>
   <div id="loader-counter">000</div>
 </div>
 
-<!-- ── MOBILE MENU ── -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#services" class="mobile-nav-link">Expertise</a>
   <a href="#founder" class="mobile-nav-link">Our Story</a>
@@ -574,7 +527,6 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
   <div class="mobile-menu-footer">FOKUS EYECARE · NEW YORK</div>
 </div>
 
-<!-- ── NAV ── -->
 <nav id="mainNav">
   <div class="nav-inner">
     <a class="nav-logo" href="#">Fokus.</a>
@@ -591,7 +543,6 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
   </div>
 </nav>
 
-<!-- ── HERO ── -->
 <section>
   <div class="hero-section">
     <div class="hero-copy">
@@ -606,7 +557,6 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
         <a class="btn-primary" href="https://surekhahospitals.in/appointment" target="_blank" rel="noopener">Schedule Consultation →</a>
         <a class="btn-ghost" href="#services">Explore Treatments</a>
       </div>
-      <!-- Mobile only inline stats -->
       <div class="mobile-stats">
         <div class="mobile-stat">
           <div class="stat-num">98%</div>
@@ -642,7 +592,6 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
   </div>
 </section>
 
-<!-- ── SERVICES ── -->
 <section class="services-section" id="services">
   <div class="services-inner">
     <div class="services-header">
@@ -669,7 +618,6 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
   </div>
 </section>
 
-<!-- ── FOUNDER / ABOUT US ── -->
 <section class="founder-section" id="founder">
   <div class="founder-inner">
     <div class="founder-header">
@@ -679,7 +627,7 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
     <div class="founder-card scroll-fade">
       <div class="founder-img-side">
         <div class="founder-img-wrap">
-          <img src="/doc.jpg" alt="Dr. James Harlow, Founder"/>
+          <img src="/doc.jpg" alt="Dr. UmaShankar, Founder"/>
           <div class="founder-badge">
             <span class="material-symbols-outlined" style="font-size:15px;color:var(--primary)">verified</span>
             Board Certified
@@ -698,7 +646,6 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
   </div>
 </section>
 
-<!-- ── WHY FOKUS ── -->
 <section class="about-section" id="about">
   <div class="about-inner">
     <div class="about-img-wrap scroll-fade">
@@ -723,7 +670,6 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
   </div>
 </section>
 
-<!-- ── NUMBERS ── -->
 <section class="numbers-section">
   <div class="numbers-inner">
     <div class="num-item scroll-fade"><div class="num-value" data-target="12000">0<span>+</span></div><div class="num-label">Procedures</div></div>
@@ -733,7 +679,6 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
   </div>
 </section>
 
-<!-- ── GALLERY ── -->
 <section class="gallery-section">
   <div class="gallery-inner">
     <div class="gallery-header">
@@ -748,7 +693,7 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
   </div>
 </section>
 
-<!-- ── TESTIMONIALS ── -->
+<!-- ── TESTIMONIALS — real patient reviews ── -->
 <section class="testimonials-section" id="testimonials">
   <div class="testimonials-inner">
     <div class="testimonials-header">
@@ -756,35 +701,49 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
       <h2 class="section-title">Transforming Lives Through Vision</h2>
     </div>
     <div class="testimonials-grid">
-      <div class="testimonial-card scroll-fade">
+
+        <div class="testimonial-card scroll-fade">
         <div class="quote-mark">"</div>
-        <p>The level of detail and care at Fokus is unmatched. My vision has never been clearer, and the entire process was seamless and comforting.</p>
+        <p>I had my PRK surgery — after 2 weeks I can see clearly. Dr Uma Shanker was friendly and very helpful. Clean surroundings, no long waiting, and a smooth process. Professional treatment with a personal touch.</p>
         <div class="testimonial-author">
-          <div class="author-avatar"><img alt="Sarah Jenkins" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsgsvtLesG-xNAG6R4gw6_iVG_fx4JYa5_LfU7ZUDN2Bl_95Z0VpN2zI81xa8g--YxN8Xlf_5EtCKmyrVLDB96KqZlzQWL30Gov19HmIx3lv95D14q66H2LtoaXnWxDyadxj7VIqD4Qm6H9ouxs_OCrDcX1CAbu5NMGsh6vkhf-QhFxFOrZnAiX8GZ5LMkMaL-nbLkDp5RjGZqzeiDT2lv4cZnV5708jWygtyu_Z6LFNsBwTG4Zx2EW_xYdd19l6jOg9xFZAQEXQ_n"/></div>
-          <div><div class="author-name">Sarah Jenkins</div><div class="author-role">LASIK Patient</div></div>
+          <div class="author-avatar"><img alt="Podduturi V Akash Reddy" src="https://lh3.googleusercontent.com/a-/ALV-UjVkGnEVb7EU3-mrSou26_HCOrA188hSZ9wp0h2OEVm0epdnQN-sDg=s128-c0x00000000-cc-rp-mo-ba3"/></div>
+          <div>
+            <div class="author-name">Podduturi V Akash Reddy</div>
+            <div class="author-role">Google Review · 2 months ago</div>
+          </div>
         </div>
       </div>
+
       <div class="testimonial-card scroll-fade">
         <div class="quote-mark">"</div>
-        <p>I was nervous about cataract surgery, but the team at Fokus put me at ease. The results are nothing short of miraculous.</p>
+        <p>"I had a very good experience at Surekha Hospital, Kompally for cataract eye surgery. The doctor explained the procedure clearly and made us feel comfortable before the surgery. The cataract operation was smooth, quick, and painless, and the vision improvement after surgery was excellent</p>
         <div class="testimonial-author">
-          <div class="author-avatar"><img alt="Robert Chen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVoP6AqjOvIVXJ4oM9skLY50ZsaGR27ap--NKHFxCcOCPm-IS2AeKB0zfwTEua-fYNn6jOOo5mgLoV6_TDqZ7YCLjwGS0siyUaBWpJU79Kc19ci7rJFdrgoahgMvpPDWaGt1Myn16gpHRM2aovq6fl_mvEsfX_5yKjlZHiiBBSeZ7iTVfY6h9hYCYWLMckuA2H6CPDHIQcvZt-LPS_CAQCemmTXaMsO7RXayrtiQMSyXEDzK1xljNPLCHI5syP955Rb81ujVpI_bIC"/></div>
-          <div><div class="author-name">Robert Chen</div><div class="author-role">Cataract Surgery</div></div>
+          <div class="author-avatar"><img alt="Vikas Singh" src="https://lh3.googleusercontent.com/a/ACg8ocIrgcRbvOMai0S5GDkLe1zbG6ANxdNXjD03PQ6dm7p4ESme13E=s128-c0x00000000-cc-rp-mo"/></div>
+          <div>
+            <div class="author-name">Jeetu</div>
+            <div class="author-role">Google Review · a month ago</div>
+          </div>
         </div>
       </div>
+
+    
+
       <div class="testimonial-card scroll-fade">
         <div class="quote-mark">"</div>
-        <p>Professionalism at its finest. The facility is beautiful, clean, and modern. I highly recommend Fokus for anyone seeking serious eye care.</p>
+        <p>My mother underwent cataract surgery and Dr. Uma Shankar was extremely friendly and professional throughout. He made us feel safe and confident at every step. We are very happy with the overall care and services provided.</p>
         <div class="testimonial-author">
-          <div class="author-avatar"><img alt="Emily Doe" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUu6u3ZCJ5anOEKGviGSqRbEsosyk_Tce7YoZSmdImFa6S_6CSDLm8BlCc0RxZwrT3HZdpdg2y2oP497FTcS5OQcnTyTL7dURl8cRs9lGXMs7-Ks9aIUpZyZRNXzfrlZFBE4rnwFwAQvzxgE6wjxiOZItqh93q-bU7Fd2RbNhnQL_zHnQ5n7xfRzesEHoNDPpAs3tQfJdAsMsD3xbOTrP07b-GN6v7bx7tlMXwKp0b8kgsvmSebr7P4t1Em4w2wGKafn5BDWphVG3c"/></div>
-          <div><div class="author-name">Emily Doe</div><div class="author-role">Routine Care</div></div>
+          <div class="author-avatar"><img alt="Deepak Bandapati" src="https://lh3.googleusercontent.com/a-/ALV-UjWfLIR0UiYdEOPIypdq0T0MWyAnU9OPOkiod8UIoxZAP4EJNZrV=s128-c0x00000000-cc-rp-mo"/></div>
+          <div>
+            <div class="author-name">Deepak Bandapati</div>
+            <div class="author-role">Google Review · a month ago</div>
+          </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
 <footer>
   <div class="footer-inner">
     <div class="footer-grid">
@@ -831,17 +790,14 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
 
 <script>
 gsap.registerPlugin(ScrollTrigger);
-
 const isMobile = () => window.innerWidth <= 768;
 
-// ── SCROLL PROGRESS ──
 const progress = document.getElementById('progress');
 window.addEventListener('scroll', () => {
   const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
   progress.style.width = pct + '%';
 }, { passive: true });
 
-// ── PARTICLES ──
 const canvas = document.getElementById('particles-canvas');
 const ctx = canvas.getContext('2d');
 function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
@@ -866,18 +822,15 @@ const particles = Array.from({length: particleCount}, () => new Particle());
 function animateP() { ctx.clearRect(0,0,canvas.width,canvas.height); particles.forEach(p=>{p.update();p.draw();}); requestAnimationFrame(animateP); }
 animateP();
 
-// ── HAMBURGER MENU ──
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
 let menuOpen = false;
-
 hamburger.addEventListener('click', () => {
   menuOpen = !menuOpen;
   hamburger.classList.toggle('open', menuOpen);
   mobileMenu.classList.toggle('open', menuOpen);
   document.body.style.overflow = menuOpen ? 'hidden' : '';
 });
-
 mobileMenu.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
     menuOpen = false;
@@ -887,7 +840,6 @@ mobileMenu.querySelectorAll('a').forEach(link => {
   });
 });
 
-// ── LOADER ──
 const loaderEl = document.getElementById('loader');
 const loaderLine = document.getElementById('loader-line');
 const loaderCounter = document.getElementById('loader-counter');
@@ -903,7 +855,6 @@ setTimeout(() => {
   gsap.to(loaderEl, { yPercent:-100, duration:1.1, ease:'power4.inOut', onComplete:() => { loaderEl.style.display='none'; introAnim(); }});
 }, 2400);
 
-// ── INTRO ANIMATION ──
 function introAnim() {
   const tl = gsap.timeline();
   tl.to('.nav-logo', {opacity:1, duration:0.7, ease:'power3.out'}, 0);
@@ -922,7 +873,6 @@ function introAnim() {
   initScrollFade();
 }
 
-// ── SCROLL FADE ──
 function initScrollFade() {
   const fadeEls = document.querySelectorAll('.scroll-fade');
   fadeEls.forEach((el) => { el.classList.add('anim-ready'); });
@@ -940,7 +890,6 @@ function initScrollFade() {
   fadeEls.forEach(el => observer.observe(el));
 }
 
-// ── NUMBER COUNT UP ──
 ScrollTrigger.create({
   trigger:'.numbers-section', start:'top 78%',
   onEnter:() => {
@@ -959,13 +908,11 @@ ScrollTrigger.create({
   }
 });
 
-// ── NAV SCROLL STYLE ──
 window.addEventListener('scroll', () => {
   document.querySelector('nav').style.background =
     window.scrollY > 80 ? 'rgba(250,250,250,0.97)' : 'rgba(250,250,250,0.92)';
 }, { passive: true });
 
-// ── PARALLAX HERO (desktop only) ──
 if (!isMobile()) {
   gsap.to('.hero-img-wrap img', {
     yPercent:7, ease:'none',
@@ -981,7 +928,6 @@ if (!isMobile()) {
   }
 }
 
-// ── TOUCH CARD ACTIVE STATE ──
 document.querySelectorAll('.service-card,.testimonial-card').forEach(card => {
   card.addEventListener('touchstart', () => card.style.opacity='0.88', { passive: true });
   card.addEventListener('touchend', () => card.style.opacity='', { passive: true });
