@@ -436,9 +436,7 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
 .social-link:hover { border-color:var(--primary); color:var(--primary); transform:translateY(-2px); }
 .social-link svg { width:14px; height:14px; }
 
-.scroll-fade { transition: opacity 0.7s ease, transform 0.7s ease; }
-.scroll-fade.anim-ready { opacity: 0; transform: translateY(30px); }
-.scroll-fade.anim-in { opacity: 1 !important; transform: translateY(0) !important; }
+/* scroll-fade removed — was causing scroll glitch */
 
 @media (max-width:1024px) {
   .services-grid { grid-template-columns:repeat(2,1fr); }
@@ -755,7 +753,7 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
-        <p>123 Visionary Way<br>New York, NY 10012<br><br>+1 (555) 123-4567<br>hello@fokuseyecare.com</p>
+        <p>123 Visionary Way<br>New York, NY 10012<br><br>+1 (555) 123-4567<br><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f098959c9c9fb0969f9b858395899593918295de939f9d">[email&#160;protected]</a></p>
       </div>
     </div>
     <div class="footer-bottom">
@@ -772,7 +770,7 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 gsap.registerPlugin(ScrollTrigger);
 const isMobile = () => window.innerWidth <= 768;
 
@@ -862,32 +860,39 @@ function introAnim() {
   initScrollFade();
 }
 
-// ── Scroll fade (IntersectionObserver — no GSAP ScrollTrigger conflict) ───────
+// ── Scroll fade — fires ONCE per element, never again ────────────────────────
 function initScrollFade() {
+  const animated = new Set(); // track already-animated elements
   const fadeEls = document.querySelectorAll('.scroll-fade');
   fadeEls.forEach((el) => { el.classList.add('anim-ready'); });
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
+      if (entry.isIntersecting && !animated.has(entry.target)) {
+        animated.add(entry.target); // mark as done — will never animate again
         const siblings = entry.target.parentElement.querySelectorAll('.scroll-fade');
         let idx = 0;
         siblings.forEach((s, i) => { if (s === entry.target) idx = i; });
         setTimeout(() => { entry.target.classList.add('anim-in'); }, idx * 100);
-        observer.unobserve(entry.target);
+        observer.unobserve(entry.target); // stop watching this element
       }
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
   fadeEls.forEach(el => observer.observe(el));
 }
 
-// ── Counter animation ─────────────────────────────────────────────────────────
+// ── Counter — fires ONCE, never reruns even if you scroll back ────────────────
+let counterDone = false;
 ScrollTrigger.create({
-  trigger:'.numbers-section', start:'top 78%',
-  onEnter:() => {
+  trigger: '.numbers-section', start: 'top 78%',
+  onEnter: () => {
+    if (counterDone) return; // already ran — do nothing
+    counterDone = true;
     document.querySelectorAll('.num-value').forEach(el => {
       const target = parseInt(el.dataset.target);
       if (!target) return;
-      const suffix = el.innerHTML.replace(/[0-9]/g,'');
+      const suffix = el.innerHTML.replace(/[0-9]/g, '');
       let current = 0;
       const step = target / 60;
       const t = setInterval(() => {
@@ -919,9 +924,8 @@ if (!isMobile()) {
 
 // ── Mobile touch feedback ─────────────────────────────────────────────────────
 document.querySelectorAll('.service-card,.testimonial-card').forEach(card => {
-  card.addEventListener('touchstart', () => card.style.opacity='0.88', { passive: true });
-  card.addEventListener('touchend', () => card.style.opacity='', { passive: true });
+  card.addEventListener('touchstart', () => { card.classList.add('touched'); });
+  card.addEventListener('touchend', () => { card.classList.remove('touched'); });
 });
 </script>
-</body>
-</html>
+</body>   
