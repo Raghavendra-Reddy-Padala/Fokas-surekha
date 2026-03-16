@@ -250,16 +250,14 @@ nav {
   position:relative;
   opacity:0; transform:translateX(30px);
 }
-.orbit-ring {
-  position:absolute; border-radius:50%;
-  border:1px solid rgba(46,139,87,0.1); pointer-events:none;
-}
+/* ── orbit rings removed — were causing layout glitch on scroll ── */
 .hero-img-wrap {
   border-radius:18px; overflow:hidden;
   aspect-ratio:4/3; position:relative;
   box-shadow:0 30px 70px rgba(0,0,0,0.1);
 }
-.hero-img-wrap img { width:100%; height:100%; object-fit:fit; transition:transform 0.7s; }
+/* ── parallax removed from img — was causing jitter ── */
+.hero-img-wrap img { width:100%; height:100%; object-fit:cover; transition:transform 0.7s; }
 .hero-img-wrap:hover img { transform:scale(1.04); }
 .hero-img-overlay {
   position:absolute; inset:0;
@@ -347,16 +345,12 @@ nav {
   box-shadow:0 8px 24px rgba(0,0,0,0.1);
   color:var(--text);
 }
+/* ── blob float animation removed — was adding jitter on low-end devices ── */
 .founder-blob {
   position:absolute; top:8%; right:-30px;
   width:160px; height:160px;
   background:radial-gradient(circle,rgba(46,139,87,0.08) 0%,transparent 70%);
   border-radius:50%;
-  animation:blobFloat 5s ease-in-out infinite;
-}
-@keyframes blobFloat {
-  0%,100% { transform:translateY(0) scale(1); }
-  50% { transform:translateY(-14px) scale(1.04); }
 }
 .founder-quote {
   font-family:'Playfair Display',serif;
@@ -464,7 +458,6 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
   .nav-inner { height:62px; }
   .hero-section { grid-template-columns:1fr; padding-top:80px; padding-bottom:2.5rem; gap:2rem; min-height:auto; }
   .hero-visual { order:-1; transform:none; }
-  .orbit-ring { display:none; }
   .stat-card { display:none; }
   .mobile-stats { display:flex; }
   .hero-title { font-size:clamp(2.2rem,9vw,3rem); }
@@ -574,8 +567,6 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
     </div>
 
     <div class="hero-visual">
-      <div class="orbit-ring" style="width:460px;height:460px;top:50%;left:50%;transform:translate(-50%,-50%)"></div>
-      <div class="orbit-ring" style="width:340px;height:340px;top:50%;left:50%;transform:translate(-50%,-50%)"></div>
       <div class="hero-img-wrap">
         <img alt="Close up of a human eye" src="/fokus.jpg"/>
         <div class="hero-img-overlay"></div>
@@ -693,7 +684,6 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
   </div>
 </section>
 
-<!-- ── TESTIMONIALS — real patient reviews ── -->
 <section class="testimonials-section" id="testimonials">
   <div class="testimonials-inner">
     <div class="testimonials-header">
@@ -701,8 +691,7 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
       <h2 class="section-title">Transforming Lives Through Vision</h2>
     </div>
     <div class="testimonials-grid">
-
-        <div class="testimonial-card scroll-fade">
+      <div class="testimonial-card scroll-fade">
         <div class="quote-mark">"</div>
         <p>I had my PRK surgery — after 2 weeks I can see clearly. Dr Uma Shanker was friendly and very helpful. Clean surroundings, no long waiting, and a smooth process. Professional treatment with a personal touch.</p>
         <div class="testimonial-author">
@@ -713,21 +702,17 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
           </div>
         </div>
       </div>
-
       <div class="testimonial-card scroll-fade">
         <div class="quote-mark">"</div>
-        <p>"I had a very good experience at Surekha Hospital, Kompally for cataract eye surgery. The doctor explained the procedure clearly and made us feel comfortable before the surgery. The cataract operation was smooth, quick, and painless, and the vision improvement after surgery was excellent</p>
+        <p>I had a very good experience at Surekha Hospital, Kompally for cataract eye surgery. The doctor explained the procedure clearly and made us feel comfortable before the surgery. The cataract operation was smooth, quick, and painless, and the vision improvement after surgery was excellent.</p>
         <div class="testimonial-author">
-          <div class="author-avatar"><img alt="Vikas Singh" src="https://lh3.googleusercontent.com/a/ACg8ocIrgcRbvOMai0S5GDkLe1zbG6ANxdNXjD03PQ6dm7p4ESme13E=s128-c0x00000000-cc-rp-mo"/></div>
+          <div class="author-avatar"><img alt="Jeetu" src="https://lh3.googleusercontent.com/a/ACg8ocIrgcRbvOMai0S5GDkLe1zbG6ANxdNXjD03PQ6dm7p4ESme13E=s128-c0x00000000-cc-rp-mo"/></div>
           <div>
             <div class="author-name">Jeetu</div>
             <div class="author-role">Google Review · a month ago</div>
           </div>
         </div>
       </div>
-
-    
-
       <div class="testimonial-card scroll-fade">
         <div class="quote-mark">"</div>
         <p>My mother underwent cataract surgery and Dr. Uma Shankar was extremely friendly and professional throughout. He made us feel safe and confident at every step. We are very happy with the overall care and services provided.</p>
@@ -739,7 +724,6 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -792,12 +776,14 @@ footer { background:#0f0f0f; padding:4rem 1.25rem 1.75rem; border-top:1px solid 
 gsap.registerPlugin(ScrollTrigger);
 const isMobile = () => window.innerWidth <= 768;
 
+// ── Progress bar ──────────────────────────────────────────────────────────────
 const progress = document.getElementById('progress');
 window.addEventListener('scroll', () => {
   const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
   progress.style.width = pct + '%';
 }, { passive: true });
 
+// ── Particles ─────────────────────────────────────────────────────────────────
 const canvas = document.getElementById('particles-canvas');
 const ctx = canvas.getContext('2d');
 function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
@@ -822,6 +808,7 @@ const particles = Array.from({length: particleCount}, () => new Particle());
 function animateP() { ctx.clearRect(0,0,canvas.width,canvas.height); particles.forEach(p=>{p.update();p.draw();}); requestAnimationFrame(animateP); }
 animateP();
 
+// ── Mobile menu ───────────────────────────────────────────────────────────────
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
 let menuOpen = false;
@@ -840,6 +827,7 @@ mobileMenu.querySelectorAll('a').forEach(link => {
   });
 });
 
+// ── Loader ────────────────────────────────────────────────────────────────────
 const loaderEl = document.getElementById('loader');
 const loaderLine = document.getElementById('loader-line');
 const loaderCounter = document.getElementById('loader-counter');
@@ -855,6 +843,7 @@ setTimeout(() => {
   gsap.to(loaderEl, { yPercent:-100, duration:1.1, ease:'power4.inOut', onComplete:() => { loaderEl.style.display='none'; introAnim(); }});
 }, 2400);
 
+// ── Intro animation ───────────────────────────────────────────────────────────
 function introAnim() {
   const tl = gsap.timeline();
   tl.to('.nav-logo', {opacity:1, duration:0.7, ease:'power3.out'}, 0);
@@ -869,10 +858,11 @@ function introAnim() {
   if (!isMobile()) {
     tl.to('.stat-card', {opacity:1, y:0, scale:1, stagger:0.2, duration:0.8, ease:'back.out(1.7)'}, 1.0);
   }
-  gsap.to('.orbit-ring', {scale:1.04, repeat:-1, yoyo:true, duration:3, stagger:1.5, ease:'sine.inOut'});
+  // ── orbit ring pulse + hero parallax REMOVED (were causing scroll glitch) ──
   initScrollFade();
 }
 
+// ── Scroll fade (IntersectionObserver — no GSAP ScrollTrigger conflict) ───────
 function initScrollFade() {
   const fadeEls = document.querySelectorAll('.scroll-fade');
   fadeEls.forEach((el) => { el.classList.add('anim-ready'); });
@@ -890,6 +880,7 @@ function initScrollFade() {
   fadeEls.forEach(el => observer.observe(el));
 }
 
+// ── Counter animation ─────────────────────────────────────────────────────────
 ScrollTrigger.create({
   trigger:'.numbers-section', start:'top 78%',
   onEnter:() => {
@@ -908,16 +899,14 @@ ScrollTrigger.create({
   }
 });
 
+// ── Nav background on scroll ──────────────────────────────────────────────────
 window.addEventListener('scroll', () => {
   document.querySelector('nav').style.background =
     window.scrollY > 80 ? 'rgba(250,250,250,0.97)' : 'rgba(250,250,250,0.92)';
 }, { passive: true });
 
+// ── Nav button magnetic effect (desktop only) ─────────────────────────────────
 if (!isMobile()) {
-  gsap.to('.hero-img-wrap img', {
-    yPercent:7, ease:'none',
-    scrollTrigger:{ trigger:'.hero-section', start:'top top', end:'bottom top', scrub:true }
-  });
   const navBtn = document.querySelector('.nav-btn');
   if (navBtn) {
     navBtn.addEventListener('mousemove', e => {
@@ -928,6 +917,7 @@ if (!isMobile()) {
   }
 }
 
+// ── Mobile touch feedback ─────────────────────────────────────────────────────
 document.querySelectorAll('.service-card,.testimonial-card').forEach(card => {
   card.addEventListener('touchstart', () => card.style.opacity='0.88', { passive: true });
   card.addEventListener('touchend', () => card.style.opacity='', { passive: true });
