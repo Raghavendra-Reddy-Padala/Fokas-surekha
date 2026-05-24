@@ -9,6 +9,7 @@ import FounderSection from './components/FounderSection'
 import DetailedServicesSection from './components/DetailedServicesSection'
 import AboutSection from './components/AboutSection'
 import NumbersSection from './components/NumbersSection'
+import EquipmentSection from './components/EquipmentSection'
 import EmpanelmentsSection from './components/EmpanelmentsSection'
 import GallerySection from './components/GallerySection'
 import TestimonialsSection from './components/TestimonialsSection'
@@ -77,6 +78,7 @@ export default function App() {
           onClosePanel={() => setActiveService(null)}
         />
         <NumbersSection />
+        <EquipmentSection />
         <EmpanelmentsSection />
         <GallerySection />
         <TestimonialsSection />
