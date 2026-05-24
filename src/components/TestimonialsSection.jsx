@@ -6,41 +6,55 @@ export default function TestimonialsSection() {
           <div className="section-label" style={{ justifyContent: 'center' }}>Patient Stories</div>
           <h2 className="section-title">Through Their Eyes</h2>
         </div>
-        <div className="testimonials-grid">
-          <div className="testimonial-card">
-            <div className="quote-mark">"</div>
-            <p>"I had my LASIK here and the experience was nothing short of miraculous. The attention to detail from the initial scans to the post-op care made me feel completely at ease."</p>
-            <div className="testimonial-author">
-              <div className="author-avatar"><img alt="Reviewer" src="https://i.pravatar.cc/100?img=1" /></div>
+
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="quote-mark">"</div>
+            <p>I had my PRK surgery — after 2 weeks I can see clearly. Dr Uma Shankar was friendly and very helpful. Clean
+              surroundings and a smooth process at Fokus.</p>
+            <div class="testimonial-author">
+              <div class="author-avatar"><img alt="Podduturi V Akash Reddy"
+                src="https://lh3.googleusercontent.com/a-/ALV-UjVkGnEVb7EU3-mrSou26_HCOrA188hSZ9wp0h2OEVm0epdnQN-sDg=s128-c0x00000000-cc-rp-mo-ba3" />
+              </div>
               <div>
-                <div className="author-name">Anjali Rao</div>
-                <div className="author-role">LASIK Patient</div>
+                <div class="author-name">Podduturi V Akash Reddy</div>
+                <div class="author-role">Google Review</div>
               </div>
             </div>
           </div>
-          <div className="testimonial-card">
-            <div className="quote-mark">"</div>
-            <p>"Dr. Uma Shankar operated on my mother's cataracts. He used the femto laser and premium multifocal lenses. She is reading without glasses for the first time in 20 years."</p>
-            <div className="testimonial-author">
-              <div className="author-avatar"><img alt="Reviewer" src="https://i.pravatar.cc/100?img=33" /></div>
+          <div class="testimonial-card">
+            <div class="quote-mark">"</div>
+            <p>I had a very good experience at Surekha Hospital, Kompally for cataract eye surgery. The cataract operation
+              in kompally was quick and painless.</p>
+            <div class="testimonial-author">
+              <div class="author-avatar"><img alt="Jeetu"
+                src="https://lh3.googleusercontent.com/a/ACg8ocIrgcRbvOMai0S5GDkLe1zbG6ANxdNXjD03PQ6dm7p4ESme13E=s128-c0x00000000-cc-rp-mo" />
+              </div>
               <div>
-                <div className="author-name">Suresh Reddy</div>
-                <div className="author-role">Cataract Patient Family</div>
+                <div class="author-name">Jeetu</div>
+                <div class="author-role">Google Review</div>
               </div>
             </div>
           </div>
-          <div className="testimonial-card">
-            <div className="quote-mark">"</div>
-            <p>"The diagnosis of diabetic retinopathy was scary, but the retina team at Fokus explained my treatment plan perfectly. My vision has stabilized completely under their care."</p>
-            <div className="testimonial-author">
-              <div className="author-avatar"><img alt="Reviewer" src="https://i.pravatar.cc/100?img=12" /></div>
+          <div class="testimonial-card">
+            <div class="quote-mark">"</div>
+            <p>My mother underwent cataract surgery and Dr. Uma Shankar was extremely friendly and professional
+              throughout. He made us feel safe and confident at every step. We are very happy with the overall care and
+              services provided.</p>
+            <div class="testimonial-author">
+              <div class="author-avatar"><img alt="Deepak Bandapati"
+                src="https://lh3.googleusercontent.com/a-/ALV-UjWfLIR0UiYdEOPIypdq0T0MWyAnU9OPOkiod8UIoxZAP4EJNZrV=s128-c0x00000000-cc-rp-mo" />
+              </div>
               <div>
-                <div className="author-name">Prakash Kumar</div>
-                <div className="author-role">Retina Patient</div>
+                <div class="author-name">Deepak Bandapati</div>
+                <div class="author-role">Google Review</div>
               </div>
             </div>
           </div>
-        </div>
+        </ div>
+
+
       </div>
     </section>
   )
