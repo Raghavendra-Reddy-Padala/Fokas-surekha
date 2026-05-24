@@ -1,7 +1,7 @@
 export default function MobileMenu({ isOpen, onClose }) {
   return (
     <div className={`mobile-menu${isOpen ? ' open' : ''}`} id="mobileMenu">
-      <a href="#services" onClick={onClose}>Expertise</a>
+      {/* <a href="#services" onClick={onClose}>Expertise</a> */}
       <a href="#detailed-services" onClick={onClose}>Services</a>
       <a href="#founder" onClick={onClose}>Our Story</a>
       <a href="#about" onClick={onClose}>Fokus</a>

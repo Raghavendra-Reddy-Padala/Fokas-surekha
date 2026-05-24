@@ -97,7 +97,7 @@ export default function Nav({ menuOpen, onToggleMenu, onServiceClick }) {
       <div className="nav-inner">
         <a className="nav-logo" href="#">Fokus.</a>
         <ul className="nav-links">
-          <li><a href="#services">Expertise</a></li>
+          {/* <li><a href="#services">Expertise</a></li> */}
           <li className={`nav-dropdown${forceClose ? ' force-close' : ''}`} ref={dropRef}>
             <a href="#detailed-services">
               Services <span className="dropdown-arrow">▾</span>

@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="footer-col">
             <h4>Quick Links</h4>
             <ul>
-              <li><a href="#services">Our Expertise</a></li>
+              {/* <li><a href="#services">Our Expertise</a></li> */}
               <li><a href="#detailed-services">Services</a></li>
               <li><a href="#founder">Our Story</a></li>
               <li><a href="https://surekhahospitals.in/appointment" target="_blank" rel="noopener">Book Appointment</a></li>

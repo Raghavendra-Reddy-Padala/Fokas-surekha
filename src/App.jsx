@@ -67,7 +67,7 @@ export default function App() {
       
       <main>
         <Hero />
-        <ServicesSection />
+        {/* <ServicesSection /> */}
         <FounderSection />
         <AboutSection />
         <DetailedServicesSection 

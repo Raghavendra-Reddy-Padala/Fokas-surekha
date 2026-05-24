@@ -23,12 +23,12 @@ export default function FounderSection() {
             </div>
             <div className="founder-divider" />
             <h3 className="founder-name">Dr. Uma Shankar</h3>
-            <div className="founder-role">MS, DNB, FPO, FMRF, FICO</div>
+            <div className="founder-role">Founder & Chief Ophthalmologist in Kompally</div>
             <p className="founder-bio">
-              With over 25 years of exceptional clinical experience, Dr. Uma Shankar is recognized as one of
-              the foremost ophthalmic surgeons in the region. After completing his fellowships at prestigious
-              institutions, he founded Fokus Eye Hospital in kompally with a singular mission: to bring
-              world-class, ethically-driven eye care to Hyderabad.
+              With over 25 years of surgical experience, Dr. Uma Shankar trained at Johns Hopkins and
+              completed his fellowship at Moorfields Eye Hospital, London. Together with his wife, Dr. Surekha, they
+              established Fokus Eye Hospital as a specialized wing of Surekha Multi Speciality Hospital to provide
+              advanced eye care in kompally
             </p>
             <div className="founder-stats">
               <div className="fstat">
