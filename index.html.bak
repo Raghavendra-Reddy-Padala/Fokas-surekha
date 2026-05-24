@@ -1,0 +1,2828 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Best Eye Hospital in Kompally, Hyderabad | Fokus Eye Hospital</title>
+  <meta name="description"
+    content="Visit Fokus Eye Hospital, the top eye hospital in Kompally. Expert cataract surgery, LASIK, and advanced eye care by Dr. Uma Shankar. Book now!" />
+  <meta name="keywords" content="best eye hospital in kompally, hyderabad" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,200,0,0"
+    rel="stylesheet" />
+
+  <style>
+    :root {
+      --primary: #2E8B57;
+      --primary-light: rgba(46, 139, 87, 0.1);
+      --text: #1A1A1A;
+      --muted: #6B7280;
+      --bg: #FAFAFA;
+      --white: #ffffff;
+      --border: rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    #cursor,
+    #cursor-ring {
+      position: fixed;
+      top: 0;
+      left: 0;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+    }
+
+    #cursor {
+      width: 12px;
+      height: 12px;
+      background: var(--primary);
+      mix-blend-mode: multiply;
+    }
+
+    #cursor-ring {
+      width: 44px;
+      height: 44px;
+      border: 1.5px solid var(--primary);
+      opacity: 0.5;
+    }
+
+    #progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2.5px;
+      background: var(--primary);
+      width: 0%;
+      z-index: 200;
+      box-shadow: 0 0 10px rgba(46, 139, 87, 0.5);
+    }
+
+    #particles-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.35;
+    }
+
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: #0a0a0a;
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    #loader-text {
+      font-family: 'Playfair Display', serif;
+      color: #fff;
+      font-size: clamp(2.2rem, 8vw, 4rem);
+      letter-spacing: 0.05em;
+    }
+
+    #loader-line {
+      width: 0;
+      height: 1.5px;
+      background: var(--primary);
+      max-width: 200px;
+    }
+
+    #loader-counter {
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      color: #555;
+    }
+
+    nav {
+      position: fixed;
+      width: 100%;
+      z-index: 100;
+      background: rgba(250, 250, 250, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 68px;
+    }
+
+    /* nav logo + links start hidden — revealed by introAnim() only */
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      opacity: 0;
+      position: relative;
+      z-index: 110;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      position: relative;
+      transition: color 0.3s;
+      opacity: 0;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--primary);
+      transition: width 0.35s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* ─── NAV DROPDOWN ───────────────────────────────────────────────────────── */
+    .nav-dropdown {
+      position: relative;
+    }
+
+    .nav-dropdown > a {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      cursor: pointer;
+    }
+
+    .nav-dropdown > a .dropdown-arrow {
+      font-size: 0.65rem;
+      transition: transform 0.3s ease;
+      display: inline-block;
+      margin-top: 1px;
+    }
+
+    .nav-dropdown:hover > a .dropdown-arrow {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 14px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-8px);
+      background: rgba(250,250,250,0.98);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1.5px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+      padding: 1.25rem;
+      min-width: 640px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      z-index: 200;
+    }
+
+    .nav-dropdown.open .dropdown-menu,
+    .nav-dropdown:hover .dropdown-menu {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .nav-dropdown.force-close .dropdown-menu {
+      opacity: 0 !important;
+      pointer-events: none !important;
+      transform: translateX(-50%) translateY(-8px) !important;
+    }
+
+    .dropdown-col {
+      background: var(--bg);
+      border-radius: 12px;
+      padding: 1rem;
+      border: 1.5px solid transparent;
+      transition: border-color 0.25s, background 0.25s;
+    }
+
+    .dropdown-col:hover {
+      border-color: rgba(46,139,87,0.25);
+      background: rgba(46,139,87,0.04);
+    }
+
+    .dropdown-col-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 0.65rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1.5px solid rgba(46,139,87,0.15);
+    }
+
+    .dropdown-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .dropdown-col ul li a {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-decoration: none;
+      display: block;
+      padding: 0.2rem 0;
+      transition: color 0.2s;
+      opacity: 1;
+    }
+
+    .dropdown-col ul li a::after {
+      display: none !important;
+    }
+
+    .dropdown-col ul li a:hover {
+      color: var(--primary);
+    }
+
+    /* dropdown bridge — so mouse can travel into menu without closing */
+    .dropdown-menu::before {
+      content: '';
+      position: absolute;
+      top: -14px;
+      left: 0;
+      right: 0;
+      height: 14px;
+    }
+
+    .nav-btn {
+      padding: 0.55rem 1.4rem !important;
+      background: var(--primary) !important;
+      color: #fff !important;
+      border-radius: 100px;
+      box-shadow: 0 4px 20px rgba(46, 139, 87, 0.25);
+      transition: all 0.3s !important;
+    }
+
+    .nav-btn::after {
+      display: none !important;
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 30px rgba(46, 139, 87, 0.35) !important;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      z-index: 110;
+      padding: 0;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.35s cubic-bezier(0.76, 0, 0.24, 1);
+      transform-origin: center;
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
+    }
+
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: rgba(250, 250, 250, 0.98);
+      backdrop-filter: blur(20px);
+      z-index: 99;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .mobile-menu.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .mobile-menu a {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 7vw, 2.8rem);
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: transform 0.4s ease, opacity 0.4s ease, color 0.3s;
+    }
+
+    .mobile-menu.open a {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .mobile-menu.open a:nth-child(1) {
+      transition-delay: 0.05s;
+    }
+
+    .mobile-menu.open a:nth-child(2) {
+      transition-delay: 0.1s;
+    }
+
+    .mobile-menu.open a:nth-child(3) {
+      transition-delay: 0.15s;
+    }
+
+    .mobile-menu.open a:nth-child(4) {
+      transition-delay: 0.2s;
+    }
+
+    .mobile-menu a:hover {
+      color: var(--primary);
+    }
+
+    .mobile-menu .mobile-cta {
+      margin-top: 1rem;
+      padding: 0.9rem 2.5rem;
+      background: var(--primary);
+      color: #fff !important;
+      border-radius: 100px;
+      font-family: 'Inter', sans-serif !important;
+      font-size: 0.9rem !important;
+      font-weight: 500 !important;
+      box-shadow: 0 8px 30px rgba(46, 139, 87, 0.3);
+    }
+
+    .mobile-menu-footer {
+      position: absolute;
+      bottom: 2.5rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--primary);
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 4vw, 2.8rem);
+      line-height: 1.2;
+      color: var(--text);
+    }
+
+    /* ─── HERO ─────────────────────────────────────────────────────────────────── */
+    .hero-section {
+      min-height: 100svh;
+      padding: 88px 1.25rem 3rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    /* hero elements start hidden — revealed ONLY by introAnim() */
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--primary);
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 5.5vw, 5rem);
+      line-height: 1.06;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+      overflow: hidden;
+    }
+
+    .hero-title .word {
+      display: inline-block;
+      transform: translateY(110%);
+      margin-right: 0.25em;
+    }
+
+    .hero-title em {
+      color: var(--primary);
+      font-style: italic;
+    }
+
+    .hero-sub {
+      font-size: clamp(0.9rem, 2vw, 1.05rem);
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.75;
+      margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.875rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    .hero-visual {
+      position: relative;
+      opacity: 0;
+      transform: translateX(30px);
+      /* revealed by introAnim */
+    }
+
+    .stat-card {
+      position: absolute;
+      background: #fff;
+      border-radius: 12px;
+      padding: 0.85rem 1.2rem;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      opacity: 0;
+      transform: translateY(16px) scale(0.92);
+      /* revealed by introAnim */
+    }
+
+    .stat-card-1 {
+      bottom: -20px;
+      left: -24px;
+    }
+
+    .stat-card-2 {
+      top: -16px;
+      right: -16px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.875rem 1.75rem;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 100px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-decoration: none;
+      box-shadow: 0 8px 28px rgba(46, 139, 87, 0.28);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateX(-110%) skewX(-12deg);
+      transition: transform 0.5s ease;
+    }
+
+    .btn-primary:hover::before {
+      transform: translateX(120%) skewX(-12deg);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 40px rgba(46, 139, 87, 0.35);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.875rem 1.75rem;
+      border: 1.5px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.3s;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .hero-img-wrap {
+      border-radius: 18px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      position: relative;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s;
+    }
+
+    .hero-img-wrap:hover img {
+      transform: scale(1.04);
+    }
+
+    .hero-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(46, 139, 87, 0.07) 0%, transparent 60%);
+    }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.65rem;
+      color: var(--muted);
+    }
+
+    .stat-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+    }
+
+    .mobile-stats {
+      display: none;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .mobile-stat {
+      flex: 1;
+      background: #fff;
+      border-radius: 14px;
+      padding: 1rem;
+      border: 1.5px solid var(--border);
+      text-align: center;
+    }
+
+    .mobile-stat .stat-num {
+      font-size: 1.4rem;
+    }
+
+    .mobile-stat .stat-label {
+      font-size: 0.65rem;
+    }
+
+    /* ─── SERVICES — always visible ───────────────────────────────────────────── */
+    .services-section {
+      padding: 5rem 1.25rem;
+      background: #fff;
+    }
+
+    .services-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      padding: 2rem;
+      border-radius: 18px;
+      border: 1.5px solid var(--border);
+      background: var(--bg);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--primary-light), transparent);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(46, 139, 87, 0.22);
+      box-shadow: 0 20px 50px rgba(46, 139, 87, 0.1);
+    }
+
+    .service-card:hover::before {
+      opacity: 1;
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      margin-bottom: 1.25rem;
+      transition: all 0.4s;
+    }
+
+    .service-card:hover .service-icon {
+      background: var(--primary);
+      color: #fff;
+      transform: scale(1.1) rotate(-5deg);
+    }
+
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.6rem;
+      color: var(--text);
+    }
+
+    .service-card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ─── FOUNDER — always visible ────────────────────────────────────────────── */
+    .founder-section {
+      padding: 5rem 1.25rem;
+      background: var(--bg);
+    }
+
+    .founder-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .founder-header {
+      margin-bottom: 3.5rem;
+      text-align: center;
+    }
+
+    .founder-card {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .founder-img-side {
+      position: relative;
+    }
+
+    .founder-img-wrap {
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.1);
+      aspect-ratio: 4/4;
+    }
+
+    .founder-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s;
+    }
+
+    .founder-img-wrap:hover img {
+      transform: scale(1.04);
+    }
+
+    .founder-badge {
+      position: absolute;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-radius: 100px;
+      padding: 0.45rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      white-space: nowrap;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      color: var(--text);
+    }
+
+    .founder-blob {
+      position: absolute;
+      top: 8%;
+      right: -30px;
+      width: 160px;
+      height: 160px;
+      background: radial-gradient(circle, rgba(46, 139, 87, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .founder-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1rem, 1.8vw, 1.3rem);
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.65;
+      margin-bottom: 1.75rem;
+      padding-left: 1.25rem;
+      border-left: 3px solid var(--primary);
+    }
+
+    .founder-divider {
+      width: 44px;
+      height: 2px;
+      background: var(--primary);
+      margin-bottom: 1.1rem;
+      box-shadow: 0 0 10px rgba(46, 139, 87, 0.3);
+    }
+
+    .founder-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+
+    .founder-role {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 1.1rem;
+    }
+
+    .founder-bio {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.8;
+      font-weight: 300;
+      margin-bottom: 2rem;
+    }
+
+    .founder-stats {
+      display: flex;
+      gap: 2rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .fstat {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .fstat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .fstat-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #9CA3AF;
+    }
+
+    /* ─── DETAILED SERVICES SECTION ──────────────────────────────────────────── */
+    .detailed-services-section {
+      padding: 5rem 1.25rem;
+      background: #fff;
+    }
+
+    .detailed-services-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .detailed-services-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .detailed-services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    /* Matches .service-card exactly */
+    .ds-card {
+      padding: 2rem;
+      border-radius: 18px;
+      border: 1.5px solid var(--border);
+      background: var(--bg);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+    }
+
+    .ds-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--primary-light), transparent);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .ds-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(46, 139, 87, 0.22);
+      box-shadow: 0 20px 50px rgba(46, 139, 87, 0.1);
+    }
+
+    .ds-card:hover::before {
+      opacity: 1;
+    }
+
+    /* Icon — matches .service-icon */
+    .ds-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      margin-bottom: 1.25rem;
+      transition: all 0.4s;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ds-card:hover .ds-card-icon {
+      background: var(--primary);
+      color: #fff;
+      transform: scale(1.1) rotate(-5deg);
+    }
+
+    .ds-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.35rem;
+      color: var(--text);
+      position: relative;
+      z-index: 1;
+    }
+
+    .ds-card-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.6;
+      font-weight: 300;
+      margin-bottom: 1.2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ds-divider {
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ds-service-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0;
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 300;
+      transition: color 0.2s;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ds-service-item::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--primary);
+      flex-shrink: 0;
+      opacity: 0.5;
+      transition: opacity 0.2s;
+    }
+
+    .ds-service-item:hover {
+      color: var(--primary);
+    }
+
+    .ds-service-item:hover::before {
+      opacity: 1;
+    }
+
+    /* ─── TREATMENT DETAIL PANEL ───────────────────────────────────────────── */
+    .detailed-services-grid {
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    .detail-mode .detailed-services-grid {
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .detail-panel {
+      display: none;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .detail-mode .detail-panel {
+      display: block;
+    }
+
+    .detail-panel.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .detail-panel-inner {
+      padding: 2.5rem;
+      border-radius: 22px;
+      border: 1.5px solid var(--border);
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .detail-panel-inner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--primary-light), transparent 60%);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .detail-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.25s;
+      z-index: 2;
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .detail-close:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: rotate(90deg);
+    }
+
+    .detail-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      margin-bottom: 1.75rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .detail-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    .detail-badge {
+      font-size: 0.65rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .detail-badge::before {
+      content: '';
+      display: block;
+      width: 16px;
+      height: 1.5px;
+      background: var(--primary);
+    }
+
+    .detail-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 0;
+    }
+
+    .detail-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .detail-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.85;
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+
+    .detail-steps-title {
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .detail-step {
+      display: flex;
+      gap: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .detail-step-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 0.7rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .detail-step h5 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+      color: var(--text);
+    }
+
+    .detail-step p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    .detail-benefits {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 1.25rem;
+    }
+
+    .detail-benefit {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    .detail-benefit::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+      flex-shrink: 0;
+    }
+
+    .detail-cta {
+      margin-top: 1.75rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .detail-cta-text {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    @media (max-width: 768px) {
+      .detail-body {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+      .detail-panel-inner {
+        padding: 1.5rem;
+      }
+      .detail-title {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .detailed-services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .detailed-services-grid {
+        grid-template-columns: 1fr;
+      }
+      .dropdown-menu {
+        display: none;
+      }
+    }
+
+    /* ─── ABOUT — always visible ──────────────────────────────────────────────── */
+    .about-section {
+      padding: 5rem 1.25rem;
+      background: #fff;
+    }
+
+    .about-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-img-wrap {
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08);
+    }
+
+    .about-img-wrap img {
+      width: 100%;
+      display: block;
+      filter: grayscale(0.35);
+      transition: filter 0.7s, transform 0.7s;
+    }
+
+    .about-img-wrap:hover img {
+      filter: grayscale(0);
+      transform: scale(1.03);
+    }
+
+    .feature-row {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.75rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .feature-row:first-of-type {
+      border-top: none;
+      margin-top: 1.75rem;
+      padding-top: 0;
+    }
+
+    .feature-icon {
+      color: var(--primary);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .feature-row h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .feature-row p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ─── NUMBERS ─────────────────────────────────────────────────────────────── */
+    .numbers-section {
+      padding: 4rem 1.25rem;
+      background: #1A1A1A;
+    }
+
+    .numbers-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    .num-value {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4.5vw, 3.5rem);
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .num-value span {
+      color: var(--primary);
+    }
+
+    .num-label {
+      font-size: 0.72rem;
+      color: #6B7280;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ─── GALLERY — always visible ────────────────────────────────────────────── */
+    .gallery-section {
+      padding: 5rem 1.25rem;
+      background: #fff;
+    }
+
+    .gallery-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .gallery-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 240px);
+      gap: 12px;
+    }
+
+    .gallery-item {
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .gallery-item:first-child {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .gallery-item:last-child {
+      grid-column: span 2;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.07);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(46, 139, 87, 0);
+      transition: background 0.4s;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      background: rgba(46, 139, 87, 0.14);
+    }
+
+    /* ─── TESTIMONIALS — always visible ──────────────────────────────────────── */
+    .testimonials-section {
+      padding: 5rem 1.25rem;
+      background: var(--bg);
+    }
+
+    .testimonials-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .testimonial-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 2rem;
+      border: 1.5px solid var(--border);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.07);
+    }
+
+    .quote-mark {
+      color: var(--primary);
+      font-size: 2.2rem;
+      font-family: serif;
+      line-height: 1;
+      margin-bottom: 0.75rem;
+      opacity: 0.5;
+    }
+
+    .testimonial-card p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.8;
+      font-style: italic;
+      margin-bottom: 1.25rem;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .author-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .author-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .author-name {
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .author-role {
+      font-size: 0.7rem;
+      color: #9CA3AF;
+    }
+
+    /* ─── FOOTER ──────────────────────────────────────────────────────────────── */
+    footer {
+      background: #0f0f0f;
+      padding: 4rem 1.25rem 1.75rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-desc {
+      font-size: 0.8rem;
+      color: #555;
+      line-height: 1.7;
+      max-width: 240px;
+    }
+
+    .footer-col h4 {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 0.65rem;
+    }
+
+    .footer-col a {
+      font-size: 0.8rem;
+      color: #555;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-col a:hover {
+      color: var(--primary);
+    }
+
+    .footer-col p {
+      font-size: 0.8rem;
+      color: #555;
+      line-height: 2;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 1.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-bottom p {
+      font-size: 0.72rem;
+      color: #555;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .social-link {
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #555;
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+
+    .social-link:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .social-link svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* ─── RESPONSIVE ──────────────────────────────────────────────────────────── */
+    @media (max-width:1024px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .numbers-inner {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        gap: 10px;
+      }
+
+      .gallery-item:first-child {
+        grid-column: span 2;
+        height: 280px;
+      }
+
+      .gallery-item:last-child {
+        grid-column: span 1;
+      }
+
+      .gallery-item {
+        height: 200px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      .founder-card {
+        gap: 2.5rem;
+      }
+    }
+
+    @media (max-width:768px) {
+
+      #cursor,
+      #cursor-ring {
+        display: none;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-inner {
+        height: 62px;
+      }
+
+      .hero-section {
+        grid-template-columns: 1fr;
+        padding-top: 80px;
+        padding-bottom: 2.5rem;
+        gap: 2rem;
+        min-height: auto;
+      }
+
+      .hero-visual {
+        order: -1;
+        transform: none !important;
+      }
+
+      /* override GSAP startX on mobile */
+      .stat-card {
+        display: none;
+      }
+
+      .mobile-stats {
+        display: flex;
+      }
+
+      .hero-title {
+        font-size: clamp(2.2rem, 9vw, 3rem);
+      }
+
+      .hero-sub {
+        font-size: 0.9rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn-primary,
+      .btn-ghost {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .services-section {
+        padding: 3.5rem 1.25rem;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .service-card {
+        padding: 1.5rem;
+      }
+
+      .founder-section {
+        padding: 3.5rem 1.25rem;
+      }
+
+      .founder-card {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .founder-img-wrap {
+        aspect-ratio: 4/3;
+        max-height: 320px;
+      }
+
+      .founder-blob {
+        display: none;
+      }
+
+      .founder-stats {
+        gap: 1.25rem;
+        flex-wrap: wrap;
+      }
+
+      .fstat-num {
+        font-size: 1.4rem;
+      }
+
+      .founder-quote {
+        font-size: 1rem;
+      }
+
+      .about-section {
+        padding: 3.5rem 1.25rem;
+      }
+
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .numbers-section {
+        padding: 3rem 1.25rem;
+      }
+
+      .numbers-inner {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+
+      .num-value {
+        font-size: 2.2rem;
+      }
+
+      .gallery-section {
+        padding: 3.5rem 1.25rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        gap: 8px;
+      }
+
+      .gallery-item {
+        height: 140px;
+      }
+
+      .gallery-item:first-child {
+        grid-column: span 2;
+        height: 200px;
+      }
+
+      .gallery-item:last-child {
+        grid-column: span 2;
+      }
+
+      .testimonials-section {
+        padding: 3.5rem 1.25rem;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .footer-desc {
+        max-width: 100%;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width:380px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .numbers-inner {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .founder-stats {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+  <div id="progress"></div>
+  <canvas id="particles-canvas"></canvas>
+
+  <div id="loader">
+    <div id="loader-text">Fokus.</div>
+    <div id="loader-line"></div>
+    <div id="loader-counter">000</div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" class="mobile-nav-link">Expertise</a>
+    <a href="#detailed-services" class="mobile-nav-link">Services</a>
+    <a href="#founder" class="mobile-nav-link">Our Story</a>
+    <a href="#about" class="mobile-nav-link">Fokus</a>
+    <a href="#testimonials" class="mobile-nav-link">Stories</a>
+    <a href="https://surekhahospitals.in/appointment" class="mobile-nav-link mobile-cta" target="_blank"
+      rel="noopener">Book Appointment</a>
+    <div class="mobile-menu-footer">FOKUS EYE HOSPITAL · KOMPALLY, HYDERABAD</div>
+  </div>
+
+  <nav id="mainNav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="#">Fokus.</a>
+      <ul class="nav-links">
+        <li><a href="#services">Expertise</a></li>
+        <li class="nav-dropdown">
+          <a href="#detailed-services">Services <span class="dropdown-arrow">▾</span></a>
+          <div class="dropdown-menu">
+            <div class="dropdown-col">
+              <div class="dropdown-col-title" data-section="detailed-services" style="cursor:pointer;">Cataract</div>
+              <ul>
+                <li><a href="#detailed-services" data-service="phaco">Phaco</a></li>
+                <li><a href="#detailed-services" data-service="mics">MICS</a></li>
+                <li><a href="#detailed-services" data-service="femto-cataract">Femto Cataract</a></li>
+                <li><a href="#detailed-services" data-service="premium-lenses">Premium Lenses</a></li>
+                <li><a href="#detailed-services" data-service="multifocal-iols">Multifocal IOLs</a></li>
+                <li><a href="#detailed-services" data-service="toric-iols">Toric IOLs</a></li>
+              </ul>
+            </div>
+            <div class="dropdown-col">
+              <div class="dropdown-col-title" data-section="detailed-services" style="cursor:pointer;">Refractive</div>
+              <ul>
+                <li><a href="#detailed-services" data-service="lasik">LASIK</a></li>
+                <li><a href="#detailed-services" data-service="smile">SMILE</a></li>
+                <li><a href="#detailed-services" data-service="contoura-vision">Contoura Vision</a></li>
+                <li><a href="#detailed-services" data-service="icl">ICL</a></li>
+              </ul>
+            </div>
+            <div class="dropdown-col">
+              <div class="dropdown-col-title" data-section="detailed-services" style="cursor:pointer;">Retina</div>
+              <ul>
+                <li><a href="#detailed-services" data-service="diabetic-retinopathy">Diabetic Retinopathy</a></li>
+                <li><a href="#detailed-services" data-service="retinal-detachment">Retinal Detachment</a></li>
+                <li><a href="#detailed-services" data-service="intravitreal-injections">Intravitreal Injections</a></li>
+                <li><a href="#detailed-services" data-service="oct">OCT</a></li>
+                <li><a href="#detailed-services" data-service="ffa">FFA</a></li>
+              </ul>
+            </div>
+            <div class="dropdown-col">
+              <div class="dropdown-col-title" data-section="detailed-services" style="cursor:pointer;">Cornea</div>
+              <ul>
+                <li><a href="#detailed-services" data-service="keratoconus">Keratoconus</a></li>
+                <li><a href="#detailed-services" data-service="cross-linking">Cross-linking</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li><a href="#founder">Our Story</a></li>
+        <li><a href="#about">Fokus</a></li>
+        <li><a href="#testimonials">Stories</a></li>
+        <li><a class="nav-btn" href="https://surekhahospitals.in/appointment" target="_blank" rel="noopener">Book
+            Appointment</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section>
+    <div class="hero-section">
+      <div class="hero-copy">
+        <div class="hero-eyebrow">FOKUS EYE HOSPITAL · KOMPALLY, HYDERABAD</div>
+        <h1 class="hero-title" style="font-size: clamp(2.2rem, 4.5vw, 4rem);">
+          Best Eye Hospital in Kompally, Hyderabad | <br>
+          <span class="word" style="font-size: 0.8em;"><em>Fokus Eye Hospital</em></span>
+        </h1>
+        <p class="hero-sub">Premier Ophthalmology: Precision Vision Redefined. Experience the future of advanced eye
+          care in Kompally with state-of-the-art diagnostic technology and world-class care designed for your clarity.
+          As the top eye hospital in Kompally, we bring global standards to your neighborhood.</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="https://surekhahospitals.in/appointment" target="_blank" rel="noopener">Schedule
+            Consultation →</a>
+          <a class="btn-ghost" href="#services">Explore Treatments</a>
+        </div>
+        <div class="mobile-stats">
+          <div class="mobile-stat">
+            <div class="stat-num">98%</div>
+            <div class="stat-label">Success Rate</div>
+          </div>
+          <div class="mobile-stat">
+            <div class="stat-num">4.9★</div>
+            <div class="stat-label">Patient Rating</div>
+          </div>
+          <div class="mobile-stat">
+            <div class="stat-num">25yr</div>
+            <div class="stat-label">Experience</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-img-wrap">
+          <img alt="Fokus Eye Hospital" src="/fokus.jpg" />
+          <div class="hero-img-overlay"></div>
+        </div>
+        <div class="stat-card stat-card-1">
+          <div class="stat-icon"><span class="material-symbols-outlined" style="font-size:16px">visibility</span></div>
+          <div>
+            <div class="stat-num">98%</div>
+            <div class="stat-label">Success Rate</div>
+          </div>
+        </div>
+        <div class="stat-card stat-card-2">
+          <div class="stat-icon"><span class="material-symbols-outlined" style="font-size:16px">star</span></div>
+          <div>
+            <div class="stat-num">4.9<span style="color:var(--primary)">★</span></div>
+            <div class="stat-label">Patient Rating</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services-section" id="services">
+    <div class="services-inner">
+      <div class="services-header">
+        <div class="section-label" style="justify-content:center">Our Expertise</div>
+        <h2 class="section-title">Advanced Eye Care Solutions</h2>
+        <p style="text-align:center; color:var(--muted); font-size:0.9rem; margin-top:1rem;">As a leading ophthalmology
+          hospital in kompally, hyderabad, we provide specialized treatments for every vision need.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><span class="material-symbols-outlined">visibility</span></div>
+          <h3>Laser Vision Correction (LASIK)</h3>
+          <p>State-of-the-art lasik surgery in kompally and PRK procedures customized to your unique corneal topography
+            for impeccable results at our eye clinic in kompally.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><span class="material-symbols-outlined">health_and_safety</span></div>
+          <h3>Cataract Surgery in Kompally</h3>
+          <p>Premium lens implants and minimally invasive techniques to restore clarity and vibrance to your vision at
+            the best eye hospital in kompally.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><span class="material-symbols-outlined">ophthalmology</span></div>
+          <h3>Comprehensive Eye Exams</h3>
+          <p>Deep diagnostic scans utilizing OCT technology to detect and manage conditions before they impact your
+            sight, led by the best eye specialist in kompally, hyderabad.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="founder-section" id="founder">
+    <div class="founder-inner">
+      <div class="founder-header">
+        <div class="section-label" style="justify-content:center">Our Story</div>
+        <h2 class="section-title">Built on a Belief That Everyone Deserves Perfect Sight</h2>
+      </div>
+      <div class="founder-card">
+        <div class="founder-img-side">
+          <div class="founder-img-wrap">
+            <img src="/doc.jpg" alt="Dr. UmaShankar, Founder" />
+            <div class="founder-badge">
+              <span class="material-symbols-outlined" style="font-size:15px;color:var(--primary)">verified</span>
+              Board Certified
+            </div>
+          </div>
+          <div class="founder-blob"></div>
+        </div>
+        <div class="founder-content">
+          <p class="founder-quote">"I founded Fokus because I saw a gap — not in technology, but in trust. Patients
+            deserved more than correct prescriptions; they deserve a correct treatment."</p>
+          <div class="founder-divider"></div>
+          <h3 class="founder-name">Dr. Uma Shankar</h3>
+          <p class="founder-role">Founder & Chief Ophthalmologist in Kompally</p>
+          <h4
+            style="font-size: 0.9rem; color: var(--primary); margin-bottom: 0.5rem; font-family:'Inter',sans-serif; font-weight: 500;">
+            A Unit of Surekha Multi Speciality Hospital</h4>
+          <p class="founder-bio">With over 25 years of surgical experience, Dr. Uma Shankar trained at Johns Hopkins and
+            completed his fellowship at Moorfields Eye Hospital, London. Together with his wife, Dr. Surekha, they
+            established Fokus Eye Hospital as a specialized wing of Surekha Multi Speciality Hospital to provide
+            advanced eye care in kompally.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section" id="about">
+    <div class="about-inner">
+      <div class="about-img-wrap">
+        <img alt="Modern ophthalmology equipment" src="/whychosse.jpg" />
+      </div>
+      <div class="about-content">
+        <div class="section-label">Why Fokus</div>
+        <h2 class="section-title">Clinical Excellence Meets<br>Human Compassion</h2>
+        <div class="feature-row" style="border-top:none;margin-top:1.75rem;padding-top:0">
+          <div class="feature-icon"><span class="material-symbols-outlined" style="font-size:26px">biotech</span></div>
+          <div>
+            <h4>Cutting-Edge Technology</h4>
+            <p>We invest in the latest diagnostic and surgical equipment at our vision care hospital kompally to ensure
+              the highest precision.</p>
+          </div>
+        </div>
+        <div class="feature-row">
+          <div class="feature-icon"><span class="material-symbols-outlined" style="font-size:26px">verified_user</span>
+          </div>
+          <div>
+            <h4>Board-Certified Specialists</h4>
+            <p>Our team consists of globally recognized eye doctors in kompally dedicated to continuous research.</p>
+          </div>
+        </div>
+        <div class="feature-row">
+          <div class="feature-icon"><span class="material-symbols-outlined" style="font-size:26px">spa</span></div>
+          <div>
+            <h4>Patient-Centric Environment</h4>
+            <p>From our serene waiting areas to our post-op care, your comfort at our eye hospital near kompally,
+              hyderabad is paramount.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DETAILED SERVICES SECTION (below About Us) ───────────────────────── -->
+  <section class="detailed-services-section" id="detailed-services">
+    <div class="detailed-services-inner">
+      <div class="detailed-services-header">
+        <div class="section-label" style="justify-content:center">Our Treatments</div>
+        <h2 class="section-title">Comprehensive Eye Care Services</h2>
+        <p style="text-align:center; color:var(--muted); font-size:0.9rem; margin-top:1rem; max-width:560px; margin-left:auto; margin-right:auto;">Advanced procedures across every subspecialty of ophthalmology, delivered with precision and compassion.</p>
+      </div>
+      <div class="detailed-services-grid">
+
+        <!-- Cataract -->
+        <div class="ds-card">
+          <div class="ds-card-icon"><span class="material-symbols-outlined">health_and_safety</span></div>
+          <h3 class="ds-card-title">Cataract</h3>
+          <p class="ds-card-desc">Advanced micro-incision and laser-assisted cataract procedures with premium lens implants.</p>
+          <div class="ds-divider"></div>
+          <div class="ds-service-item" data-service="phaco" style="cursor:pointer;">Phaco</div>
+          <div class="ds-service-item" data-service="mics" style="cursor:pointer;">MICS</div>
+          <div class="ds-service-item" data-service="femto-cataract" style="cursor:pointer;">Femto Cataract</div>
+          <div class="ds-service-item" data-service="premium-lenses" style="cursor:pointer;">Premium Lenses</div>
+          <div class="ds-service-item" data-service="multifocal-iols" style="cursor:pointer;">Multifocal IOLs</div>
+          <div class="ds-service-item" data-service="toric-iols" style="cursor:pointer;">Toric IOLs</div>
+        </div>
+
+        <!-- Refractive -->
+        <div class="ds-card">
+          <div class="ds-card-icon"><span class="material-symbols-outlined">visibility</span></div>
+          <h3 class="ds-card-title">Refractive</h3>
+          <p class="ds-card-desc">Spectacle-free vision with the latest blade-free and implantable lens techniques.</p>
+          <div class="ds-divider"></div>
+          <div class="ds-service-item" data-service="lasik" style="cursor:pointer;">LASIK</div>
+          <div class="ds-service-item" data-service="smile" style="cursor:pointer;">SMILE</div>
+          <div class="ds-service-item" data-service="contoura-vision" style="cursor:pointer;">Contoura Vision</div>
+          <div class="ds-service-item" data-service="icl" style="cursor:pointer;">ICL</div>
+        </div>
+
+        <!-- Retina -->
+        <div class="ds-card">
+          <div class="ds-card-icon"><span class="material-symbols-outlined">ophthalmology</span></div>
+          <h3 class="ds-card-title">Retina</h3>
+          <p class="ds-card-desc">Diagnosis and treatment of complex retinal diseases using OCT, FFA and intravitreal therapy.</p>
+          <div class="ds-divider"></div>
+          <div class="ds-service-item" data-service="diabetic-retinopathy" style="cursor:pointer;">Diabetic Retinopathy</div>
+          <div class="ds-service-item" data-service="retinal-detachment" style="cursor:pointer;">Retinal Detachment</div>
+          <div class="ds-service-item" data-service="intravitreal-injections" style="cursor:pointer;">Intravitreal Injections</div>
+          <div class="ds-service-item" data-service="oct" style="cursor:pointer;">OCT</div>
+          <div class="ds-service-item" data-service="ffa" style="cursor:pointer;">FFA</div>
+        </div>
+
+        <!-- Cornea -->
+        <div class="ds-card">
+          <div class="ds-card-icon"><span class="material-symbols-outlined">blur_circular</span></div>
+          <h3 class="ds-card-title">Cornea</h3>
+          <p class="ds-card-desc">Specialised corneal care for keratoconus and corneal weakening with proven cross-linking therapy.</p>
+          <div class="ds-divider"></div>
+          <div class="ds-service-item" data-service="keratoconus" style="cursor:pointer;">Keratoconus</div>
+          <div class="ds-service-item" data-service="cross-linking" style="cursor:pointer;">Cross-linking</div>
+        </div>
+
+      </div>
+
+      <!-- Treatment Detail Panel -->
+      <div class="detail-panel" id="treatmentPanel">
+        <div class="detail-panel-inner">
+          <button class="detail-close" id="detailClose" aria-label="Close">&#x2715;</button>
+          <div class="detail-top">
+            <div class="detail-icon" id="detailIcon">
+              <span class="material-symbols-outlined" id="detailIconName">health_and_safety</span>
+            </div>
+            <div>
+              <div class="detail-badge" id="detailBadge">Cataract</div>
+              <h2 class="detail-title" id="detailTitle">Phacoemulsification</h2>
+            </div>
+          </div>
+          <div class="detail-body">
+            <div>
+              <p class="detail-desc" id="detailDesc"></p>
+              <div class="detail-steps-title">HOW WE TREAT IT</div>
+              <div id="detailSteps"></div>
+            </div>
+            <div>
+              <div class="detail-steps-title">KEY BENEFITS</div>
+              <div class="detail-benefits" id="detailBenefits"></div>
+            </div>
+          </div>
+          <div class="detail-cta">
+            <span class="detail-cta-text">Ready to take the next step towards clearer vision?</span>
+            <a class="btn-primary" href="https://surekhahospitals.in/appointment" target="_blank" rel="noopener" style="font-size:0.82rem;padding:0.65rem 1.4rem;">Book Consultation →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="numbers-section">
+    <div class="numbers-inner">
+      <div class="num-item">
+        <div class="num-value" data-target="12000">0<span>+</span></div>
+        <div class="num-label">Procedures</div>
+      </div>
+      <div class="num-item">
+        <div class="num-value" data-target="98">0<span>%</span></div>
+        <div class="num-label">Success Rate</div>
+      </div>
+      <div class="num-item">
+        <div class="num-value" data-target="25">0<span>+</span></div>
+        <div class="num-label">Years</div>
+      </div>
+      <div class="num-item">
+        <div class="num-value" data-target="4">0<span>.9★</span></div>
+        <div class="num-label">Patient Rating</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery-section">
+    <div class="gallery-inner">
+      <div class="gallery-header">
+        <h2 class="section-title">The Facility</h2>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item"><img alt="Corridor" src="/gal1.jpg" />
+          <div class="gallery-overlay"></div>
+        </div>
+        <div class="gallery-item"><img alt="Tools" src="/gal2.jpg" />
+          <div class="gallery-overlay"></div>
+        </div>
+        <div class="gallery-item"><img alt="Consultation" src="/gal3.jpg" />
+          <div class="gallery-overlay"></div>
+        </div>
+        <div class="gallery-item"><img alt="Waiting area" src="/gal4.jpg" />
+          <div class="gallery-overlay"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials-section" id="testimonials">
+    <div class="testimonials-inner">
+      <div class="testimonials-header">
+        <div class="section-label" style="justify-content:center">Patient Stories</div>
+        <h2 class="section-title">Transforming Lives Through Vision</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="quote-mark">"</div>
+          <p>I had my PRK surgery — after 2 weeks I can see clearly. Dr Uma Shankar was friendly and very helpful. Clean
+            surroundings and a smooth process at Fokus.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar"><img alt="Podduturi V Akash Reddy"
+                src="https://lh3.googleusercontent.com/a-/ALV-UjVkGnEVb7EU3-mrSou26_HCOrA188hSZ9wp0h2OEVm0epdnQN-sDg=s128-c0x00000000-cc-rp-mo-ba3" />
+            </div>
+            <div>
+              <div class="author-name">Podduturi V Akash Reddy</div>
+              <div class="author-role">Google Review</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote-mark">"</div>
+          <p>I had a very good experience at Surekha Hospital, Kompally for cataract eye surgery. The cataract operation
+            in kompally was quick and painless.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar"><img alt="Jeetu"
+                src="https://lh3.googleusercontent.com/a/ACg8ocIrgcRbvOMai0S5GDkLe1zbG6ANxdNXjD03PQ6dm7p4ESme13E=s128-c0x00000000-cc-rp-mo" />
+            </div>
+            <div>
+              <div class="author-name">Jeetu</div>
+              <div class="author-role">Google Review</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote-mark">"</div>
+          <p>My mother underwent cataract surgery and Dr. Uma Shankar was extremely friendly and professional
+            throughout. He made us feel safe and confident at every step. We are very happy with the overall care and
+            services provided.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar"><img alt="Deepak Bandapati"
+                src="https://lh3.googleusercontent.com/a-/ALV-UjWfLIR0UiYdEOPIypdq0T0MWyAnU9OPOkiod8UIoxZAP4EJNZrV=s128-c0x00000000-cc-rp-mo" />
+            </div>
+            <div>
+              <div class="author-name">Deepak Bandapati</div>
+              <div class="author-role">Google Review</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">Fokus.</div>
+          <p class="footer-desc">Premium eye care services combining advanced technology with compassionate treatment at
+            our eye clinic in kompally.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#">LASIK</a></li>
+            <li><a href="#">Cataracts</a></li>
+            <li><a href="#">Glaucoma</a></li>
+            <li><a href="#">Diagnostics</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Our Doctors</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="https://surekhahospitals.in/appointment" target="_blank" rel="noopener">Book Appointment</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <p>Plot No. 4, Medchal Road,<br>Beside Big Bazaar, Kompally,<br>Hyderabad, Telangana 500014<br><br>+91 92470
+            00564<br><a href="mailto:surekhahospital2801@gmail.com
+">surekhahospital2801@gmail.com
+            </a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Fokus Eye Hospital | A Unit of Surekha Multi Speciality Hospital. All rights reserved.</p>
+        <div class="footer-social">
+          <a class="social-link" href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path clip-rule="evenodd"
+                d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 018.84 2.525c.636-.247 1.363-.416 2.427-.465C12.197 2.013 12.552 2 12.315 2z"
+                fill-rule="evenodd" />
+            </svg>
+          </a>
+          <a class="social-link" href="#" aria-label="Twitter">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+    const isMobile = () => window.innerWidth <= 768;
+
+    // ── Progress bar ──────────────────────────────────────────────────────────────
+    window.addEventListener('scroll', () => {
+      const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+      document.getElementById('progress').style.width = pct + '%';
+    }, { passive: true });
+
+    // ── Particles ─────────────────────────────────────────────────────────────────
+    const canvas = document.getElementById('particles-canvas');
+    const ctx = canvas.getContext('2d');
+    function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas, { passive: true });
+    class Particle {
+      constructor() { this.reset(); }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 1.2 + 0.2;
+        this.speedY = -(Math.random() * 0.35 + 0.08);
+        this.speedX = (Math.random() - 0.5) * 0.12;
+        this.opacity = Math.random() * 0.35 + 0.05;
+        this.life = 0; this.maxLife = Math.random() * 200 + 100;
+      }
+      update() { this.x += this.speedX; this.y += this.speedY; this.life++; if (this.life > this.maxLife || this.y < 0) this.reset(); }
+      draw() { ctx.save(); ctx.globalAlpha = this.opacity * (1 - this.life / this.maxLife); ctx.fillStyle = '#2E8B57'; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); ctx.restore(); }
+    }
+    const particles = Array.from({ length: isMobile() ? 40 : 80 }, () => new Particle());
+    (function animateP() { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animateP); })();
+
+    // ── Mobile menu ───────────────────────────────────────────────────────────────
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let menuOpen = false;
+    hamburger.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      hamburger.classList.toggle('open', menuOpen);
+      mobileMenu.classList.toggle('open', menuOpen);
+      document.body.style.overflow = menuOpen ? 'hidden' : '';
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuOpen = false;
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // ── Loader ────────────────────────────────────────────────────────────────────
+    const loaderEl = document.getElementById('loader');
+    const loaderLine = document.getElementById('loader-line');
+    const loaderCounter = document.getElementById('loader-counter');
+    let count = 0;
+    const interval = setInterval(() => {
+      count += Math.floor(Math.random() * 12) + 3;
+      if (count >= 100) { count = 100; clearInterval(interval); }
+      loaderCounter.textContent = String(count).padStart(3, '0');
+      loaderLine.style.width = (count * 2) + 'px';
+    }, 40);
+    gsap.fromTo('#loader-text', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' });
+    setTimeout(() => {
+      gsap.to(loaderEl, {
+        yPercent: -100, duration: 1.1, ease: 'power4.inOut',
+        onComplete: () => { loaderEl.style.display = 'none'; introAnim(); }
+      });
+    }, 2400);
+
+    // ── Intro animation — hero section ONLY ──────────────────────────────────────
+    function introAnim() {
+      const tl = gsap.timeline();
+      tl.to('.nav-logo', { opacity: 1, duration: 0.7, ease: 'power3.out' }, 0);
+      if (!isMobile()) {
+        tl.to('.nav-links a', { opacity: 1, stagger: 0.08, duration: 0.6, ease: 'power3.out' }, 0.15);
+      }
+      tl.to('.hero-eyebrow', { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, 0.3);
+      tl.to('.hero-title .word', { y: '0%', stagger: 0.12, duration: 0.8, ease: 'power4.out' }, 0.5);
+      tl.to('.hero-sub', { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, 0.9);
+      tl.to('.hero-actions', { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, 1.05);
+      tl.to('.hero-visual', { opacity: 1, x: 0, duration: 1, ease: 'power3.out' }, 0.4);
+      if (!isMobile()) {
+        tl.to('.stat-card', { opacity: 1, y: 0, scale: 1, stagger: 0.2, duration: 0.8, ease: 'back.out(1.7)' }, 1.0);
+      }
+    }
+
+    // ── Counter — fires once on scroll into view ──────────────────────────────────
+    let counterDone = false;
+    ScrollTrigger.create({
+      trigger: '.numbers-section', start: 'top 78%',
+      onEnter: () => {
+        if (counterDone) return;
+        counterDone = true;
+        document.querySelectorAll('.num-value').forEach(el => {
+          const target = parseInt(el.dataset.target);
+          if (!target) return;
+          const suffix = el.innerHTML.replace(/[0-9]/g, '');
+          let current = 0;
+          const step = target / 60;
+          const t = setInterval(() => {
+            current = Math.min(current + step, target);
+            el.innerHTML = Math.floor(current) + suffix;
+            if (current >= target) clearInterval(t);
+          }, 25);
+        });
+      }
+    });
+
+    // ── Nav background on scroll ──────────────────────────────────────────────────
+    window.addEventListener('scroll', () => {
+      document.querySelector('nav').style.background =
+        window.scrollY > 80 ? 'rgba(250,250,250,0.97)' : 'rgba(250,250,250,0.92)';
+    }, { passive: true });
+
+    // ── Nav button magnetic effect (desktop only) ─────────────────────────────────
+    if (!isMobile()) {
+      const navBtn = document.querySelector('.nav-btn');
+      if (navBtn) {
+        navBtn.addEventListener('mousemove', e => {
+          const r = navBtn.getBoundingClientRect();
+          gsap.to(navBtn, { x: (e.clientX - r.left - r.width / 2) * 0.3, y: (e.clientY - r.top - r.height / 2) * 0.3, duration: 0.4, ease: 'power2.out' });
+        });
+        navBtn.addEventListener('mouseleave', () => gsap.to(navBtn, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1,0.5)' }));
+      }
+    }
+
+    // ── Mobile touch feedback ─────────────────────────────────────────────────────
+    document.querySelectorAll('.service-card,.testimonial-card').forEach(card => {
+      card.addEventListener('touchstart', () => card.classList.add('touched'));
+      card.addEventListener('touchend', () => card.classList.remove('touched'));
+    });
+
+    // ── Dropdown: nav dropdown setup ─────────────────────────────────────────────
+    const navDropdown = document.querySelector('.nav-dropdown');
+    function closeNavDropdown() {
+      if (!navDropdown) return;
+      navDropdown.classList.add('force-close');
+      setTimeout(() => navDropdown.classList.remove('force-close'), 700);
+      if (document.activeElement) document.activeElement.blur();
+    }
+
+    // ── Treatment Detail Panel Data ────────────────────────────────────────────────
+    const treatments = {
+      'phaco': {
+        category: 'Cataract', icon: 'health_and_safety',
+        title: 'Phacoemulsification (Phaco)',
+        desc: 'Phacoemulsification is the gold-standard cataract removal technique. Using a tiny self-sealing incision of less than 3mm, an ultrasonic probe gently emulsifies the cloudy natural lens, which is then aspirated out. A premium foldable intraocular lens (IOL) is then inserted through the same micro-incision, restoring crystal-clear vision — often within 24 hours.',
+        steps: [
+          { title: 'Pre-operative Evaluation', desc: 'Biometry, corneal topography and OCT select the ideal IOL power for your eye.' },
+          { title: 'Micro-Incision Entry', desc: 'A <3mm self-sealing corneal incision is created — no stitches required.' },
+          { title: 'Ultrasonic Emulsification', desc: 'The phaco probe breaks the cloudy lens into micro-fragments using precisely controlled ultrasound energy.' },
+          { title: 'IOL Implantation', desc: 'A folded premium IOL unfolds perfectly inside the capsular bag, immediately correcting vision.' }
+        ],
+        benefits: ['No-stitch, no-injection technique', 'Vision recovery within 24–48 hours', 'Suitable for all grades of cataract', 'Performed under topical anaesthesia', 'Minimal post-operative restrictions']
+      },
+      'mics': {
+        category: 'Cataract', icon: 'health_and_safety',
+        title: 'MICS — Micro-Incision Cataract Surgery',
+        desc: 'MICS takes phaco surgery a step further with a sub-1mm bimanual incision approach. By separating irrigation and aspiration into two ultra-thin instruments, surgeons gain superior fluidic control and can operate inside an almost closed chamber — dramatically reducing trauma to delicate corneal endothelial cells and minimising surgically-induced astigmatism.',
+        steps: [
+          { title: 'Dual Micro-Port Entry', desc: 'Two incisions under 0.9mm allow separate irrigation and aspiration instruments.' },
+          { title: 'Bimanual Technique', desc: 'The irrigating chopper and aspiration handpiece work in tandem for 360° access.' },
+          { title: 'Nuclear Emulsification', desc: 'The hard nucleus is chopped and aspirated with minimal ultrasound energy (torsional phaco).' },
+          { title: 'Micro-IOL Implantation', desc: 'A specially designed micro-incision IOL is injected through the tiny port.' }
+        ],
+        benefits: ['Sub-1mm incisions — no sutures', 'Least surgically-induced astigmatism', 'Ideal for complex or dense cataracts', 'Faster endothelial cell recovery', 'Reduced inflammation post-surgery']
+      },
+      'femto-cataract': {
+        category: 'Cataract', icon: 'health_and_safety',
+        title: 'Femtosecond Laser Cataract Surgery',
+        desc: 'Femto Cataract surgery replaces the most technically demanding manual steps with computer-guided femtosecond laser precision. The laser creates perfectly sized, centred corneal incisions and capsulotomy, and pre-softens the nucleus — reducing the phaco energy required by up to 40%. The result is the most reproducible and gentle cataract surgery available today.',
+        steps: [
+          { title: 'OCT-Guided Laser Planning', desc: 'Real-time 3D OCT maps the entire eye so the laser operates with micron-level precision.' },
+          { title: 'Laser Capsulotomy', desc: 'A perfectly circular, centred capsule opening every time — critical for premium IOL performance.' },
+          { title: 'Nuclear Fragmentation', desc: 'The lens is pre-softened into segments, dramatically reducing ultrasound energy needed.' },
+          { title: 'IOL Centration', desc: 'With the perfect capsulotomy, multifocal and toric IOLs sit exactly where needed.' }
+        ],
+        benefits: ['40% less ultrasound energy to the eye', 'Perfect capsulotomy every time', 'Ideal for premium IOL implantation', 'Laser-corrected corneal incisions', 'Faster visual rehabilitation']
+      },
+      'premium-lenses': {
+        category: 'Cataract', icon: 'health_and_safety',
+        title: 'Premium Intraocular Lenses',
+        desc: 'Premium IOLs go far beyond restoring sight lost to cataract — they simultaneously correct pre-existing refractive error to potentially eliminate spectacle dependence. At Fokus we offer an extensive range: EDOF, enhanced monofocal, trifocal, multifocal and toric IOLs, carefully matched to each patient\'s visual demands and lifestyle.',
+        steps: [
+          { title: 'Lifestyle Assessment', desc: 'We discuss your daily visual demands — reading, driving, screens — to identify the ideal lens.' },
+          { title: 'Biometry & Topography', desc: 'IOLMaster 700 and corneal topography provide precise power calculations.' },
+          { title: 'Lens Selection', desc: 'We select from EDOF, trifocal, multifocal or enhanced monofocal platforms as appropriate.' },
+          { title: 'Surgical Implantation', desc: 'The lens is implanted through a micro-incision and centred precisely within the capsular bag.' }
+        ],
+        benefits: ['Reduced or zero spectacle dependence', 'Full range of vision — near to distance', 'Toric options correct astigmatism', 'UV and blue-light filtering options', 'Long-lasting, permanent correction']
+      },
+      'multifocal-iols': {
+        category: 'Cataract', icon: 'health_and_safety',
+        title: 'Multifocal IOLs',
+        desc: 'Multifocal IOLs use diffractive or refractive optics to split incoming light into multiple focal points, enabling clear vision at near, intermediate and distance simultaneously — without glasses. At Fokus we implant leading platforms including PanOptix trifocal and Synergy extended-range lenses, guided by meticulous pre-operative biometry.',
+        steps: [
+          { title: 'Candidacy Assessment', desc: 'Pupil dynamics, corneal health and lifestyle needs are evaluated to confirm suitability.' },
+          { title: 'Precise Power Calculation', desc: 'We use Barrett Universal II and Hill-RBF formulae for superior accuracy.' },
+          { title: 'Cataract Extraction', desc: 'The cloudy lens is removed via phaco with minimal energy to preserve the cornea.' },
+          { title: 'Multifocal Implantation', desc: 'The IOL is centred perfectly — centration within 0.1mm is critical for multifocal optics.' }
+        ],
+        benefits: ['Freedom from reading glasses', 'Clear vision at all distances', 'High patient satisfaction >95%', 'One-time permanent solution', 'Suitable for both eyes together']
+      },
+      'toric-iols': {
+        category: 'Cataract', icon: 'health_and_safety',
+        title: 'Toric IOLs for Astigmatism',
+        desc: 'If you have corneal astigmatism alongside cataract, a standard IOL will leave this cylinder uncorrected. A Toric IOL has a built-in cylinder correction that is aligned precisely to your corneal steep axis — neutralising the astigmatism and delivering sharp, unaided distance vision.',
+        steps: [
+          { title: 'Corneal Topography', desc: 'Atlas and Pentacam map the astigmatic axis and magnitude with high precision.' },
+          { title: 'Toric Power Calculation', desc: 'The Barrett Toric Formula determines the ideal cylinder power and axis.' },
+          { title: 'Axis Marking', desc: 'The steep corneal meridian is marked pre-operatively with the patient seated.' },
+          { title: 'Precision Alignment', desc: 'The IOL is rotated to the marked axis during surgery and verified intraoperatively.' }
+        ],
+        benefits: ['Corrects astigmatism at time of cataract surgery', 'Sharper unaided distance vision', 'Available in monofocal and multifocal platforms', 'No additional laser surgery needed', 'Stable, permanent astigmatic correction']
+      },
+      'lasik': {
+        category: 'Refractive', icon: 'visibility',
+        title: 'LASIK — Laser In-Situ Keratomileusis',
+        desc: 'LASIK is the world\'s most popular vision correction procedure. A ultra-thin corneal flap is created with a femtosecond laser, lifted, and an excimer laser precisely reshapes the corneal stroma to correct short-sight, long-sight or astigmatism. The flap is repositioned — no stitches, and functional vision within hours.',
+        steps: [
+          { title: 'Pre-operative Screening', desc: 'Corneal topography, pachymetry, aberrometry and tear-film analysis confirm candidacy.' },
+          { title: 'Femtosecond Flap Creation', desc: 'A precise, customised corneal flap is created without any blade — in under 15 seconds.' },
+          { title: 'Excimer Laser Ablation', desc: 'The excimer laser reshapes the cornea to your exact prescription in 30–60 seconds.' },
+          { title: 'Flap Repositioning', desc: 'The flap is placed back seamlessly. It adheres naturally — no sutures needed.' }
+        ],
+        benefits: ['Vision improved within hours', 'Painless procedure under numbing drops', 'Treats up to −10D myopia & ±6D astigmatism', 'Stable results within 1–3 months', 'Over 95% achieve 20/20 or better']
+      },
+      'smile': {
+        category: 'Refractive', icon: 'visibility',
+        title: 'SMILE — Small Incision Lenticule Extraction',
+        desc: 'SMILE is a flapless, keyhole refractive procedure. The femtosecond laser sculpts a tiny disc of corneal tissue (lenticule) inside the intact cornea, which is then extracted through a 2–4mm arc incision. With no flap, the anterior corneal nerves are largely preserved — resulting in significantly less dry eye and a stronger post-operative cornea.',
+        steps: [
+          { title: 'Lenticule Planning', desc: 'Corneal topography and wavefront data define the exact lenticule shape required.' },
+          { title: 'Femtosecond Lenticule Cut', desc: 'The Visumax laser creates the lenticule and a tiny arc-shaped access incision in under 25 seconds.' },
+          { title: 'Lenticule Separation', desc: 'The surgeon gently separates the lenticule planes with a blunt instrument.' },
+          { title: 'Lenticule Extraction', desc: 'The disc is removed through the 2–4mm incision — no flap, no hinges, no blades.' }
+        ],
+        benefits: ['Completely flapless — no flap complications', 'Less dry eye than LASIK', 'Stronger biomechanical post-op cornea', 'Suitable for contact sport athletes', 'Fast recovery — back to normal in 1–2 days']
+      },
+      'contoura-vision': {
+        category: 'Refractive', icon: 'visibility',
+        title: 'Contoura Vision — Topography-Guided LASIK',
+        desc: 'Contoura Vision is the most advanced form of LASIK. It maps 22,000 unique elevation points across your cornea and corrects not just your spectacle prescription but also the micro-irregularities that no glasses or contact lens can address — often delivering vision better than any optical correction could previously provide.',
+        steps: [
+          { title: 'Corneal Topography Mapping', desc: '22,000 data points from your corneal surface are captured and loaded into the laser.' },
+          { title: 'Treatment Plan Customisation', desc: 'The ablation profile is individually computed for your unique corneal shape.' },
+          { title: 'Wavefront-Optimised Ablation', desc: 'The excimer laser treats both the prescription and corneal irregularities simultaneously.' },
+          { title: 'Visual Quality Enhancement', desc: 'Patients often report sharper, brighter and more contrast-rich vision than ever before.' }
+        ],
+        benefits: ['Maps 22,000 individual corneal points', 'Corrects prescription + corneal irregularities', 'Highest visual quality outcomes', 'Reduced glare and halos at night', 'FDA-approved for superior results']
+      },
+      'icl': {
+        category: 'Refractive', icon: 'visibility',
+        title: 'ICL — Implantable Collamer Lens',
+        desc: 'ICL is the ideal solution for patients unsuitable for laser vision correction due to thin corneas, high myopia, or dry eyes. A biocompatible collamer lens is implanted between the iris and the natural crystalline lens through a tiny 3mm incision. The procedure is additive, reversible and preserves full natural reading ability.',
+        steps: [
+          { title: 'Candidacy Evaluation', desc: 'Anterior chamber depth, endothelial cell count and ACD-to-white measurement confirm suitability.' },
+          { title: 'ICL Sizing', desc: 'The lens vault height is determined from precise biometry to ensure safe aqueous flow.' },
+          { title: 'Lens Implantation', desc: 'Through a 3mm incision, the rolled lens is injected and unfolds perfectly behind the iris.' },
+          { title: 'Post-Op Verification', desc: 'Vault height and IOP are measured at 24 hours and one week to ensure optimal positioning.' }
+        ],
+        benefits: ['Suitable for high myopia up to −20D', 'Reversible — lens can be removed or replaced', 'No corneal tissue removed', 'Preserves natural reading vision', 'Excellent night vision quality']
+      },
+      'diabetic-retinopathy': {
+        category: 'Retina', icon: 'ophthalmology',
+        title: 'Diabetic Retinopathy Management',
+        desc: 'Diabetic retinopathy is the leading cause of preventable blindness in working-age adults. At Fokus, we offer a comprehensive, protocol-driven programme covering early detection with wide-field retinal imaging and OCT, through to advanced laser photocoagulation and intravitreal anti-VEGF therapy for sight-threatening proliferative disease.',
+        steps: [
+          { title: 'Screening & Grading', desc: 'Ultra-widefield fundus photography and OCT classify disease severity (mild, moderate, severe NPDR or PDR).' },
+          { title: 'Anti-VEGF Injections', desc: 'Ranibizumab, Bevacizumab or Aflibercept injections suppress retinal neovascularisation and macular oedema.' },
+          { title: 'Laser Photocoagulation', desc: 'Pan-retinal photocoagulation (PRP) for proliferative disease; focal/grid laser for macular oedema.' },
+          { title: 'Vitreoretinal Surgery', desc: 'Pars plana vitrectomy for vitreous haemorrhage or tractional retinal detachment.' }
+        ],
+        benefits: ['Early detection prevents vision loss', 'Anti-VEGF reverses macular oedema', 'Laser prevents new vessel growth', 'Integrated diabetology co-management', 'Regular monitoring protocol included']
+      },
+      'retinal-detachment': {
+        category: 'Retina', icon: 'ophthalmology',
+        title: 'Retinal Detachment Repair',
+        desc: 'Retinal detachment is a medical emergency — the retina separates from its supportive pigment epithelium, cutting off its blood supply. Without prompt surgery, permanent vision loss occurs. Fokus offers same-day surgical intervention: pneumatic retinopexy for select cases, scleral buckling for phakic detachments, and pars plana vitrectomy for complex cases.',
+        steps: [
+          { title: 'Urgent Assessment', desc: 'B-scan ultrasound and wide-field imaging map the detachment extent and locate any breaks.' },
+          { title: 'Surgical Strategy', desc: 'We choose between pneumatic retinopexy, scleral buckling or vitrectomy based on break location.' },
+          { title: 'Vitrectomy & Tamponade', desc: 'The vitreous is removed, retina reattached under perfluorocarbon liquid, and tamponaded with gas or oil.' },
+          { title: 'Endolaser Retinopexy', desc: 'Laser is applied around all breaks to create permanent adhesion after reattachment.' }
+        ],
+        benefits: ['Same-day emergency surgical access', 'High reattachment success rate >95%', 'Vitrectomy, buckling & pneumatic options', 'Silicone oil or gas tamponade as needed', 'Thorough post-op follow-up protocol']
+      },
+      'intravitreal-injections': {
+        category: 'Retina', icon: 'ophthalmology',
+        title: 'Intravitreal Injections',
+        desc: 'Intravitreal injections deliver anti-VEGF drugs, corticosteroids or antibiotics directly into the vitreous cavity — achieving therapeutic concentrations at the retina that oral or topical medications cannot reach. At Fokus, injections are performed under strict sterile conditions in a dedicated procedure room, ensuring maximum safety and comfort.',
+        steps: [
+          { title: 'OCT & Clinical Review', desc: 'Macular OCT and visual acuity are measured at every visit to guide treatment decisions.' },
+          { title: 'Sterile Preparation', desc: 'Povidone-iodine conjunctival preparation, sterile drape and speculum placement.' },
+          { title: 'Injection Delivery', desc: 'A fine 30-gauge needle delivers the drug into the mid-vitreous through the pars plana in seconds.' },
+          { title: 'Post-injection Monitoring', desc: 'IOP check at 20 minutes; reviewed at 4–6 weeks for the next OCT-guided decision.' }
+        ],
+        benefits: ['Treats AMD, DME, RVO and uveitis', 'Anti-VEGF, steroid and antibiotic options', 'Rapid, painless office procedure', 'OCT-guided treat-and-extend protocol', 'Preserves and often improves vision']
+      },
+      'oct': {
+        category: 'Retina', icon: 'ophthalmology',
+        title: 'OCT — Optical Coherence Tomography',
+        desc: 'OCT is a non-contact, non-invasive imaging technology that uses low-coherence near-infrared light to produce micron-resolution cross-sectional images of the retinal layers. At Fokus we use swept-source OCT with wide-field angiography (OCTA) capability — detecting structural and vascular changes years before symptoms appear.',
+        steps: [
+          { title: 'Patient Preparation', desc: 'No dilation required for standard OCT. Pupils may be dilated for enhanced depth imaging (EDI-OCT).' },
+          { title: 'Scan Acquisition', desc: 'A 5–10 second scan captures a detailed map of all retinal layers from ILM to Bruch\'s membrane.' },
+          { title: 'Layer Analysis', desc: 'Automated segmentation quantifies ganglion cell layer, RNFL thickness and subretinal fluid volumes.' },
+          { title: 'Report & Monitoring', desc: 'Serial OCTs track disease progression or treatment response with quantitative trend analysis.' }
+        ],
+        benefits: ['Non-invasive — no injections or dye', 'Micron-level retinal layer resolution', 'Detects early AMD, glaucoma, DME', 'OCTA option shows retinal vasculature', 'Results available immediately']
+      },
+      'ffa': {
+        category: 'Retina', icon: 'ophthalmology',
+        title: 'FFA — Fundus Fluorescein Angiography',
+        desc: 'FFA uses an intravenous fluorescent dye to map the retinal and choroidal circulations dynamically. As the dye transits through the retinal vessels, high-speed fundus photography captures filling patterns, leakage points, areas of ischaemia and neovascularisation — information that directly guides laser and anti-VEGF treatment decisions.',
+        steps: [
+          { title: 'Dye Injection', desc: 'Sodium fluorescein is injected into a peripheral vein. The entire procedure takes 10–15 minutes.' },
+          { title: 'Transit Phase Imaging', desc: 'Rapid sequence photographs capture the arterial, arteriovenous and venous phases of retinal filling.' },
+          { title: 'Leakage & Ischaemia Mapping', desc: 'Areas of vascular leakage, retinal non-perfusion and neovascularisation are precisely localised.' },
+          { title: 'Treatment Guidance', desc: 'The angiogram directly guides focal laser, PRP or intravitreal injection target areas.' }
+        ],
+        benefits: ['Dynamic map of retinal blood flow', 'Precisely localises leakage and ischaemia', 'Guides laser and anti-VEGF treatment', 'Detects early neovascularisation', 'Combined with ICGA for choroidal analysis']
+      },
+      'keratoconus': {
+        category: 'Cornea', icon: 'blur_circular',
+        title: 'Keratoconus Management',
+        desc: 'Keratoconus is a progressive ectasia where the cornea thins and bulges into a cone shape, causing irregular astigmatism and progressively distorted vision. At Fokus we offer a full spectrum of management: spectacles for early stages, rigid gas-permeable and scleral lenses, ICRS to regularise the cornea, and corneal cross-linking to halt progression.',
+        steps: [
+          { title: 'Pentacam & Topography', desc: 'Elevation maps, curvature indices (Kmax, BSCVA) and pachymetry classify severity and progression rate.' },
+          { title: 'Contact Lens Fitting', desc: 'Custom rigid gas-permeable or scleral lenses neutralise irregular astigmatism for functional vision.' },
+          { title: 'ICRS Implantation', desc: 'Ferrara or Keraring segments are implanted to flatten the cone and regularise topography.' },
+          { title: 'Cross-linking', desc: 'CXL stiffens the corneal stroma to halt ectasia progression permanently.' }
+        ],
+        benefits: ['Full spectrum from glasses to surgery', 'ICRS reduces irregular astigmatism', 'Cross-linking halts progression', 'Scleral lenses for comfort & clarity', 'Keratoplasty available if advanced']
+      },
+      'cross-linking': {
+        category: 'Cornea', icon: 'blur_circular',
+        title: 'Corneal Cross-Linking (CXL)',
+        desc: 'Corneal cross-linking is the only proven treatment that stops keratoconus from getting worse. Riboflavin (Vitamin B2) drops are applied to the cornea, then exposed to calibrated UV-A light. This photochemical reaction creates new covalent bonds between collagen fibrils — dramatically stiffening the corneal stroma and halting ectatic progression.',
+        steps: [
+          { title: 'Epithelial Removal (Standard CXL)', desc: 'The central 9mm of corneal epithelium is removed to allow full riboflavin penetration.' },
+          { title: 'Riboflavin Saturation', desc: 'Riboflavin 0.1% drops are instilled every 2 minutes for 30 minutes until full stromal saturation.' },
+          { title: 'UV-A Irradiation', desc: '365nm UV-A at 3 mW/cm² (standard) or 9 mW/cm² (accelerated) for 30 or 10 minutes respectively.' },
+          { title: 'Bandage Contact Lens', desc: 'A therapeutic bandage lens is fitted for epithelial healing over 3–5 days.' }
+        ],
+        benefits: ['Only treatment proven to halt progression', 'Preserves existing vision permanently', 'Standard and accelerated protocols', 'Transepithelial (no-touch) option available', 'Long-term stability demonstrated at 10 years']
+      }
+    };
+
+    // ── Detail Panel Logic ────────────────────────────────────────────────────────
+    const detailedSection = document.getElementById('detailed-services');
+    const detailPanel = document.getElementById('treatmentPanel');
+    const detailClose = document.getElementById('detailClose');
+    const dsInner = detailedSection.querySelector('.detailed-services-inner');
+
+    function openDetailPanel(serviceKey) {
+      const data = treatments[serviceKey];
+      if (!data) return;
+
+      // Populate content
+      document.getElementById('detailIconName').textContent = data.icon;
+      document.getElementById('detailBadge').textContent = data.category;
+      document.getElementById('detailTitle').textContent = data.title;
+      document.getElementById('detailDesc').textContent = data.desc;
+
+      const stepsEl = document.getElementById('detailSteps');
+      stepsEl.innerHTML = data.steps.map((s, i) => `
+        <div class="detail-step">
+          <div class="detail-step-num">${i + 1}</div>
+          <div><h5>${s.title}</h5><p>${s.desc}</p></div>
+        </div>`).join('');
+
+      const bensEl = document.getElementById('detailBenefits');
+      bensEl.innerHTML = data.benefits.map(b => `<div class="detail-benefit">${b}</div>`).join('');
+
+      // Show panel
+      dsInner.classList.add('detail-mode');
+      requestAnimationFrame(() => {
+        detailPanel.classList.add('visible');
+      });
+
+      // Scroll section into view
+      detailedSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function closeDetailPanel() {
+      detailPanel.classList.remove('visible');
+      setTimeout(() => dsInner.classList.remove('detail-mode'), 400);
+    }
+
+    // Close button
+    detailClose.addEventListener('click', closeDetailPanel);
+
+    // Click on ds-service-items in the 4-card grid
+    document.querySelectorAll('.ds-service-item[data-service]').forEach(item => {
+      item.addEventListener('click', () => openDetailPanel(item.dataset.service));
+    });
+
+    // Dropdown sub-links — open detail panel
+    if (navDropdown) {
+      navDropdown.querySelectorAll('.dropdown-menu a[data-service]').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const key = link.dataset.service;
+          closeNavDropdown();
+          setTimeout(() => openDetailPanel(key), 200);
+        });
+      });
+
+      // Dropdown category titles — scroll to section (no detail panel)
+      navDropdown.querySelectorAll('.dropdown-col-title[data-section]').forEach(col => {
+        col.addEventListener('click', () => {
+          closeDetailPanel();
+          const target = document.getElementById(col.dataset.section);
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          closeNavDropdown();
+        });
+      });
+    }
+
+    // Auto-close panel when scrolled above the section
+    window.addEventListener('scroll', () => {
+      if (!dsInner.classList.contains('detail-mode')) return;
+      const rect = detailedSection.getBoundingClientRect();
+      if (rect.top > window.innerHeight * 0.3) closeDetailPanel();
+    }, { passive: true });
+
+  </script>
+</body>
+
+</html>
