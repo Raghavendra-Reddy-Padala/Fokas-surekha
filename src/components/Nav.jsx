@@ -95,7 +95,9 @@ export default function Nav({ menuOpen, onToggleMenu, onServiceClick }) {
   return (
     <nav ref={navRef} id="mainNav">
       <div className="nav-inner">
-        <a className="nav-logo" href="#">Fokus.</a>
+        <a className="nav-logo" href="#" style={{ display: 'flex', alignItems: 'center' }}>
+          <img src="/fokusdark.png" alt="Fokus Logo" style={{ height: '40px', objectFit: 'contain' }} />
+        </a>
         <ul className="nav-links">
           {/* <li><a href="#services">Expertise</a></li> */}
           <li className={`nav-dropdown${forceClose ? ' force-close' : ''}`} ref={dropRef}>

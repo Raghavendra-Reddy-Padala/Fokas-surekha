@@ -32,7 +32,9 @@ export default function Loader({ onComplete }) {
 
   return (
     <div id="loader" ref={loaderRef}>
-      <div id="loader-text">Fokus.</div>
+      <div id="loader-text">
+        <img src="/fokus.webp" alt="Fokus Logo" style={{ height: '60px', objectFit: 'contain' }} />
+      </div>
       <div id="loader-line" />
       <div id="loader-counter">000</div>
     </div>
