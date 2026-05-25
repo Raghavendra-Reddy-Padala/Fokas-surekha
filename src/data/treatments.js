@@ -1,3 +1,5 @@
+const PLACEHOLDER_IMG = 'https://media.istockphoto.com/id/2077095666/vector/default-placeholder-doctor-portrait-photo-avatar-on-gray-background-greyscale-healthcare.jpg?s=612x612&w=0&k=20&c=en2o7NAtzp_udRQhckeWozkwHiXGz5KCRhTzY3Vbhdo='
+const Umashankar = '/doc.jpg'
 const treatments = {
   phaco: {
     category: 'Cataract', icon: 'health_and_safety',
@@ -10,6 +12,11 @@ const treatments = {
       { title: 'IOL Implantation', desc: 'A folded premium IOL unfolds perfectly inside the capsular bag, immediately correcting vision.' },
     ],
     benefits: ['No-stitch, no-injection technique', 'Vision recovery within 24–48 hours', 'Suitable for all grades of cataract', 'Performed under topical anaesthesia', 'Minimal post-operative restrictions'],
+    doctors: [
+      { name: 'Dr. Umashankar Mamidi', qualification: 'M.S. (Ophthal)', speciality: 'Eye Specialist, Phaco & LASIK Surgeon', image: Umashankar },
+      { name: 'Dr. Supreeth Mamidi', qualification: 'M.S. (Ophthalmology)', speciality: 'Cataract & Refractive Surgeon', image: PLACEHOLDER_IMG },
+      { name: 'Dr. Hari Krishna', qualification: 'M.S. Ophthalmology', speciality: 'Cataract Surgeon', image: PLACEHOLDER_IMG },
+    ],
   },
   mics: {
     category: 'Cataract', icon: 'health_and_safety',
@@ -22,6 +29,11 @@ const treatments = {
       { title: 'Micro-IOL Implantation', desc: 'A specially designed micro-incision IOL is injected through the tiny port.' },
     ],
     benefits: ['Sub-1mm incisions — no sutures', 'Least surgically-induced astigmatism', 'Ideal for complex or dense cataracts', 'Faster endothelial cell recovery', 'Reduced inflammation post-surgery'],
+    doctors: [
+      { name: 'Dr. Umashankar Mamidi', qualification: 'M.S. (Ophthal)', speciality: 'Eye Specialist, Phaco & LASIK Surgeon', image: Umashankar },
+      { name: 'Dr. Supreeth Mamidi', qualification: 'M.S. (Ophthalmology)', speciality: 'Cataract & Refractive Surgeon', image: PLACEHOLDER_IMG },
+      { name: 'Dr. Hari Krishna', qualification: 'M.S. Ophthalmology', speciality: 'Cataract Surgeon', image: PLACEHOLDER_IMG },
+    ],
   },
   'femto-cataract': {
     category: 'Cataract', icon: 'health_and_safety',
@@ -34,6 +46,10 @@ const treatments = {
       { title: 'IOL Centration', desc: 'With the perfect capsulotomy, multifocal and toric IOLs sit exactly where needed.' },
     ],
     benefits: ['40% less ultrasound energy to the eye', 'Perfect capsulotomy every time', 'Ideal for premium IOL implantation', 'Laser-corrected corneal incisions', 'Faster visual rehabilitation'],
+    doctors: [
+      { name: 'Dr. Umashankar Mamidi', qualification: 'M.S. (Ophthal)', speciality: 'Eye Specialist, Phaco & LASIK Surgeon', image: Umashankar },
+      { name: 'Dr. Supreeth Mamidi', qualification: 'M.S. (Ophthalmology)', speciality: 'Cataract & Refractive Surgeon', image: PLACEHOLDER_IMG },
+    ],
   },
   'premium-lenses': {
     category: 'Cataract', icon: 'health_and_safety',
@@ -46,6 +62,10 @@ const treatments = {
       { title: 'Surgical Implantation', desc: 'The lens is implanted through a micro-incision and centred precisely within the capsular bag.' },
     ],
     benefits: ['Reduced or zero spectacle dependence', 'Full range of vision — near to distance', 'Toric options correct astigmatism', 'UV and blue-light filtering options', 'Long-lasting, permanent correction'],
+    doctors: [
+      { name: 'Dr. Umashankar Mamidi', qualification: 'M.S. (Ophthal)', speciality: 'Eye Specialist, Phaco & LASIK Surgeon', image: Umashankar },
+      { name: 'Dr. Supreeth Mamidi', qualification: 'M.S. (Ophthalmology)', speciality: 'Cataract & Refractive Surgeon', image: PLACEHOLDER_IMG },
+    ],
   },
   'multifocal-iols': {
     category: 'Cataract', icon: 'health_and_safety',
@@ -58,6 +78,11 @@ const treatments = {
       { title: 'Multifocal Implantation', desc: 'The IOL is centred perfectly — centration within 0.1mm is critical for multifocal optics.' },
     ],
     benefits: ['Freedom from reading glasses', 'Clear vision at all distances', 'High patient satisfaction >95%', 'One-time permanent solution', 'Suitable for both eyes together'],
+    doctors: [
+      { name: 'Dr. Umashankar Mamidi', qualification: 'M.S. (Ophthal)', speciality: 'Eye Specialist, Phaco & LASIK Surgeon', image: Umashankar },
+      { name: 'Dr. Supreeth Mamidi', qualification: 'M.S. (Ophthalmology)', speciality: 'Cataract & Refractive Surgeon', image: PLACEHOLDER_IMG },
+      { name: 'Dr. Hari Krishna', qualification: 'M.S. Ophthalmology', speciality: 'Cataract Surgeon', image: PLACEHOLDER_IMG },
+    ],
   },
   'toric-iols': {
     category: 'Cataract', icon: 'health_and_safety',
@@ -70,6 +95,10 @@ const treatments = {
       { title: 'Precision Alignment', desc: 'The IOL is rotated to the marked axis during surgery and verified intraoperatively.' },
     ],
     benefits: ['Corrects astigmatism at time of cataract surgery', 'Sharper unaided distance vision', 'Available in monofocal and multifocal platforms', 'No additional laser surgery needed', 'Stable, permanent astigmatic correction'],
+    doctors: [
+      { name: 'Dr. Umashankar Mamidi', qualification: 'M.S. (Ophthal)', speciality: 'Eye Specialist, Phaco & LASIK Surgeon', image: Umashankar },
+      { name: 'Dr. Hari Krishna', qualification: 'M.S. Ophthalmology', speciality: 'Cataract Surgeon', image: PLACEHOLDER_IMG },
+    ],
   },
   lasik: {
     category: 'Refractive', icon: 'visibility',
@@ -82,6 +111,11 @@ const treatments = {
       { title: 'Flap Repositioning', desc: 'The flap is placed back seamlessly. It adheres naturally — no sutures needed.' },
     ],
     benefits: ['Vision improved within hours', 'Painless procedure under numbing drops', 'Treats up to −10D myopia & ±6D astigmatism', 'Stable results within 1–3 months', 'Over 95% achieve 20/20 or better'],
+    doctors: [
+      { name: 'Dr. Umashankar Mamidi', qualification: 'M.S. (Ophthal)', speciality: 'Eye Specialist, Phaco & LASIK Surgeon', image: PLACEHOLDER_IMG },
+      { name: 'Dr. Supreeth Mamidi', qualification: 'M.S. (Ophthalmology)', speciality: 'Refractive Surgeon', image: PLACEHOLDER_IMG },
+      { name: 'Dr. Sanjita Mamidi', qualification: 'MBBS', speciality: 'Ophthalmologist', image: PLACEHOLDER_IMG },
+    ],
   },
   smile: {
     category: 'Refractive', icon: 'visibility',
@@ -94,6 +128,10 @@ const treatments = {
       { title: 'Lenticule Extraction', desc: 'The disc is removed through the 2–4mm incision — no flap, no hinges, no blades.' },
     ],
     benefits: ['Completely flapless — no flap complications', 'Less dry eye than LASIK', 'Stronger biomechanical post-op cornea', 'Suitable for contact sport athletes', 'Fast recovery — back to normal in 1–2 days'],
+    doctors: [
+      { name: 'Dr. Supreeth Mamidi', qualification: 'M.S. (Ophthalmology)', speciality: 'Refractive Surgeon', image: PLACEHOLDER_IMG },
+      { name: 'Dr. Umashankar Mamidi', qualification: 'M.S. (Ophthal)', speciality: 'Eye Specialist, Phaco & LASIK Surgeon', image: PLACEHOLDER_IMG },
+    ],
   },
   'contoura-vision': {
     category: 'Refractive', icon: 'visibility',
@@ -106,6 +144,10 @@ const treatments = {
       { title: 'Visual Quality Enhancement', desc: 'Patients often report sharper, brighter and more contrast-rich vision than ever before.' },
     ],
     benefits: ['Maps 22,000 individual corneal points', 'Corrects prescription + corneal irregularities', 'Highest visual quality outcomes', 'Reduced glare and halos at night', 'FDA-approved for superior results'],
+    doctors: [
+      { name: 'Dr. Umashankar Mamidi', qualification: 'M.S. (Ophthal)', speciality: 'Eye Specialist, Phaco & LASIK Surgeon', image: Umashankar },
+      { name: 'Dr. Supreeth Mamidi', qualification: 'M.S. (Ophthalmology)', speciality: 'Refractive Surgeon', image: PLACEHOLDER_IMG },
+    ],
   },
   icl: {
     category: 'Refractive', icon: 'visibility',
@@ -118,6 +160,10 @@ const treatments = {
       { title: 'Post-Op Verification', desc: 'Vault height and IOP are measured at 24 hours and one week to ensure optimal positioning.' },
     ],
     benefits: ['Suitable for high myopia up to −20D', 'Reversible — lens can be removed or replaced', 'No corneal tissue removed', 'Preserves natural reading vision', 'Excellent night vision quality'],
+    doctors: [
+      { name: 'Dr. Siddartha Reddy', qualification: 'ICL Surgeon', speciality: 'Permanent Contact Lens Specialist', image: PLACEHOLDER_IMG },
+      { name: 'Dr. Supreeth Mamidi', qualification: 'M.S. (Ophthalmology)', speciality: 'Refractive Surgeon', image: PLACEHOLDER_IMG },
+    ],
   },
   'diabetic-retinopathy': {
     category: 'Retina', icon: 'ophthalmology',
@@ -130,6 +176,10 @@ const treatments = {
       { title: 'Vitreoretinal Surgery', desc: 'Pars plana vitrectomy for vitreous haemorrhage or tractional retinal detachment.' },
     ],
     benefits: ['Early detection prevents vision loss', 'Anti-VEGF reverses macular oedema', 'Laser prevents new vessel growth', 'Integrated diabetology co-management', 'Regular monitoring protocol included'],
+    doctors: [
+      { name: 'Dr. Syed Saifuddin Adeel', qualification: 'M.S. Medical Retina', speciality: 'Retina & Vitreous Surgeon', image: PLACEHOLDER_IMG },
+      { name: 'Dr. Hari Krishna', qualification: 'M.S. Ophthalmology', speciality: 'Ophthalmologist', image: PLACEHOLDER_IMG },
+    ],
   },
   'retinal-detachment': {
     category: 'Retina', icon: 'ophthalmology',
@@ -142,6 +192,9 @@ const treatments = {
       { title: 'Endolaser Retinopexy', desc: 'Laser is applied around all breaks to create permanent adhesion after reattachment.' },
     ],
     benefits: ['Same-day emergency surgical access', 'High reattachment success rate >95%', 'Vitrectomy, buckling & pneumatic options', 'Silicone oil or gas tamponade as needed', 'Thorough post-op follow-up protocol'],
+    doctors: [
+      { name: 'Dr. Syed Saifuddin Adeel', qualification: 'M.S. Medical Retina', speciality: 'Retina & Vitreous Surgeon', image: PLACEHOLDER_IMG },
+    ],
   },
   'intravitreal-injections': {
     category: 'Retina', icon: 'ophthalmology',
@@ -154,6 +207,10 @@ const treatments = {
       { title: 'Post-injection Monitoring', desc: 'IOP check at 20 minutes; reviewed at 4–6 weeks for the next OCT-guided decision.' },
     ],
     benefits: ['Treats AMD, DME, RVO and uveitis', 'Anti-VEGF, steroid and antibiotic options', 'Rapid, painless office procedure', 'OCT-guided treat-and-extend protocol', 'Preserves and often improves vision'],
+    doctors: [
+      { name: 'Dr. Syed Saifuddin Adeel', qualification: 'M.S. Medical Retina', speciality: 'Retina & Vitreous Surgeon', image: PLACEHOLDER_IMG },
+      { name: 'Dr. Hari Krishna', qualification: 'M.S. Ophthalmology', speciality: 'Ophthalmologist', image: PLACEHOLDER_IMG },
+    ],
   },
   oct: {
     category: 'Retina', icon: 'ophthalmology',
@@ -166,6 +223,10 @@ const treatments = {
       { title: 'Report & Monitoring', desc: 'Serial OCTs track disease progression or treatment response with quantitative trend analysis.' },
     ],
     benefits: ['Non-invasive — no injections or dye', 'Micron-level retinal layer resolution', 'Detects early AMD, glaucoma, DME', 'OCTA option shows retinal vasculature', 'Results available immediately'],
+    doctors: [
+      { name: 'Dr. Syed Saifuddin Adeel', qualification: 'M.S. Medical Retina', speciality: 'Retina & Vitreous Surgeon', image: PLACEHOLDER_IMG },
+      { name: 'Dr. Hari Krishna', qualification: 'M.S. Ophthalmology', speciality: 'Ophthalmologist', image: PLACEHOLDER_IMG },
+    ],
   },
   ffa: {
     category: 'Retina', icon: 'ophthalmology',
@@ -178,6 +239,9 @@ const treatments = {
       { title: 'Treatment Guidance', desc: 'The angiogram directly guides focal laser, PRP or intravitreal injection target areas.' },
     ],
     benefits: ['Dynamic map of retinal blood flow', 'Precisely localises leakage and ischaemia', 'Guides laser and anti-VEGF treatment', 'Detects early neovascularisation', 'Combined with ICGA for choroidal analysis'],
+    doctors: [
+      { name: 'Dr. Syed Saifuddin Adeel', qualification: 'M.S. Medical Retina', speciality: 'Retina & Vitreous Surgeon', image: PLACEHOLDER_IMG },
+    ],
   },
   keratoconus: {
     category: 'Cornea', icon: 'blur_circular',
@@ -190,6 +254,10 @@ const treatments = {
       { title: 'Cross-linking', desc: 'CXL stiffens the corneal stroma to halt ectasia progression permanently.' },
     ],
     benefits: ['Full spectrum from glasses to surgery', 'ICRS reduces irregular astigmatism', 'Cross-linking halts progression', 'Scleral lenses for comfort & clarity', 'Keratoplasty available if advanced'],
+    doctors: [
+      { name: 'Dr. Umashankar Mamidi', qualification: 'M.S. (Ophthal)', speciality: 'Eye Specialist & Cornea Surgeon', image: PLACEHOLDER_IMG },
+      { name: 'Dr. Supreeth Mamidi', qualification: 'M.S. (Ophthalmology)', speciality: 'Cornea & Refractive Surgeon', image: PLACEHOLDER_IMG },
+    ],
   },
   'cross-linking': {
     category: 'Cornea', icon: 'blur_circular',
@@ -202,6 +270,10 @@ const treatments = {
       { title: 'Bandage Contact Lens', desc: 'A therapeutic bandage lens is fitted for epithelial healing over 3–5 days.' },
     ],
     benefits: ['Only treatment proven to halt progression', 'Preserves existing vision permanently', 'Standard and accelerated protocols', 'Transepithelial (no-touch) option available', 'Long-term stability demonstrated at 10 years'],
+    doctors: [
+      { name: 'Dr. Umashankar Mamidi', qualification: 'M.S. (Ophthal)', speciality: 'Eye Specialist & Cornea Surgeon', image: PLACEHOLDER_IMG },
+      { name: 'Dr. Supreeth Mamidi', qualification: 'M.S. (Ophthalmology)', speciality: 'Cornea & Refractive Surgeon', image: PLACEHOLDER_IMG },
+    ],
   },
 }
 

@@ -31,6 +31,30 @@ export default function TreatmentPanel({ data, onClose }) {
             </div>
           </div>
           <div className="detail-sidebar">
+
+            {/* Our Expert Doctors */}
+            {data.doctors && data.doctors.length > 0 && (
+              <div className="detail-doctors">
+                <div className="detail-steps-title" style={{ marginBottom: '1rem' }}>Our Expert Doctors</div>
+                <div className="detail-doctors-list">
+                  {data.doctors.map((doc, idx) => (
+                    <div className="detail-doctor-card" key={idx}>
+                      <img
+                        src={doc.image}
+                        alt={doc.name}
+                        className="detail-doctor-img"
+                      />
+                      <div className="detail-doctor-info">
+                        <div className="detail-doctor-name">{doc.name}</div>
+                        <div className="detail-doctor-qual">{doc.qualification}</div>
+                        <div className="detail-doctor-spec">{doc.speciality}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             <div className="detail-steps-title" style={{ marginBottom: '1.25rem' }}>Key Benefits</div>
             <div className="detail-benefits">
               {data.benefits.map((benefit, idx) => (
