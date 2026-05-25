@@ -5,24 +5,7 @@ import treatmentsData from '../data/treatments'
 export default function DetailedServicesSection({ activeService, onServiceSelect, onClosePanel }) {
   const activeData = activeService ? treatmentsData[activeService] : null
 
-  // Auto-close on scroll away
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!activeService) return
-      const section = document.getElementById('detailed-services')
-      if (!section) return
-      
-      const rect = section.getBoundingClientRect()
-      const threshold = window.innerHeight * 0.3
-      
-      if (rect.top > threshold || rect.bottom < threshold) {
-        onClosePanel()
-      }
-    }
-    
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [activeService, onClosePanel])
+  // Auto-close on scroll away removed to fix navigation bug
 
   return (
     <section className="detailed-services-section" id="detailed-services">
