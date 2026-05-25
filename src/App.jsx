@@ -14,6 +14,7 @@ import EmpanelmentsSection from './components/EmpanelmentsSection'
 import GallerySection from './components/GallerySection'
 import TestimonialsSection from './components/TestimonialsSection'
 import Footer from './components/Footer'
+import FAQSection from './components/FAQSection'
 import gsap from 'gsap'
 
 export default function App() {
@@ -82,6 +83,7 @@ export default function App() {
         <EmpanelmentsSection />
         <GallerySection />
         <TestimonialsSection />
+        <FAQSection />
       </main>
       
       <Footer />
